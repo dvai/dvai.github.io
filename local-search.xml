@@ -8,40 +8,19 @@
     <link href="/2022/10/29/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88/"/>
     <url>/2022/10/29/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88/</url>
     
-    <content type="html"><![CDATA[<p>我的小区路口有一家理发店，理发的价格是15元一次。自从在县城理发付了70元的学费后我便成为小区门口理发店的常客。</p><p>这间理发店十分简陋，门口总是摆放着一辆黑色的敞篷小三轮，大概是他的交通工具，走进理发店，大约20平米的空间只简单摆放了几件沾满时光气息的家具以及一些理发工具。仔细闻闻，空气中还夹带着几丝腐败的难闻气息。</p><p>店主是一位约莫30来岁的细瘦男子，留着一头微卷的中分。每当我踏进门，他都会停下手里的工作，甩甩头发笑着说，“稍微坐一会儿哦，我这个很快就好。”</p><p>我一向不喜欢和理发师多沟通，只想安安静静的坐着，等待理发师剪好头发，然后离开。然而大部分理发师总喜欢和你闲聊几句，有些会和你聊聊工作八卦之类的家常，离谱的直接给你推荐几套会员卡套餐。</p><p>但是这个理发师却很安静，每次理发只是简单招呼我先过去洗个头，然后问我想怎么打理头发，接着便默默地开始他的工作。随着次数增多，话语更是精简到只剩开局的一句“和往常一样吗？”。</p><p>深得我心。</p><p>我曾经以为他就是这么一个不善言辞的人，直到有一次前去理发，听见他和座椅上的大妈闲聊地有来有回，我这才知道，原来他并非不善言辞，只不过是在照顾不同顾客的习惯罢了。</p><p>由此看来我其实和这个理发师并没有什么过多的交集，我不曾和他深入交流过，只不过偶尔从他和客人之间的谈话中听得一些事。</p><p>听闻他30多岁一直没有女朋友，后来在亲戚介绍下与一个离异带孩的女子草草结了婚。</p><p>他是这么说的，</p><p>“我也已经老大不小了，自己的条件不怎么样也不能对别人要求太高。何况这个女子人也不错，也是该有个家了。”</p><p>此处所说的女子我也见过几次，是一个身体有些发福的中年女人。有时她会抱着孩子坐在一旁的破旧沙发上，望着怀中酣睡的小孩，轻轻摇晃臂弯。眉眼之间尽是温柔。</p><p>上周，我在县城的街上与他偶遇，他坐在小三轮上停靠在路边，我走向前和他打招呼。</p><p>“呦！我也是xx小区的，去你那儿理过几次头发。你在这儿干嘛呢？”</p><p>他见着我，先是愣了一会儿，然后开心地说，“哦……哦！我带小孩子打针，老婆在上厕所，我在等她。”</p><p>我看向他的怀中，即使在吵闹的街区，孩子依然睡的十分安稳。</p><p>简单寒喧几句过后我说自己要走了，他像是巧遇故友却又要分别一样，热情地同我道别。</p><p>我不曾了解他的生活，不过我记得当时离开的路上，心情不错。</p>]]></content>
-    
-    
-    
-    <tags>
-      
-      <tag>生活小事</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>使用ffmpeg推送RTMP流</title>
-    <link href="/2022/10/29/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/"/>
-    <url>/2022/10/29/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/</url>
-    
-    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>单位最近好像有网络直播的需要，说起网络直播，最常见的就是通过RTMP协议进行网络推流。 ffmpeg是一款开源的图像处理项目，可以方便的进行图像视频处理，推送操作，当然我们需要的推送RTMP流功能也可以很好的实现。 本文就以ffmpeg为工具进行RTMP的推送。</p><h2 id="安装ffmpeg"><a href="#安装ffmpeg" class="headerlink" title="安装ffmpeg"></a>安装ffmpeg</h2><ol><li>在官网下载ffmpeg压缩包：<a href="http://ffmpeg.org/download.html">下载链接</a></li><li>解压到本地磁盘</li><li>将解压后的bin文件夹路径配置到系统环境变量中</li><li>打开cmd输入<code>ffmpeg –version</code>，可以看到ffmpeg的相关信息即可</li></ol><h2 id="配置RTMP服务器"><a href="#配置RTMP服务器" class="headerlink" title="配置RTMP服务器"></a>配置RTMP服务器</h2><ol><li>安装nginx，<a href="http://nginx.org/">下载地址</a></li><li>下载nginx-rtmp，<a href="https://github.com/illuspas/nginx-rtmp-win32">下载地址</a>下载后解压放到与nginx的同级目录</li><li>复制nginx的conf文件夹中的nginx-win.conf文件，在其末尾添加</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">rtmp &#123;<br>    server &#123;<br>        listen 1935;#监听端口,若被占用,可以更改<br>        chunk_size 4000;#上传flv文件块儿的大小<br>        application live &#123; #创建一个叫live的应用<br>             live on;#开启live的应用<br>             allow publish 127.0.0.1;#<br>             allow play all;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>以下代码可以实现将本地的视频以RTMP流的方式推送到RTMP服务器，实现网络直播。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">import cv2<br>import subprocess<br><br> camera_path = r&quot;本地视频地址&quot;<br><br> # 视频读取对象<br> cap = cv2.VideoCapture(camera_path) <br><br> # 读取一帧<br> ret, frame = cap.read()<br><br> # 推流地址<br> rtmp = &quot;RTMP服务器地址&quot;<br><br> fps = int(cap.get(cv2.CAP_PROP_FPS))<br> width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))<br> height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))<br> # 推流参数<br> command = [&#x27;D:\\ffmpeg\\bin\\ffmpeg.exe&#x27;,<br>    &#x27;-y&#x27;,<br>    &#x27;-f&#x27;, &#x27;rawvideo&#x27;,<br>    &#x27;-vcodec&#x27;,&#x27;rawvideo&#x27;,<br>    &#x27;-pix_fmt&#x27;, &#x27;bgr24&#x27;,<br>    &#x27;-s&#x27;, &quot;&#123;&#125;x&#123;&#125;&quot;.format(width, height),<br>    &#x27;-r&#x27;, str(fps),<br>    &#x27;-i&#x27;, &#x27;-&#x27;,<br>    &#x27;-c:v&#x27;, &#x27;libx264&#x27;,<br>    &#x27;-pix_fmt&#x27;, &#x27;yuv420p&#x27;,<br>    &#x27;-preset&#x27;, &#x27;ultrafast&#x27;,<br>    &#x27;-f&#x27;, &#x27;flv&#x27;, <br>    rtmp]<br><br> # 创建、管理子进程<br> pipe = subprocess.Popen(command, stdin=subprocess.PIPE)<br> size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), <br> int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))<br><br> # 循环读取<br> while cap.isOpened():<br>    # 读取一帧<br>    ret, frame = cap.read()<br>    if frame is None:<br>    print(&#x27;read frame err!&#x27;)<br>    continue<br>    <br>    # 显示一帧<br>    cv2.imshow(&quot;frame&quot;, frame)<br>    <br>    # 按键退出<br>    if cv2.waitKey(1) &amp; 0xFF == ord(&#x27;q&#x27;):<br>    break<br><br>    # 读取尺寸、推流<br>    img=cv2.resize(frame,size)<br>    pipe.stdin.write(img.tobytes()) <br><br> cv2.destroyAllWindows()<br><br> cap.release()<br></code></pre></td></tr></table></figure><p>启动程序后，使用VLC或者Potplayer等软件读取RTMP地址即可播放。</p><h2 id="ffmpeg-python包"><a href="#ffmpeg-python包" class="headerlink" title="ffmpeg-python包"></a>ffmpeg-python包</h2><p>通过以上代码确实能够实现ffmpeg的推流，不过实际上只是调用了ffmpeg自带的命令行工具，更改参数什么的不太方便，后来了解到python有ffmpeg的包。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">pip install ffmpeg-python<br></code></pre></td></tr></table></figure><p>关于ffmpeg包的使用，下次再另写一篇文章。</p>]]></content>
+    <content type="html"><![CDATA[<p>我的小区路口有一家理发店，理发的价格是15元一次。自从在县城理发付了70元的学费后我便成为这家理发店的常客。</p><p>这间理发店十分简陋，门口总是摆放着一辆黑色的敞篷小三轮，大概是他的交通工具，走进理发店，大约20平米的空间只简单摆放了几件沾满时光气息的家具以及一些理发工具。仔细闻闻，空气中还夹带着几丝腐败的难闻气息。</p><p>店主是一位约莫30来岁的细瘦男子，留着一头微卷的中分。每当我踏进门，他都会停下手里的工作，甩甩头发笑着说，“稍微坐一会儿哦，我这个很快就好。”</p><p>我一向不喜欢和理发师多沟通，只想安安静静的坐着，等待理发师剪好头发，然后离开。然而大部分理发师总喜欢和你闲聊几句，有些会和你聊聊工作八卦之类的家常，离谱的直接给你推荐几套会员卡套餐。</p><p>但是这个理发师却很安静，每次理发只是简单招呼我先过去洗个头，然后问我想怎么打理头发，接着便默默地开始他的工作。随着次数增多，话语更是精简到只剩开局的一句“和往常一样吗？”。</p><p>深得我心。</p><p>我曾经以为他就是这么一个不善言辞的人，直到有一次前去理发，听见他和座椅上的大妈闲聊地有来有回，我这才知道，原来他并非不善言辞，只不过是在照顾不同顾客的习惯罢了。</p><p>由此看来我其实和这个理发师并没有什么过多的交集，我不曾和他深入交流过，只不过偶尔从他和客人之间的谈话中听得一些事。</p><p>听闻他30多岁一直没有女朋友，后来在亲戚介绍下与一个离异带孩的女子草草结了婚。</p><p>他是这么说的，</p><p>“我也已经老大不小了，自己的条件不怎么样也不能对别人要求太高。何况这个女子人也不错，也是该有个家了。”</p><p>此处所说的女子我也见过几次，是一个身体有些发福的中年女人。有时她会抱着孩子坐在一旁的破旧沙发上，望着怀中酣睡的小孩，轻轻摇晃臂弯。眉眼之间尽是温柔。</p><p>上周，我在县城的街上与他偶遇，他坐在小三轮上停靠在路边，我走向前和他打招呼。</p><p>“呦！我也是xx小区的，去你那儿理过几次头发。你在这儿干嘛呢？”</p><p>他见着我，先是愣了一会儿，然后开心地说，“哦……哦！我带小孩子打针，老婆在上厕所，我在等她。”</p><p>我看向他的怀中，即使在吵闹的街区，孩子依然睡的十分安稳。</p><p>简单寒喧几句过后我说自己要走了，他像是巧遇故友却又要分别一样，热情地同我道别。</p><p>我不曾了解他的生活，不过我记得当时离开的路上，心情不错。</p>]]></content>
     
     
     <categories>
       
-      <category>python</category>
-      
-      <category>技术经验</category>
+      <category>生活记事</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>小工具</tag>
+      <tag>身边小事</tag>
       
     </tags>
     
@@ -67,6 +46,58 @@
     <tags>
       
       <tag>经验总结</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>使用ffmpeg推送RTMP流</title>
+    <link href="/2022/05/29/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/"/>
+    <url>/2022/05/29/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/</url>
+    
+    <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>单位最近好像有网络直播的需要，说起网络直播，最常见的就是通过RTMP协议进行网络推流。 ffmpeg是一款开源的图像处理项目，可以方便的进行图像视频处理，推送操作，当然我们需要的推送RTMP流功能也可以很好的实现。 本文就以ffmpeg为工具进行RTMP的推送。</p><h2 id="安装ffmpeg"><a href="#安装ffmpeg" class="headerlink" title="安装ffmpeg"></a>安装ffmpeg</h2><ol><li>在官网下载ffmpeg压缩包：<a href="http://ffmpeg.org/download.html">下载链接</a></li><li>解压到本地磁盘</li><li>将解压后的bin文件夹路径配置到系统环境变量中</li><li>打开cmd输入<code>ffmpeg –version</code>，可以看到ffmpeg的相关信息即可</li></ol><h2 id="配置RTMP服务器"><a href="#配置RTMP服务器" class="headerlink" title="配置RTMP服务器"></a>配置RTMP服务器</h2><ol><li>安装nginx，<a href="http://nginx.org/">下载地址</a></li><li>下载nginx-rtmp，<a href="https://github.com/illuspas/nginx-rtmp-win32">下载地址</a>下载后解压放到与nginx的同级目录</li><li>复制nginx的conf文件夹中的nginx-win.conf文件，在其末尾添加</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">rtmp &#123;<br>    server &#123;<br>        listen 1935;#监听端口,若被占用,可以更改<br>        chunk_size 4000;#上传flv文件块儿的大小<br>        application live &#123; #创建一个叫live的应用<br>             live on;#开启live的应用<br>             allow publish 127.0.0.1;#<br>             allow play all;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><h2 id="示例代码"><a href="#示例代码" class="headerlink" title="示例代码"></a>示例代码</h2><p>以下代码可以实现将本地的视频以RTMP流的方式推送到RTMP服务器，实现网络直播。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">import cv2<br>import subprocess<br><br> camera_path = r&quot;本地视频地址&quot;<br><br> # 视频读取对象<br> cap = cv2.VideoCapture(camera_path) <br><br> # 读取一帧<br> ret, frame = cap.read()<br><br> # 推流地址<br> rtmp = &quot;RTMP服务器地址&quot;<br><br> fps = int(cap.get(cv2.CAP_PROP_FPS))<br> width = int(cap.get(cv2.CAP_PROP_FRAME_WIDTH))<br> height = int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))<br> # 推流参数<br> command = [&#x27;D:\\ffmpeg\\bin\\ffmpeg.exe&#x27;,<br>    &#x27;-y&#x27;,<br>    &#x27;-f&#x27;, &#x27;rawvideo&#x27;,<br>    &#x27;-vcodec&#x27;,&#x27;rawvideo&#x27;,<br>    &#x27;-pix_fmt&#x27;, &#x27;bgr24&#x27;,<br>    &#x27;-s&#x27;, &quot;&#123;&#125;x&#123;&#125;&quot;.format(width, height),<br>    &#x27;-r&#x27;, str(fps),<br>    &#x27;-i&#x27;, &#x27;-&#x27;,<br>    &#x27;-c:v&#x27;, &#x27;libx264&#x27;,<br>    &#x27;-pix_fmt&#x27;, &#x27;yuv420p&#x27;,<br>    &#x27;-preset&#x27;, &#x27;ultrafast&#x27;,<br>    &#x27;-f&#x27;, &#x27;flv&#x27;, <br>    rtmp]<br><br> # 创建、管理子进程<br> pipe = subprocess.Popen(command, stdin=subprocess.PIPE)<br> size = (int(cap.get(cv2.CAP_PROP_FRAME_WIDTH)), <br> int(cap.get(cv2.CAP_PROP_FRAME_HEIGHT)))<br><br> # 循环读取<br> while cap.isOpened():<br>    # 读取一帧<br>    ret, frame = cap.read()<br>    if frame is None:<br>    print(&#x27;read frame err!&#x27;)<br>    continue<br>    <br>    # 显示一帧<br>    cv2.imshow(&quot;frame&quot;, frame)<br>    <br>    # 按键退出<br>    if cv2.waitKey(1) &amp; 0xFF == ord(&#x27;q&#x27;):<br>    break<br><br>    # 读取尺寸、推流<br>    img=cv2.resize(frame,size)<br>    pipe.stdin.write(img.tobytes()) <br><br> cv2.destroyAllWindows()<br><br> cap.release()<br></code></pre></td></tr></table></figure><p>启动程序后，使用VLC或者Potplayer等软件读取RTMP地址即可播放。</p><h2 id="ffmpeg-python包"><a href="#ffmpeg-python包" class="headerlink" title="ffmpeg-python包"></a>ffmpeg-python包</h2><p>通过以上代码确实能够实现ffmpeg的推流，不过实际上只是调用了ffmpeg自带的命令行工具，更改参数什么的不太方便，后来了解到python有ffmpeg的包。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">pip install ffmpeg-python<br></code></pre></td></tr></table></figure><p>关于ffmpeg包的使用，下次再另写一篇文章。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>python</category>
+      
+      <category>技术经验</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>小工具</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>死了三次的女孩</title>
+    <link href="/2022/04/24/%E3%80%8A%E6%A1%B6%E5%B7%9D%E8%B7%9F%E8%B8%AA%E7%8B%82%E6%9D%80%E4%BA%BA%E4%BA%8B%E4%BB%B6%E3%80%8B/"/>
+    <url>/2022/04/24/%E3%80%8A%E6%A1%B6%E5%B7%9D%E8%B7%9F%E8%B8%AA%E7%8B%82%E6%9D%80%E4%BA%BA%E4%BA%8B%E4%BB%B6%E3%80%8B/</url>
+    
+    <content type="html"><![CDATA[<h2 id="读《《桶川跟踪狂杀人事件》有感"><a href="#读《《桶川跟踪狂杀人事件》有感" class="headerlink" title="读《《桶川跟踪狂杀人事件》有感"></a>读《《桶川跟踪狂杀人事件》有感</h2><p>一个女孩被杀了三次，一次是警察，一次是凶手，一次是媒体。<br>作为保护人民的警察，在诗织三番五次的报案下，竟然毫无作为，不接受受理，用各种理由让诗织打消念头。甚至在诗织和家人的努力，不断提供证据好不容易受理之后，跑到诗织家里让诗织撤销报案，这是多么令人绝望的一件事。假如警方早一点提高警惕，早点行动，诗织或许就不会死了。正是警方的不作为和渎职，在命案发生前就杀死了诗织。</p><blockquote><p>“我完全可以理解那天诗织和父母来这里求助之后，如何陷入了绝望。这里病入膏肓。这里没有半个“人”。诗织遭遇了两个不幸。一个是认识了小松，另一个就是住在上尾署的辖区里。”</p></blockquote><p>这里没有半个“人”，这里都是披着人皮的怪物。书中的警察是简直毫无作为，对报案者的生死毫不关心，总是推诿搪塞，根本不配他们身上的那套警服。世界上有多少人已经失去了职业道德，只是把工作当成按时打卡领工资的流水线，对什么都漠不关心，在乎的只是工资高低，年终奖多少。我承认，这是不可避免的，在这个时代，没有人愿意做没有利益的事情，曾经庄重的誓言也能成为虚伪的代名词。在这个时代我们只能祈祷自己不会成为下一个绝望的诗织。</p><p>作者对无良媒体的描写，放到现在也不过时。对受害者外貌的详细刻画：迷你裙、厚底长靴、高级手表、名牌背包…媒体很“客观”的描述了受害者的特征，他们似乎什么都没说，但也什么都说了。刻意对受害者的形象进行描写，让大众产生联想：</p><blockquote><p>穿这么短的裙子，是想勾引谁？<br>戴名牌手表，和那个男人在一起不就是为了钱吗？<br>迷恋名牌，就是一个爱玩，招摇的女孩，难怪会遇上这种男人<br>…</p></blockquote><p>警方片面透露的信息加上媒体片面描写的报道，让诗织又被杀害了一次，在媒体的片面刻画下，作为死者的尊严也丧失了。被害者有害论，这直到20多年后的今天依然存在。各种利刃不断地往受害者身上甩去，现在的网民和诗织案的读者如出一辙，在媒体的片面报道下，对受害者指指点点，在受害者的身上找出被害原因，最终心满意足的打下一行字：就是因为你这样啊，才被害的，不要这样不就好了吗。按下回车键，一柄利刃无情的发送了出去。<br>当然，媒体是左右舆论的重要力量，有时候媒体所谓的客观性其实只是片面的客观罢了，比如一件事有两面性，我只报道了其中一面，你能说是我表达的不客观吗。而且大部分时候，民众也只是被动接收信息，不会花费时间探求事件全貌。</p><blockquote><p>“是因为媒体报道，所以民众关注，还是因为民众关注，媒体才大肆报道？”</p></blockquote><p>如今话语权已经成为这个世界最重要的权利之一。而掌握话语权的媒体，特别是官方媒体，一句话就可以改变社会舆论风向。一篇片面的报道，一则博眼球的新闻就能左右着人们的想法。或许民众是因为看了某篇报道才关注，亦或是因为民众自发的对某件事关注，媒体才下场，这其实无所谓，重要的是媒体在其中扮演一个怎样的角色，是一个客观的记录者，还是主观的引导者，我不知道。</p><p>作者清水洁，作为一个周刊记者，正义和愤怒驱使着他对诗织被害案件持续的追踪。周刊是三流媒体的代名词，以夸张的标题著称，很多新闻资源都是周刊记者得不到的。清水洁也是一个普通的媒体人员，他也会动摇，也会在不暴露嫌疑人和周刊临近截稿之间作斗争，但是当他逐渐深入案件，看到了警方的无能，看到了其他媒体博眼球的报道，以及聆听诗织朋友、家人的倾述之后无形中被托付的那什么，他承担起了自己本不用承担的责任。<br>豆瓣中看到一句话：“人都是复杂的，如果简单把凶手认定为恶魔，等于直接宣布这是小概率随机事件，消解了可能的改变和预防的空间。我们谁都不会觉得自己会碰见恶魔，但事实上，亲密关系中的暴力是极为普遍的。简单粗暴的标签化反而会更多地苛责受害者，加诸新的伤害。”<br>确实，很多人对凶手的印象仍然停留在面目狰狞，心灵扭曲的形象之中。但是现实案件里，加害者往往是熟人作案、亲密关系作案或者冲动作案，甚至可能是我们走在路上擦肩而过的任何人。人性是很复杂的，没有人是单纯的天使，也没有人是单纯的恶魔，每个人的心中都有善的一面和恶的一面，世界上没有完美加害人。就连本案的凶手小松也不例外，小松对诗织的行为，被称为恶魔行径也不为过，但是在另一个女生的描述中，小松也有脆弱、温柔的一面。<br>这是一起让人心碎的案件，读完之后有深深的无力感，我们每个人都有可能成为下一个诗织，但不能保证每次都有一个清水洁寻找真相。<br>诗织是不幸的，也是幸运的，但是那只暗沉无奇，戴了好多年的所谓名牌手表，在那一天，这只表上的指针永远指向了十二点五十分。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>读书笔记</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>读后感</tag>
       
     </tags>
     
