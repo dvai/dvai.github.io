@@ -18,22 +18,22 @@
   <meta name="author" content="东东">
   <meta name="keywords" content="">
   
-    <meta name="description" content="我的小区路口有一家理发店，理发的价格是15元一次。自从在县城理发付了70元的学费后我便成为这家理发店的常客。 这间理发店十分简陋，门口总是摆放着一辆黑色的敞篷小三轮，大概是他的交通工具，走进理发店，大约20平米的空间只简单摆放了几件沾满时光气息的家具以及一些理发工具。仔细闻闻，空气中还夹带着几丝腐败的难闻气息。 店主是一位约莫30来岁的细瘦男子，留着一头微卷的中分。每当我踏进门，他都会停下手里的工">
+    <meta name="description" content="前言subprocess这个模块来产生子进程,用于执行shell指令，并连接到子进程的标准输入&#x2F;输出&#x2F;错误中去，还可以得到子进程的返回值。subprocess意在替代其他几个老的模块或者函数，比如：  os.system os.spawn*  os.popen*  popen2.*  commands.*  参考资料：  subprocess的用法_soman的博客 Pytho">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小区路口的理发师">
-<meta property="og:url" content="http://ankia.top/2022/10/29/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88/index.html">
+<meta property="og:title" content="python subprocess库">
+<meta property="og:url" content="http://ankia.top/2021/11/13/python%20subprocess%E5%BA%93/index.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="我的小区路口有一家理发店，理发的价格是15元一次。自从在县城理发付了70元的学费后我便成为这家理发店的常客。 这间理发店十分简陋，门口总是摆放着一辆黑色的敞篷小三轮，大概是他的交通工具，走进理发店，大约20平米的空间只简单摆放了几件沾满时光气息的家具以及一些理发工具。仔细闻闻，空气中还夹带着几丝腐败的难闻气息。 店主是一位约莫30来岁的细瘦男子，留着一头微卷的中分。每当我踏进门，他都会停下手里的工">
+<meta property="og:description" content="前言subprocess这个模块来产生子进程,用于执行shell指令，并连接到子进程的标准输入&#x2F;输出&#x2F;错误中去，还可以得到子进程的返回值。subprocess意在替代其他几个老的模块或者函数，比如：  os.system os.spawn*  os.popen*  popen2.*  commands.*  参考资料：  subprocess的用法_soman的博客 Pytho">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-29T13:24:00.000Z">
-<meta property="article:modified_time" content="2022-10-30T04:49:43.051Z">
+<meta property="article:published_time" content="2021-11-13T05:24:00.000Z">
+<meta property="article:modified_time" content="2022-10-30T11:33:15.787Z">
 <meta property="article:author" content="东东">
-<meta property="article:tag" content="身边小事">
+<meta property="article:tag" content="python">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>小区路口的理发师 - 东东的小黑盒</title>
+  <title>python subprocess库 - 东东的小黑盒</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="小区路口的理发师"></span>
+            <span id="subtitle" data-typed-text="python subprocess库"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-29 21:24" pubdate>
-          2022年10月29日 晚上
+        <time datetime="2021-11-13 13:24" pubdate>
+          2021年11月13日 下午
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          928 字
+          2.1k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          8 分钟
+          18 分钟
         
       </span>
     
@@ -270,29 +270,74 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">小区路口的理发师</h1>
+            <h1 style="display: none">python subprocess库</h1>
             
             
               <div class="markdown-body">
                 
-                <p>我的小区路口有一家理发店，理发的价格是15元一次。自从在县城理发付了70元的学费后我便成为这家理发店的常客。</p>
-<p>这间理发店十分简陋，门口总是摆放着一辆黑色的敞篷小三轮，大概是他的交通工具，走进理发店，大约20平米的空间只简单摆放了几件沾满时光气息的家具以及一些理发工具。仔细闻闻，空气中还夹带着几丝腐败的难闻气息。</p>
-<p>店主是一位约莫30来岁的细瘦男子，留着一头微卷的中分。每当我踏进门，他都会停下手里的工作，甩甩头发笑着说，“稍微坐一会儿哦，我这个很快就好。”</p>
-<p>我一向不喜欢和理发师多沟通，只想安安静静的坐着，等待理发师剪好头发，然后离开。然而大部分理发师总喜欢和你闲聊几句，有些会和你聊聊工作八卦之类的家常，离谱的直接给你推荐几套会员卡套餐。</p>
-<p>但是这个理发师却很安静，每次理发只是简单招呼我先过去洗个头，然后问我想怎么打理头发，接着便默默地开始他的工作。随着次数增多，话语更是精简到只剩开局的一句“和往常一样吗？”。</p>
-<p>深得我心。</p>
-<p>我曾经以为他就是这么一个不善言辞的人，直到有一次前去理发，听见他和座椅上的大妈闲聊地有来有回，我这才知道，原来他并非不善言辞，只不过是在照顾不同顾客的习惯罢了。</p>
-<p>由此看来我其实和这个理发师并没有什么过多的交集，我不曾和他深入交流过，只不过偶尔从他和客人之间的谈话中听得一些事。</p>
-<p>听闻他30多岁一直没有女朋友，后来在亲戚介绍下与一个离异带孩的女子草草结了婚。</p>
-<p>他是这么说的，</p>
-<p>“我也已经老大不小了，自己的条件不怎么样也不能对别人要求太高。何况这个女子人也不错，也是该有个家了。”</p>
-<p>此处所说的女子我也见过几次，是一个身体有些发福的中年女人。有时她会抱着孩子坐在一旁的破旧沙发上，望着怀中酣睡的小孩，轻轻摇晃臂弯。眉眼之间尽是温柔。</p>
-<p>上周，我在县城的街上与他偶遇，他坐在小三轮上停靠在路边，我走向前和他打招呼。</p>
-<p>“呦！我也是xx小区的，去你那儿理过几次头发。你在这儿干嘛呢？”</p>
-<p>他见着我，先是愣了一会儿，然后开心地说，“哦……哦！我带小孩子打针，老婆在上厕所，我在等她。”</p>
-<p>我看向他的怀中，即使在吵闹的街区，孩子依然睡的十分安稳。</p>
-<p>简单寒喧几句过后我说自己要走了，他像是巧遇故友却又要分别一样，热情地同我道别。</p>
-<p>我不曾了解他的生活，不过我记得当时离开的路上，心情不错。</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>subprocess这个模块来产生子进程,用于执行shell指令，并连接到子进程的标准输入&#x2F;输出&#x2F;错误中去，还可以得到子进程的返回值。<br>subprocess意在替代其他几个老的模块或者函数，比如：</p>
+<ul>
+<li>os.system os.spawn* </li>
+<li>os.popen* </li>
+<li>popen2.* </li>
+<li>commands.*</li>
+</ul>
+<p>参考资料：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/ll641058431/article/details/84930394">subprocess的用法_soman的博客</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cnblogs.com/-qing-/p/10934322.html#_labelTop">Python之subprocess模块 - 卿先生</a></li>
+</ol>
+<h1 id="正文"><a href="#正文" class="headerlink" title="正文"></a>正文</h1><h2 id="常用subprocess方法"><a href="#常用subprocess方法" class="headerlink" title="常用subprocess方法"></a>常用subprocess方法</h2><table>
+<thead>
+<tr>
+<th>函数</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>subprocess.run()</td>
+<td>Python 3.5中新增的函数。执行指定的命令，等待命令执行完成后返回一个包含执行结果的CompletedProcess类的实例。</td>
+</tr>
+<tr>
+<td>subprocess.call()</td>
+<td>执行指定的命令，返回命令执行状态，其功能类似于os.system(cmd)。</td>
+</tr>
+<tr>
+<td>subprocess.check_call()</td>
+<td>Python 2.5中新增的函数。 执行指定的命令，如果执行成功则返回状态码，否则抛出异常。其功能等价于subprocess.run(…, check&#x3D;True)。</td>
+</tr>
+<tr>
+<td>subprocess.check_output()</td>
+<td>Python 2.7中新增的的函数。执行指定的命令，如果执行状态码为0则返回命令执行结果，否则抛出异常。</td>
+</tr>
+<tr>
+<td>subprocess.getoutput(cmd)</td>
+<td>接收字符串格式的命令，执行命令并返回执行结果，其功能类似于os.popen(cmd).read()和commands.getoutput(cmd)。</td>
+</tr>
+<tr>
+<td>subprocess.getstatusoutput(cmd)</td>
+<td>执行cmd命令，返回一个元组(命令执行状态, 命令执行结果输出)，其功能类似于commands.getstatusoutput()。</td>
+</tr>
+</tbody></table>
+<h2 id="popen类"><a href="#popen类" class="headerlink" title="popen类"></a>popen类</h2><blockquote>
+<p>popen的构造函数</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, args, bufsize=-<span class="hljs-number">1</span>, executable=<span class="hljs-literal">None</span>,</span><br><span class="hljs-params">                 stdin=<span class="hljs-literal">None</span>, stdout=<span class="hljs-literal">None</span>, stderr=<span class="hljs-literal">None</span>,</span><br><span class="hljs-params">                 preexec_fn=<span class="hljs-literal">None</span>, close_fds=_PLATFORM_DEFAULT_CLOSE_FDS,</span><br><span class="hljs-params">                 shell=<span class="hljs-literal">False</span>, cwd=<span class="hljs-literal">None</span>, env=<span class="hljs-literal">None</span>, universal_newlines=<span class="hljs-literal">False</span>,</span><br><span class="hljs-params">                 startupinfo=<span class="hljs-literal">None</span>, creationflags=<span class="hljs-number">0</span>,</span><br><span class="hljs-params">                 restore_signals=<span class="hljs-literal">True</span>, start_new_session=<span class="hljs-literal">False</span>,</span><br><span class="hljs-params">                 pass_fds=(<span class="hljs-params"></span>), *, encoding=<span class="hljs-literal">None</span>, errors=<span class="hljs-literal">None</span></span>)<br></code></pre></td></tr></table></figure>
+<blockquote>
+<p>参数说明</p>
+</blockquote>
+<ul>
+<li>&#x3D;&#x3D;args&#x3D;&#x3D;： 要执行的shell命令，可以是字符串，也可以是命令各个参数组成的序列。当该参数的值是一个字符串时，该命令的解释过程是与平台相关的，因此通常建议将args参数作为一个序列传递。</li>
+<li>&#x3D;&#x3D;bufsize&#x3D;&#x3D;： 指定缓存策略，0表示不缓冲，1表示行缓冲，其他大于1的数字表示缓冲区大小，负数 表示使用系统默认缓冲策略。</li>
+<li>&#x3D;&#x3D;stdin&#x3D;&#x3D;, &#x3D;&#x3D;stdout&#x3D;&#x3D;, &#x3D;&#x3D;stderr&#x3D;&#x3D;： 分别表示程序标准输入、输出、错误句柄。</li>
+<li>&#x3D;&#x3D;preexec_fn&#x3D;&#x3D;： 用于指定一个将在子进程运行之前被调用的可执行对象，只在Unix平台下有效。</li>
+<li>&#x3D;&#x3D;close_fds&#x3D;&#x3D;： 如果该参数的值为True，则除了0,1和2之外的所有文件描述符都将会在子进程执行之前被关闭。</li>
+<li>&#x3D;&#x3D;shell&#x3D;&#x3D;： 该参数用于标识是否使用shell作为要执行的程序，如果shell值为True，则建议将args参数作为一个字符串传递而不要作为一个序列传递。</li>
+<li>&#x3D;&#x3D;cwd&#x3D;&#x3D;： 如果该参数值不是None，则该函数将会在执行这个子进程之前改变当前工作目录。</li>
+<li>&#x3D;&#x3D;env&#x3D;&#x3D;： 用于指定子进程的环境变量，如果env&#x3D;None，那么子进程的环境变量将从父进程中继承。如果env!&#x3D;None，它的值必须是一个映射对象。</li>
+<li>&#x3D;&#x3D;universal_newlines&#x3D;&#x3D;： 如果该参数值为True，则该文件对象的stdin，stdout和stderr将会作为文本流被打开，否则他们将会被作为二进制流被打开。</li>
+<li>&#x3D;&#x3D;startupinfo&#x3D;&#x3D;和&#x3D;&#x3D;creationflags&#x3D;&#x3D;： 这两个参数只在Windows下有效，它们将被传递给底层的CreateProcess()函数，用于设置子进程的一些属性，如主窗口的外观，进程优先级等。</li>
+</ul>
 
                 
               </div>
@@ -311,7 +356,17 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%94%9F%E6%B4%BB%E8%AE%B0%E4%BA%8B/" class="category-chain-item">生活记事</a>
+  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="category-chain-item">经验总结</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/" class="category-chain-item">技术知识</a>
   
   
 
@@ -326,7 +381,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BA%AB%E8%BE%B9%E5%B0%8F%E4%BA%8B/">#身边小事</a>
+        <a href="/tags/python/">#python</a>
       
     </div>
   
@@ -338,8 +393,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>小区路口的理发师</div>
-      <div>http://ankia.top/2022/10/29/小区路口的理发师/</div>
+      <div>python subprocess库</div>
+      <div>http://ankia.top/2021/11/13/python subprocess库/</div>
     </div>
     <div class="license-meta">
       
@@ -351,7 +406,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月29日</div>
+          <div>2021年11月13日</div>
         </div>
       
       
@@ -383,12 +438,18 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="/2021/11/23/obsidian%E7%AC%94%E8%AE%B0%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88/" title="obsidian笔记同步方案">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">obsidian笔记同步方案</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/10/linux%20%E5%BC%80%E6%9C%BA%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%92%8Cswap%E5%88%86%E5%8C%BA/" title="linux 开机挂载磁盘和swap分区">
-                        <span class="hidden-mobile">linux 开机挂载磁盘和swap分区</span>
+                      <a href="/2021/11/03/%E6%96%87%E4%BB%B6%E6%AF%94%E8%BE%83-filecmp%E5%BA%93/" title="文件比较-filecmp库">
+                        <span class="hidden-mobile">文件比较-filecmp库</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
