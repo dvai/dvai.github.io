@@ -18,22 +18,22 @@
   <meta name="author" content="东东">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&amp;#x">
+    <meta name="description" content="读《怒》有感。说来挺有意思的，这本书我本来是当推理小说看的，但是越看越不对劲，书里写了三个故事线，讲述了三个故事中的主人公遇见了一个来历不明的男人之后发生的故事。一点都没提到开头的凶杀案，我一度以为自己可能看了什么盗版。于是上豆瓣瞅了一眼评论，我很其实讨厌被剧透，所以只是简单瞄一眼书友看完此书的感受，大概就是“前半段很无聊，后半段很感人”、“戳中泪点”、“立意很深”之类的。说实话和我的预期有点不一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux 开机挂载磁盘和swap分区">
-<meta property="og:url" content="http://ankia.top/2022/10/10/linux%20%E5%BC%80%E6%9C%BA%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%92%8Cswap%E5%88%86%E5%8C%BA/index.html">
+<meta property="og:title" content="信任">
+<meta property="og:url" content="http://ankia.top/2022/03/02/%E3%80%8A%E6%80%92%E3%80%8B/index.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="前言最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&amp;#x">
+<meta property="og:description" content="读《怒》有感。说来挺有意思的，这本书我本来是当推理小说看的，但是越看越不对劲，书里写了三个故事线，讲述了三个故事中的主人公遇见了一个来历不明的男人之后发生的故事。一点都没提到开头的凶杀案，我一度以为自己可能看了什么盗版。于是上豆瓣瞅了一眼评论，我很其实讨厌被剧透，所以只是简单瞄一眼书友看完此书的感受，大概就是“前半段很无聊，后半段很感人”、“戳中泪点”、“立意很深”之类的。说实话和我的预期有点不一">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-10T14:24:00.000Z">
-<meta property="article:modified_time" content="2022-10-30T04:34:35.145Z">
+<meta property="article:published_time" content="2022-03-02T13:44:00.000Z">
+<meta property="article:modified_time" content="2022-10-30T05:07:18.007Z">
 <meta property="article:author" content="东东">
-<meta property="article:tag" content="经验总结">
+<meta property="article:tag" content="读后感">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>linux 开机挂载磁盘和swap分区 - 东东的小黑盒</title>
+  <title>信任 - 东东的小黑盒</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux 开机挂载磁盘和swap分区"></span>
+            <span id="subtitle" data-typed-text="信任"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-10 22:24" pubdate>
-          2022年10月10日 晚上
+        <time datetime="2022-03-02 21:44" pubdate>
+          2022年3月2日 晚上
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.8k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          16 分钟
+          15 分钟
         
       </span>
     
@@ -270,106 +270,18 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux 开机挂载磁盘和swap分区</h1>
+            <h1 style="display: none">信任</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&#x2F;Ubuntu&#x2F;Debian】发行版新建，增加 Swap 分区的方法是一样的，下面致臻数据就分享下如何确定和创建 Swap 分区及大小。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="swap分区需要的大小"><a href="#swap分区需要的大小" class="headerlink" title="swap分区需要的大小"></a>swap分区需要的大小</h3><ol>
-<li>&lt;&#x3D; 4g 至少 4G</li>
-<li>4~16G 至少 8G</li>
-<li>16G~64G 至少 16G</li>
-<li>64G~256G 至少 32G</li>
-</ol>
-<h3 id="创建swap分区"><a href="#创建swap分区" class="headerlink" title="创建swap分区"></a>创建swap分区</h3><p>创建命令如下，其中 &#x2F;var&#x2F;swapfile 是文件位置，bs*count 是文件大下，比如我创建一个 16G 的文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">dd if=/dev/zero of=/var/swapfile bs=4M count=4096<br></code></pre></td></tr></table></figure>
-
-<h3 id="建立swap文件系统"><a href="#建立swap文件系统" class="headerlink" title="建立swap文件系统"></a>建立swap文件系统</h3><p>将文件格式化为swap分区文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">mkswap /var/swapfile<br></code></pre></td></tr></table></figure>
-
-<h3 id="启用swap分区"><a href="#启用swap分区" class="headerlink" title="启用swap分区"></a>启用swap分区</h3><p>启用分区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">swapon /var/swapfile<br></code></pre></td></tr></table></figure>
-
-<p>查看是否成功启用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">free -m<br></code></pre></td></tr></table></figure>
-
-<h3 id="设置开机自启"><a href="#设置开机自启" class="headerlink" title="设置开机自启"></a>设置开机自启</h3><p>编辑<code>/etc/fstab</code>文件，在文件末尾加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">/var/swapfile swap swap defaults 0 0<br></code></pre></td></tr></table></figure>
-
-<p>注意：中间用tab分割</p>
-<h3 id="修改swappiness参数"><a href="#修改swappiness参数" class="headerlink" title="修改swappiness参数"></a>修改swappiness参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">vim /proc/sys/vm/swappiness<br></code></pre></td></tr></table></figure>
-
-<p>内容的值来确定系统对 SWAP 分区的使用原则。当 swappiness 内容的值为 0 时，表示最大限度地使用物理内存，物理内存使用完毕后，才会使用 SWAP 分区。当 swappiness 内容的值为 100 时，表示积极地使用 SWAP 分区，并且把内存中的数据及时地置换到 SWAP 分区。 查看修改前为 0，需要在物理内存使用完毕后才会使用 SWAP 分区。 可以使用下述方法临时修改此参数，假设我们配置为空闲内存少于 15% 时才使用 SWAP 分区：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">echo 15 &gt;/proc/sys/vm/swappiness<br></code></pre></td></tr></table></figure>
-
-<p>若需要永久修改此配置，在系统重启之后也生效的话，可以修改 <code>/etc/sysctl.conf</code> 文件，并增加以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">vm.swappiness=15<br></code></pre></td></tr></table></figure>
-
-<h3 id="挂载机械硬盘"><a href="#挂载机械硬盘" class="headerlink" title="挂载机械硬盘"></a>挂载机械硬盘</h3><p>也是编辑<code>/etc/fstab</code>文件 在末尾加入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">/dev/sda1 /data ntfs defaults 0 0<br></code></pre></td></tr></table></figure>
-
-<p>配置完成后可用<code>sudo mount -a</code>检查是否配置成功</p>
-<h3 id="为某个用户挂载"><a href="#为某个用户挂载" class="headerlink" title="为某个用户挂载"></a>为某个用户挂载</h3><p>加入uid和gid参数，查看当前用户的uid的指令为<code>id</code></p>
-<h2 id="etc-fstab详解"><a href="#etc-fstab详解" class="headerlink" title="etc/fstab详解"></a><code>etc/fstab</code>详解</h2><h4 id="文件作用"><a href="#文件作用" class="headerlink" title="文件作用"></a>文件作用</h4><p>磁盘被手动挂载之后都必须把挂载信息写入&#x2F;etc&#x2F;fstab这个文件中，否则下次开机启动时仍然需要重新挂载。  系统开机时会主动读取&#x2F;etc&#x2F;fstab文件中的内容，根据文件这个里面的配置挂载磁盘。这样我们只需要将磁盘的挂载信息写入这个文件中我们就不需要每次开机启动之后手动进行挂载了。  </p>
-<h4 id="挂载的限制"><a href="#挂载的限制" class="headerlink" title="挂载的限制"></a>挂载的限制</h4><ol>
-<li>根目录是必须挂载的，而且一定要先于其他mount point被挂载。因为mount是所有目录的跟目录，其他木有都是由根目录 &#x2F;衍生出来的。</li>
-<li>挂载点必须是已经存在的目录。</li>
-<li>挂载点的指定可以任意，但必须遵守必要的系统目录架构原则</li>
-<li>所有挂载点在同一时间只能被挂载一次</li>
-<li>所有分区在同一时间只能挂在一次</li>
-<li>若进行卸载，必须将工作目录退出挂载点（及其子目录）之外。</li>
-</ol>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>label或uid 用唯一名称定位需要挂载的分区或磁盘</p>
-<p>挂载点 需要挂载到哪个目录下</p>
-<p>磁盘的系统</p>
-<p>文件系统的参数</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Async&#x2F;sync</td>
-<td>设置是否为同步方式运行，默认为 async</td>
-</tr>
-<tr>
-<td>auto&#x2F;noauto</td>
-<td>当下载 mount -a 的命令时，此文件系统是否被主动挂载。默认为 auto</td>
-</tr>
-<tr>
-<td>rw&#x2F;ro</td>
-<td>是否以以只读或者读写模式挂载</td>
-</tr>
-<tr>
-<td>exec&#x2F;noexec</td>
-<td>限制此文件系统内是否能够进行 “执行” 的操作</td>
-</tr>
-<tr>
-<td>user&#x2F;nouser</td>
-<td>是否允许用户使用 mount 命令挂载</td>
-</tr>
-<tr>
-<td>suid&#x2F;nosuid</td>
-<td>是否允许 SUID 的存在</td>
-</tr>
-<tr>
-<td>Usrquota</td>
-<td>启动文件系统支持磁盘配额模式</td>
-</tr>
-<tr>
-<td>Grpquota</td>
-<td>启动文件系统对群组磁盘配额模式的支持</td>
-</tr>
-<tr>
-<td>Defaults</td>
-<td>同事具有 rw,suid,dev,exec,auto,nouser,async 等默认参数的设置</td>
-</tr>
-</tbody></table>
-<p>dump 是否使用dump备份，0表示不需要，1表示每天，2表示不定日期，备份我一般使用其他方式，所以填0就好</p>
-<p>是否检验 0表示不需要，1表示最早（一般根目录需要），2表示1级别完成之后进行检验</p>
+                <h2 id="读《怒》有感。"><a href="#读《怒》有感。" class="headerlink" title="读《怒》有感。"></a>读《怒》有感。</h2><p>说来挺有意思的，这本书我本来是当推理小说看的，但是越看越不对劲，书里写了三个故事线，讲述了三个故事中的主人公遇见了一个来历不明的男人之后发生的故事。一点都没提到开头的凶杀案，我一度以为自己可能看了什么盗版。<br>于是上豆瓣瞅了一眼评论，我很其实讨厌被剧透，所以只是简单瞄一眼书友看完此书的感受，大概就是“前半段很无聊，后半段很感人”、“戳中泪点”、“立意很深”之类的。说实话和我的预期有点不一样，我是当作推理小说看的，但是我偶然看到了一条评论：“……直人、田中、田代是同一个人……”。我只看到了这行字，因为害怕被剧透，不敢继续再看了，赶紧关了手机，心想：“这么刺激？”。顿时对这本小说产生了兴趣，并且后悔刚才为什么要看那条评论。<br>所以我一直在把三个故事中的男人当作凶手，分析他们行为的动机，梳理三个故事的时间线，认为三个故事是依次发生的。但是今天阅读到最后一页时，结局与我预想的差距太大，我感觉我好像成为了故事中的一员。</p>
+<p>本书与其说是推理小说，不如说是社会小说，故事一开始就明确了犯罪嫌疑人是山神一也，全书也是围绕在爱子和田代，优树和直人，景、辰哉和田中，以及警察追踪凶手这四条线进行叙述，凶手是三个男人中的一个——田中，但是其他似乎与凶杀案毫无关系的人们，他们的生活也因此发生了巨大的变化。</p>
+<p>田中的逃跑路线其实很明了，犯罪后辗转在工地，每次觉得身份要暴露的时候就辗转到其他地方，最后逃到了波留间岛，在这里隐姓埋名生活。遇到了景，遇到了辰哉，遇到了能接受他的人们，他们互相信任，景在那霸险些被强奸，田中和辰哉互相信守承诺，不会告诉别人在那霸发生的这件事。可是事实是什么，田中是一只披着人皮的怪物，他在星岛废墟的墙上，写下了这段恶俗的文字：</p>
+<blockquote>
+<p>“看到美国兵干一个女的，那女的我认识，好玩儿，有个老头喊了一句 Police 就结束了，别跑啊，美国兵儿干到最后啊，女的晕倒了，好玩儿”</p>
+</blockquote>
+<p>看到这一段文字，辰哉怒了，我也怒了。田中背叛了我们的信任，之前的态度完全是表演出来的，这段文字和墙上一个大大的“怒”字才是他的真实面孔。他或许是内心扭曲的反社会人格，或许是我们不能理解的精神变态，或许是有着悲惨过去的失败者，又或许仅仅是一个易怒的普通人……这些都随着辰哉把刀刺进田中胸口的那个晚上不得而知了。田中的心里是没有由来的“怒”，并且将怒气强加到别人身上，正如那场凶杀案，无缘无故便杀死了两个毫不相干的人。但是辰哉的“怒”却是由保护景这个念头产生的，直到最后，辰哉也没有把景在那霸的事情说出来，尽管这有可能为他减轻惩罚。<br>本书其实讲的是信任的故事，辰哉和景相互信任，但是田中却背叛了这份信任，正因为书中所说：“我是因为信任他，所以无法原谅他”，辰哉杀死田中不是因为他是杀人犯，而是因为他背叛了信任。<br>另外两个故事其实和杀人案并无关系，但是因为杀人案轰动全国，且凶手整过容，所以对身边符合条件的人产生了怀疑。书中讲述的便是其中的两件故事。<br>直人出生在悲惨人家，又因为是同性恋，所以过的很不顺利，但是遇到优树后，他觉得自己得到了救赎，终于不用在意周围人眼光，觉得自己也可以好好生活了，为了不打破这种关系，直人隐瞒了自己心脏有问题的事实。优树其实是希望信任直人的，他曾对自己说，跟怀疑的对象说“我怀疑你”，就等于跟对方说“我相信你”。但是优树没有把信任一直持续下去，怀疑直树是盗窃犯，是通缉犯。直树死亡的那一晚，面对警察的的电话询问，也无法说一句“我认识他”……对于亲近的人，我们不妨多给一些信任。<br>田代因为躲避从父亲那儿“继承”的巨额债务，之前也过着东奔西跑的生活，直到遇见了爱子和洋平，他甚至好好考虑和爱子他们生活在一起的可能性，也开始向往美好的生活。但是也是因为这没有由来的不信任，田代或许是因为过去被发现了，不想拖累他们，所以逃走了，后来也是因为信任爱子他们，所以选择回来共同面对。<br>本书的故事结构令人唏嘘，真正的凶手得到了周围人毫无保留的信任，其他两个清白的人却被亲近的人所怀疑。作者这种刻意营造的结构，令平淡的结局回味无穷。直到最后我们也不知道田中为何杀人，为何在墙上书写大大的“怒”字，优树也永远无法对直人说一句对不起，所幸田代和爱子有机会走向明天。<br>其实书中人物的怀疑并不为过，作者想说的也不仅仅是信任与否这么简单的东西，或许是在探讨怀疑和爱之间，什么更重要吧。<br>怀疑是一种本能，但是爱给与的信任却足以包容一切。</p>
 
                 
               </div>
@@ -388,7 +300,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">读书笔记</a>
   
   
 
@@ -403,7 +315,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">#经验总结</a>
+        <a href="/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/">#读后感</a>
       
     </div>
   
@@ -415,8 +327,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux 开机挂载磁盘和swap分区</div>
-      <div>http://ankia.top/2022/10/10/linux 开机挂载磁盘和swap分区/</div>
+      <div>信任</div>
+      <div>http://ankia.top/2022/03/02/《怒》/</div>
     </div>
     <div class="license-meta">
       
@@ -428,7 +340,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月10日</div>
+          <div>2022年3月2日</div>
         </div>
       
       
@@ -460,21 +372,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/29/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88/" title="小区路口的理发师">
+                      <a href="/2022/03/16/%E3%80%8A%E6%B6%88%E5%A4%B1%E7%9A%8413%E7%BA%A7%E5%8F%B0%E9%98%B6%E3%80%8B/" title="我们都是无期徒刑">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">小区路口的理发师</span>
+                        <span class="hidden-mobile">我们都是无期徒刑</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
                   </article>
                   <article class="post-next col-6">
                     
-                    
-                      <a href="/2022/06/11/%E3%80%8A%E4%BB%A5%E5%A4%AA%E3%80%8B/" title="哑">
-                        <span class="hidden-mobile">哑</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
                     
                   </article>
                 </div>

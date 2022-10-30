@@ -18,22 +18,22 @@
   <meta name="author" content="东东">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&amp;#x">
+    <meta name="description" content="读《以太》有感以下是本书对”以太”描写的原文：  国会秘密通过第33条宪法修正案成立联邦信息安全委员会，对可能危害社会稳定和国家安全的信息进行过滤和替换，在漫长的尝试后，一套高效率的系统逐渐形成，这个系统叫作“以太”。最初，“以太”是工作在互联网上、对互联网设备和移动互联网设备进行监控的自动化体系，它对一切被认定存在潜在威胁的文字、视频、音频进行数据欺骗。简单举例，语义分析接口认定一个讨论组中的有">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux 开机挂载磁盘和swap分区">
-<meta property="og:url" content="http://ankia.top/2022/10/10/linux%20%E5%BC%80%E6%9C%BA%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%92%8Cswap%E5%88%86%E5%8C%BA/index.html">
+<meta property="og:title" content="哑">
+<meta property="og:url" content="http://ankia.top/2022/06/11/%E3%80%8A%E4%BB%A5%E5%A4%AA%E3%80%8B/index.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="前言最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&amp;#x">
+<meta property="og:description" content="读《以太》有感以下是本书对”以太”描写的原文：  国会秘密通过第33条宪法修正案成立联邦信息安全委员会，对可能危害社会稳定和国家安全的信息进行过滤和替换，在漫长的尝试后，一套高效率的系统逐渐形成，这个系统叫作“以太”。最初，“以太”是工作在互联网上、对互联网设备和移动互联网设备进行监控的自动化体系，它对一切被认定存在潜在威胁的文字、视频、音频进行数据欺骗。简单举例，语义分析接口认定一个讨论组中的有">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-10T14:24:00.000Z">
-<meta property="article:modified_time" content="2022-10-30T04:34:35.145Z">
+<meta property="article:published_time" content="2022-06-11T14:23:00.000Z">
+<meta property="article:modified_time" content="2022-10-30T05:07:46.347Z">
 <meta property="article:author" content="东东">
-<meta property="article:tag" content="经验总结">
+<meta property="article:tag" content="读后感">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>linux 开机挂载磁盘和swap分区 - 东东的小黑盒</title>
+  <title>哑 - 东东的小黑盒</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux 开机挂载磁盘和swap分区"></span>
+            <span id="subtitle" data-typed-text="哑"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-10 22:24" pubdate>
-          2022年10月10日 晚上
+        <time datetime="2022-06-11 22:23" pubdate>
+          2022年6月11日 晚上
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          1.5k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          16 分钟
+          13 分钟
         
       </span>
     
@@ -270,106 +270,27 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux 开机挂载磁盘和swap分区</h1>
+            <h1 style="display: none">哑</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&#x2F;Ubuntu&#x2F;Debian】发行版新建，增加 Swap 分区的方法是一样的，下面致臻数据就分享下如何确定和创建 Swap 分区及大小。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="swap分区需要的大小"><a href="#swap分区需要的大小" class="headerlink" title="swap分区需要的大小"></a>swap分区需要的大小</h3><ol>
-<li>&lt;&#x3D; 4g 至少 4G</li>
-<li>4~16G 至少 8G</li>
-<li>16G~64G 至少 16G</li>
-<li>64G~256G 至少 32G</li>
-</ol>
-<h3 id="创建swap分区"><a href="#创建swap分区" class="headerlink" title="创建swap分区"></a>创建swap分区</h3><p>创建命令如下，其中 &#x2F;var&#x2F;swapfile 是文件位置，bs*count 是文件大下，比如我创建一个 16G 的文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">dd if=/dev/zero of=/var/swapfile bs=4M count=4096<br></code></pre></td></tr></table></figure>
-
-<h3 id="建立swap文件系统"><a href="#建立swap文件系统" class="headerlink" title="建立swap文件系统"></a>建立swap文件系统</h3><p>将文件格式化为swap分区文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">mkswap /var/swapfile<br></code></pre></td></tr></table></figure>
-
-<h3 id="启用swap分区"><a href="#启用swap分区" class="headerlink" title="启用swap分区"></a>启用swap分区</h3><p>启用分区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">swapon /var/swapfile<br></code></pre></td></tr></table></figure>
-
-<p>查看是否成功启用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">free -m<br></code></pre></td></tr></table></figure>
-
-<h3 id="设置开机自启"><a href="#设置开机自启" class="headerlink" title="设置开机自启"></a>设置开机自启</h3><p>编辑<code>/etc/fstab</code>文件，在文件末尾加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">/var/swapfile swap swap defaults 0 0<br></code></pre></td></tr></table></figure>
-
-<p>注意：中间用tab分割</p>
-<h3 id="修改swappiness参数"><a href="#修改swappiness参数" class="headerlink" title="修改swappiness参数"></a>修改swappiness参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">vim /proc/sys/vm/swappiness<br></code></pre></td></tr></table></figure>
-
-<p>内容的值来确定系统对 SWAP 分区的使用原则。当 swappiness 内容的值为 0 时，表示最大限度地使用物理内存，物理内存使用完毕后，才会使用 SWAP 分区。当 swappiness 内容的值为 100 时，表示积极地使用 SWAP 分区，并且把内存中的数据及时地置换到 SWAP 分区。 查看修改前为 0，需要在物理内存使用完毕后才会使用 SWAP 分区。 可以使用下述方法临时修改此参数，假设我们配置为空闲内存少于 15% 时才使用 SWAP 分区：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">echo 15 &gt;/proc/sys/vm/swappiness<br></code></pre></td></tr></table></figure>
-
-<p>若需要永久修改此配置，在系统重启之后也生效的话，可以修改 <code>/etc/sysctl.conf</code> 文件，并增加以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">vm.swappiness=15<br></code></pre></td></tr></table></figure>
-
-<h3 id="挂载机械硬盘"><a href="#挂载机械硬盘" class="headerlink" title="挂载机械硬盘"></a>挂载机械硬盘</h3><p>也是编辑<code>/etc/fstab</code>文件 在末尾加入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">/dev/sda1 /data ntfs defaults 0 0<br></code></pre></td></tr></table></figure>
-
-<p>配置完成后可用<code>sudo mount -a</code>检查是否配置成功</p>
-<h3 id="为某个用户挂载"><a href="#为某个用户挂载" class="headerlink" title="为某个用户挂载"></a>为某个用户挂载</h3><p>加入uid和gid参数，查看当前用户的uid的指令为<code>id</code></p>
-<h2 id="etc-fstab详解"><a href="#etc-fstab详解" class="headerlink" title="etc/fstab详解"></a><code>etc/fstab</code>详解</h2><h4 id="文件作用"><a href="#文件作用" class="headerlink" title="文件作用"></a>文件作用</h4><p>磁盘被手动挂载之后都必须把挂载信息写入&#x2F;etc&#x2F;fstab这个文件中，否则下次开机启动时仍然需要重新挂载。  系统开机时会主动读取&#x2F;etc&#x2F;fstab文件中的内容，根据文件这个里面的配置挂载磁盘。这样我们只需要将磁盘的挂载信息写入这个文件中我们就不需要每次开机启动之后手动进行挂载了。  </p>
-<h4 id="挂载的限制"><a href="#挂载的限制" class="headerlink" title="挂载的限制"></a>挂载的限制</h4><ol>
-<li>根目录是必须挂载的，而且一定要先于其他mount point被挂载。因为mount是所有目录的跟目录，其他木有都是由根目录 &#x2F;衍生出来的。</li>
-<li>挂载点必须是已经存在的目录。</li>
-<li>挂载点的指定可以任意，但必须遵守必要的系统目录架构原则</li>
-<li>所有挂载点在同一时间只能被挂载一次</li>
-<li>所有分区在同一时间只能挂在一次</li>
-<li>若进行卸载，必须将工作目录退出挂载点（及其子目录）之外。</li>
-</ol>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>label或uid 用唯一名称定位需要挂载的分区或磁盘</p>
-<p>挂载点 需要挂载到哪个目录下</p>
-<p>磁盘的系统</p>
-<p>文件系统的参数</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Async&#x2F;sync</td>
-<td>设置是否为同步方式运行，默认为 async</td>
-</tr>
-<tr>
-<td>auto&#x2F;noauto</td>
-<td>当下载 mount -a 的命令时，此文件系统是否被主动挂载。默认为 auto</td>
-</tr>
-<tr>
-<td>rw&#x2F;ro</td>
-<td>是否以以只读或者读写模式挂载</td>
-</tr>
-<tr>
-<td>exec&#x2F;noexec</td>
-<td>限制此文件系统内是否能够进行 “执行” 的操作</td>
-</tr>
-<tr>
-<td>user&#x2F;nouser</td>
-<td>是否允许用户使用 mount 命令挂载</td>
-</tr>
-<tr>
-<td>suid&#x2F;nosuid</td>
-<td>是否允许 SUID 的存在</td>
-</tr>
-<tr>
-<td>Usrquota</td>
-<td>启动文件系统支持磁盘配额模式</td>
-</tr>
-<tr>
-<td>Grpquota</td>
-<td>启动文件系统对群组磁盘配额模式的支持</td>
-</tr>
-<tr>
-<td>Defaults</td>
-<td>同事具有 rw,suid,dev,exec,auto,nouser,async 等默认参数的设置</td>
-</tr>
-</tbody></table>
-<p>dump 是否使用dump备份，0表示不需要，1表示每天，2表示不定日期，备份我一般使用其他方式，所以填0就好</p>
-<p>是否检验 0表示不需要，1表示最早（一般根目录需要），2表示1级别完成之后进行检验</p>
+                <h2 id="读《以太》有感"><a href="#读《以太》有感" class="headerlink" title="读《以太》有感"></a>读《以太》有感</h2><p>以下是本书对”以太”描写的原文：</p>
+<blockquote>
+<p>国会秘密通过第33条宪法修正案成立联邦信息安全委员会，对可能危害社会稳定和国家安全的信息进行过滤和替换，在漫长的尝试后，一套高效率的系统逐渐形成，这个系统叫作“以太”。最初，“以太”是工作在互联网上、对互联网设备和移动互联网设备进行监控的自动化体系，它对一切被认定存在潜在威胁的文字、视频、音频进行数据欺骗。简单举例，语义分析接口认定一个讨论组中的有害主题，“以太”对接入该讨论组所在服务器的所有相关会话发送欺骗信息，除发表者之外，其他人看到的都是经过调制的讨论话题，同时，信息发送者被数据库记录。假如你发表名为“参议员的午餐”的话题，被判定为有害信息，运行于巨型计算机上的、因法律体系而凌驾于所有网络防火墙之上的“以太”将在其他程序会话接入之前控制所有端口，将数据包中的相关字节替换，于是在别人眼里，你发表的话题就变成了无趣的“KFC超值午餐”。</p>
+</blockquote>
+<blockquote>
+<p>随着“以太”的成功，联邦政府对广播、电视和纸质出版物的控制是顺理成章的结局，与“以太”同源的信息欺骗技术被用于隔离异见者，比如部分不肯认同信息安全法案的媒体人士。纳米微电子技术被用于信息欺骗，很快，掌权者意识到纳米机械在肉眼可见光范围内信息替换的潜力，第33条修正案颁布后的第七年，他们决定向空气中散播纳米微机械。这种微型设备悬浮在空气中，利用土壤和建筑材料中的硅进行自我复制，直至达到预定浓度，它们仅具有简单的机械结构，浓度达到规定程度后进入工作状态；它们会自动侦测具有潜在威胁的文字（可见光信号）和声音（音波信号），将其替换为无害信息，并将发布者记录在案。它们附着在印刷文本和标语牌表面，通过光偏振向除发布者之外的观察者发布欺骗光学信号；它们改变声波扩散形态，向除发布者之外的倾听者发布欺骗声学信号，当然，发布者本身因为骨骼的传导作用，听到的还是自己原本想说的话。飘浮在空气中的小恶魔使“以太”无所不能、无所不在，如同哲学家口中人类无法察觉却充满一切空间的神秘物质——“以太”本身。</p>
+</blockquote>
+<p>简单来说就是未来社会你在网络上发表的讨论，在现实里说的话，都被时刻监控着，并且被替换成“正确”的文字。就好像现在的论坛，你打的一些字被自动替换为：** 或者 口 等乱码，似乎就像是“以太”的雏形。不过在未来社会，这种现象会进一步加剧，连人与人之间的对话也在被以太监控着，我的耳朵永远不会听到肮脏的词汇，听不到阴谋论，世界开始变得美好…吗？</p>
+<p>书中的主人公便是存在于这样的社会，世界被谎言包裹着，但是由于以太的隐秘性，主角根本不知道以太系统的存在，只是在过去的某一时刻突然发现世界变的无聊透顶。</p>
+<blockquote>
+<p>“有种东西在死去。”我左右望望，低声说，“你嗅不到腐烂的味道吗？电视节目里的评论员、报纸专栏作家、网络聊天组，自由的精神正在死去，像暴露在DDT中的蚊虫一样大规模死去。”</p>
+</blockquote>
+<p>世界失去了自由的声音，虽然所有人都在说着不同的话语，但好像说的都是一样的东西。在这样的世界里，主角感到麻木，一次机缘巧合下，主角加入了“手指聊天聚会”—一个通过手指交流的聚会。在这个被以太控制的世界，人们丧失话语权的世界，唯有用手指在彼此的手心写下精炼的短语才可以表达自己的真实想法。通过手指，我们可以讨论政治、讨论丑闻、表达任何思想，当然前提是掌握手指沟通的“语法”。</p>
+<p>很滑稽却又很真实，我们拥有发声器官却没有办法“说话”，手指成了自由意志者最珍贵的礼物。</p>
+<p>我查了下，这本科幻短篇发表于2013年，那还是一个比现在自由的多的时代，作者夸张的写出未来科技高度发展情况下，民众的言语被管控下的生活。现在看起来确实很夸张，可是又真实的让我背后发凉。不过这种事情一定发生在美国，我们大可不必担心。</p>
+<p>其实想说的有很多，但是我却没办法说，或许我们已经被“以太”控制了。</p>
 
                 
               </div>
@@ -388,7 +309,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">读书笔记</a>
   
   
 
@@ -403,7 +324,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">#经验总结</a>
+        <a href="/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/">#读后感</a>
       
     </div>
   
@@ -415,8 +336,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux 开机挂载磁盘和swap分区</div>
-      <div>http://ankia.top/2022/10/10/linux 开机挂载磁盘和swap分区/</div>
+      <div>哑</div>
+      <div>http://ankia.top/2022/06/11/《以太》/</div>
     </div>
     <div class="license-meta">
       
@@ -428,7 +349,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月10日</div>
+          <div>2022年6月11日</div>
         </div>
       
       
@@ -460,9 +381,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/29/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88/" title="小区路口的理发师">
+                      <a href="/2022/10/10/linux%20%E5%BC%80%E6%9C%BA%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%92%8Cswap%E5%88%86%E5%8C%BA/" title="linux 开机挂载磁盘和swap分区">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">小区路口的理发师</span>
+                        <span class="hidden-mobile">linux 开机挂载磁盘和swap分区</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -470,8 +391,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/11/%E3%80%8A%E4%BB%A5%E5%A4%AA%E3%80%8B/" title="哑">
-                        <span class="hidden-mobile">哑</span>
+                      <a href="/2022/05/29/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/" title="使用ffmpeg推送RTMP流">
+                        <span class="hidden-mobile">使用ffmpeg推送RTMP流</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

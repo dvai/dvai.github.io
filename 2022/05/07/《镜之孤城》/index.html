@@ -18,22 +18,22 @@
   <meta name="author" content="东东">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&amp;#x">
+    <meta name="description" content="读《镜之孤城》有感。之前从来没有想到我会因为看书而落泪，直到今天合上了这本书。 本书讲述的是七个因为各种原因想去学校而去不了的初中生，因为走进一面神奇的发着彩虹光芒的镜子进入一座城堡，需要寻找可以实现任何愿望的钥匙而产生的故事。故事以安息心的视角展开，她是一个受到校园霸凌的孩子，所以对学校充满着恐惧，选择了逃避，不去上学，以及在她的视角下，了解到了其他6个孩子也是因为各种原因无法去学校上课。作为故">
 <meta property="og:type" content="article">
-<meta property="og:title" content="linux 开机挂载磁盘和swap分区">
-<meta property="og:url" content="http://ankia.top/2022/10/10/linux%20%E5%BC%80%E6%9C%BA%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%92%8Cswap%E5%88%86%E5%8C%BA/index.html">
+<meta property="og:title" content="总有人会在未来等你">
+<meta property="og:url" content="http://ankia.top/2022/05/07/%E3%80%8A%E9%95%9C%E4%B9%8B%E5%AD%A4%E5%9F%8E%E3%80%8B/index.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="前言最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&amp;#x">
+<meta property="og:description" content="读《镜之孤城》有感。之前从来没有想到我会因为看书而落泪，直到今天合上了这本书。 本书讲述的是七个因为各种原因想去学校而去不了的初中生，因为走进一面神奇的发着彩虹光芒的镜子进入一座城堡，需要寻找可以实现任何愿望的钥匙而产生的故事。故事以安息心的视角展开，她是一个受到校园霸凌的孩子，所以对学校充满着恐惧，选择了逃避，不去上学，以及在她的视角下，了解到了其他6个孩子也是因为各种原因无法去学校上课。作为故">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-10-10T14:24:00.000Z">
-<meta property="article:modified_time" content="2022-10-30T04:34:35.145Z">
+<meta property="article:published_time" content="2022-05-07T13:21:00.000Z">
+<meta property="article:modified_time" content="2022-10-30T05:07:31.499Z">
 <meta property="article:author" content="东东">
-<meta property="article:tag" content="经验总结">
+<meta property="article:tag" content="读后感">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>linux 开机挂载磁盘和swap分区 - 东东的小黑盒</title>
+  <title>总有人会在未来等你 - 东东的小黑盒</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -198,7 +198,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="linux 开机挂载磁盘和swap分区"></span>
+            <span id="subtitle" data-typed-text="总有人会在未来等你"></span>
           
         </div>
 
@@ -209,8 +209,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-10-10 22:24" pubdate>
-          2022年10月10日 晚上
+        <time datetime="2022-05-07 21:21" pubdate>
+          2022年5月7日 晚上
         </time>
       </span>
     
@@ -221,7 +221,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.9k 字
+          2.1k 字
         
       </span>
     
@@ -232,7 +232,7 @@
         
         
         
-          16 分钟
+          18 分钟
         
       </span>
     
@@ -270,106 +270,53 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">linux 开机挂载磁盘和swap分区</h1>
+            <h1 style="display: none">总有人会在未来等你</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最近manjaro经常内存爆满，16G的物理内存理应来说是够的，但是不知道为什么有时候某个软件会突然占用过高的内存，后来发现是没有启用swap分区，但不知能否解决内存溢出的问题，先记下启用swap分区的方法。 Linux 中的 Swap 交换分区就是 Windows 中的虚拟内存，将Linux系统服务器中的物理硬盘空间虚拟化成内存使用，以解决内存不够的问题。不同的Linux【CentOS&#x2F;Ubuntu&#x2F;Debian】发行版新建，增加 Swap 分区的方法是一样的，下面致臻数据就分享下如何确定和创建 Swap 分区及大小。</p>
-<h2 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h2><h3 id="swap分区需要的大小"><a href="#swap分区需要的大小" class="headerlink" title="swap分区需要的大小"></a>swap分区需要的大小</h3><ol>
-<li>&lt;&#x3D; 4g 至少 4G</li>
-<li>4~16G 至少 8G</li>
-<li>16G~64G 至少 16G</li>
-<li>64G~256G 至少 32G</li>
-</ol>
-<h3 id="创建swap分区"><a href="#创建swap分区" class="headerlink" title="创建swap分区"></a>创建swap分区</h3><p>创建命令如下，其中 &#x2F;var&#x2F;swapfile 是文件位置，bs*count 是文件大下，比如我创建一个 16G 的文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">dd if=/dev/zero of=/var/swapfile bs=4M count=4096<br></code></pre></td></tr></table></figure>
-
-<h3 id="建立swap文件系统"><a href="#建立swap文件系统" class="headerlink" title="建立swap文件系统"></a>建立swap文件系统</h3><p>将文件格式化为swap分区文件</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">mkswap /var/swapfile<br></code></pre></td></tr></table></figure>
-
-<h3 id="启用swap分区"><a href="#启用swap分区" class="headerlink" title="启用swap分区"></a>启用swap分区</h3><p>启用分区</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">swapon /var/swapfile<br></code></pre></td></tr></table></figure>
-
-<p>查看是否成功启用</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">free -m<br></code></pre></td></tr></table></figure>
-
-<h3 id="设置开机自启"><a href="#设置开机自启" class="headerlink" title="设置开机自启"></a>设置开机自启</h3><p>编辑<code>/etc/fstab</code>文件，在文件末尾加上：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">/var/swapfile swap swap defaults 0 0<br></code></pre></td></tr></table></figure>
-
-<p>注意：中间用tab分割</p>
-<h3 id="修改swappiness参数"><a href="#修改swappiness参数" class="headerlink" title="修改swappiness参数"></a>修改swappiness参数</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">vim /proc/sys/vm/swappiness<br></code></pre></td></tr></table></figure>
-
-<p>内容的值来确定系统对 SWAP 分区的使用原则。当 swappiness 内容的值为 0 时，表示最大限度地使用物理内存，物理内存使用完毕后，才会使用 SWAP 分区。当 swappiness 内容的值为 100 时，表示积极地使用 SWAP 分区，并且把内存中的数据及时地置换到 SWAP 分区。 查看修改前为 0，需要在物理内存使用完毕后才会使用 SWAP 分区。 可以使用下述方法临时修改此参数，假设我们配置为空闲内存少于 15% 时才使用 SWAP 分区：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">echo 15 &gt;/proc/sys/vm/swappiness<br></code></pre></td></tr></table></figure>
-
-<p>若需要永久修改此配置，在系统重启之后也生效的话，可以修改 <code>/etc/sysctl.conf</code> 文件，并增加以下内容：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">vm.swappiness=15<br></code></pre></td></tr></table></figure>
-
-<h3 id="挂载机械硬盘"><a href="#挂载机械硬盘" class="headerlink" title="挂载机械硬盘"></a>挂载机械硬盘</h3><p>也是编辑<code>/etc/fstab</code>文件 在末尾加入</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs text-plain">/dev/sda1 /data ntfs defaults 0 0<br></code></pre></td></tr></table></figure>
-
-<p>配置完成后可用<code>sudo mount -a</code>检查是否配置成功</p>
-<h3 id="为某个用户挂载"><a href="#为某个用户挂载" class="headerlink" title="为某个用户挂载"></a>为某个用户挂载</h3><p>加入uid和gid参数，查看当前用户的uid的指令为<code>id</code></p>
-<h2 id="etc-fstab详解"><a href="#etc-fstab详解" class="headerlink" title="etc/fstab详解"></a><code>etc/fstab</code>详解</h2><h4 id="文件作用"><a href="#文件作用" class="headerlink" title="文件作用"></a>文件作用</h4><p>磁盘被手动挂载之后都必须把挂载信息写入&#x2F;etc&#x2F;fstab这个文件中，否则下次开机启动时仍然需要重新挂载。  系统开机时会主动读取&#x2F;etc&#x2F;fstab文件中的内容，根据文件这个里面的配置挂载磁盘。这样我们只需要将磁盘的挂载信息写入这个文件中我们就不需要每次开机启动之后手动进行挂载了。  </p>
-<h4 id="挂载的限制"><a href="#挂载的限制" class="headerlink" title="挂载的限制"></a>挂载的限制</h4><ol>
-<li>根目录是必须挂载的，而且一定要先于其他mount point被挂载。因为mount是所有目录的跟目录，其他木有都是由根目录 &#x2F;衍生出来的。</li>
-<li>挂载点必须是已经存在的目录。</li>
-<li>挂载点的指定可以任意，但必须遵守必要的系统目录架构原则</li>
-<li>所有挂载点在同一时间只能被挂载一次</li>
-<li>所有分区在同一时间只能挂在一次</li>
-<li>若进行卸载，必须将工作目录退出挂载点（及其子目录）之外。</li>
-</ol>
-<h4 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h4><p>label或uid 用唯一名称定位需要挂载的分区或磁盘</p>
-<p>挂载点 需要挂载到哪个目录下</p>
-<p>磁盘的系统</p>
-<p>文件系统的参数</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Async&#x2F;sync</td>
-<td>设置是否为同步方式运行，默认为 async</td>
-</tr>
-<tr>
-<td>auto&#x2F;noauto</td>
-<td>当下载 mount -a 的命令时，此文件系统是否被主动挂载。默认为 auto</td>
-</tr>
-<tr>
-<td>rw&#x2F;ro</td>
-<td>是否以以只读或者读写模式挂载</td>
-</tr>
-<tr>
-<td>exec&#x2F;noexec</td>
-<td>限制此文件系统内是否能够进行 “执行” 的操作</td>
-</tr>
-<tr>
-<td>user&#x2F;nouser</td>
-<td>是否允许用户使用 mount 命令挂载</td>
-</tr>
-<tr>
-<td>suid&#x2F;nosuid</td>
-<td>是否允许 SUID 的存在</td>
-</tr>
-<tr>
-<td>Usrquota</td>
-<td>启动文件系统支持磁盘配额模式</td>
-</tr>
-<tr>
-<td>Grpquota</td>
-<td>启动文件系统对群组磁盘配额模式的支持</td>
-</tr>
-<tr>
-<td>Defaults</td>
-<td>同事具有 rw,suid,dev,exec,auto,nouser,async 等默认参数的设置</td>
-</tr>
-</tbody></table>
-<p>dump 是否使用dump备份，0表示不需要，1表示每天，2表示不定日期，备份我一般使用其他方式，所以填0就好</p>
-<p>是否检验 0表示不需要，1表示最早（一般根目录需要），2表示1级别完成之后进行检验</p>
+                <h2 id="读《镜之孤城》有感。"><a href="#读《镜之孤城》有感。" class="headerlink" title="读《镜之孤城》有感。"></a>读《镜之孤城》有感。</h2><p>之前从来没有想到我会因为看书而落泪，直到今天合上了这本书。</p>
+<p>本书讲述的是七个因为各种原因想去学校而去不了的初中生，因为走进一面神奇的发着彩虹光芒的镜子进入一座城堡，需要寻找可以实现任何愿望的钥匙而产生的故事。<br>故事以安息心的视角展开，她是一个受到校园霸凌的孩子，所以对学校充满着恐惧，选择了逃避，不去上学，以及在她的视角下，了解到了其他6个孩子也是因为各种原因无法去学校上课。作为故事的主视角，作者对小心（校园霸凌受害者）的心理描写尤为出彩，令人共鸣。</p>
+<blockquote>
+<p>小心真正想要的是别人能告诉她，他至今为止并没有做错。</p>
+</blockquote>
+<p>明明什么都没有做错，为什么那些人要来欺负自己，为什么只欺负我，是不是我真的做错了什么，都怪我不好，做了惹他们不开心的事情…明明是受害者，但是却总是小心翼翼，甚至自己也产生了受害者有罪论的想法。那些校园暴力的施暴者，是心智不成熟吗，还是单纯的恶？而且为什么其他人好像只是当一个旁观者，没有人告诉我，我没有做错呢？明明错的是他们呀，只是一个很简单的道理，为什么当时没人说出来呢？</p>
+<p>不是校园暴力的亲历者，真的很难体会到施暴者的无理程度。在城堡中，小心等7个孩子需要寻找“祈愿的钥匙”，用这个钥匙打开“祈愿的房间”能够实现一个任何愿望。小心内心许下的愿望是：</p>
+<blockquote>
+<p>要真田美织（施暴者）从这个世界上消失</p>
+</blockquote>
+<p>这是一个很可怕的愿望，但是却是唯一能够救赎小心的愿望。在十几岁的年纪里，对于世界的认识或许只停留在这个校园里，面对校园暴力时的无力感，老师、同学、家长，谁也帮不了自己。本该是属于这个年纪的美丽晴空，却在施暴者的折磨下，染成了看不到阳光的阴天。或许能做的只有在心里默默祈祷，出现奇迹，让施暴者消失吧。这是每一个校园暴力受害者最简单最恶毒的愿望了。</p>
+<p>作为学生最亲近的老师，本该是作为理解和鼓励的一方，却只是简单处理了事，认为小心和美织他们只是在吵架。</p>
+<blockquote>
+<p>想不到老师是居然是这么轻飘飘的说法。一股强烈的反感，使他心中升起的怒气在脑子里沸腾了一般，意识到变得模糊了。<br>那可不是什么吵架呀！<br>吵架是互相语言能够相通的人才会进行的呀，属于更加对等的事情。</p>
+</blockquote>
+<p>学生的霸凌行为，在老师眼中估计只是小孩子玩闹吧，说实在的老师对于大部分人来说也只不过是一份谋生的职业罢了，再亲近的人都可能无法对彼此的遭遇感同身受，何况只是老师呢。所以大部分霸凌事件中，我们似乎都看不到老师的身影，你求助了老师，老师也不过是口头教育一下，加之采取叫家长等手段，似乎以为事情就此结束了，过段时间便抛之脑后。而那些霸凌者呢，则丝毫不会减轻自己的恶行。而那些受害者呢，在心中也留下了无法消失的伤疤。</p>
+<p>只有小晶在听完小心对于自身经历的诉说后，温柔的说了这些：</p>
+<blockquote>
+<p>“了不起！”小晶说。<br>两个人的目光合在了一起后，小晶的眼睛直视着小心，温柔而又珍惜地说：<br>“了不起，你很坚强！”</p>
+</blockquote>
+<p>“你很坚强”，能够在承受了如此多的不公后依然坚持过来，你很坚强。简短的四个字在此刻却比什么都更有力量。陷入孤寂黑夜的孩子，最需要的就是一句温暖的肯定。不是以怜悯的眼光，不是以听故事的心态，而是听完之后的一句肯定，因为，我根本什么都没有做错呀。人们总是善于隐藏，将最痛最严重的伤疤藏在最深处。当揭开一层一层伪装后，渴望听到的，也仅仅是一句肯定和鼓励而已呀。</p>
+<p>不止小心，其他6个孩子同样也承受着注入撒谎被指责、被同学孤立、被父母不抱期待、被继父性骚扰等挫折。每一个孩子都对现实恐惧着，所以选择进入城堡逃避现实，他们在城堡中只是在消磨时间，对于“祈愿的钥匙”也不是很看重，只是希望逃避罢了。</p>
+<p>几乎每一天都有人在城堡里聊天、打游戏、或者什么都不做，只是呆在这儿。他们惊奇的发现原来他们都是同一所学校里不去上学的孩子，但又发现他们在现实中无法相见，因为他们似乎处于各自的平行世界中。</p>
+<p>时间在城堡中一天天过去，快要到城堡关闭的时间了。</p>
+<p>可是在关闭前的最后一天，小晶因为对现实绝望，一心寻死，所以没有在五点前回到现实。而根据城堡的规则，五点前没有回去的孩子会被狼吃掉，包括今天所有来过城堡的孩子，都会一起被吃掉。今天只有小心没有来过城堡，所以小心在今天必须拯救大家，这些给予他温暖的朋友们。</p>
+<p>在过程中，小心读取了他们的记忆，知道了原来他们确实是来自同一个世界的，只不过来自不同时间。</p>
+<blockquote>
+<p>昴生活在 1985 年<br>小晶生活在 1992 年<br>小心和理音生活在 2006 年<br>政宗生活在 2013 年<br>风歌生活在 2020 年<br>嬉野生活在2027年</p>
+</blockquote>
+<p>最后小心找到了祈愿的钥匙，许下愿望：</p>
+<blockquote>
+<p>希望小晶回来，希望违反规则的事情没有发生过</p>
+</blockquote>
+<p>愿望实现了，发出一道光，小心拼命向光中的小晶呼喊：</p>
+<blockquote>
+<p>我们都在同一个世界！要勇敢起来，成长为大人，我在未来等你！</p>
+</blockquote>
+<p>曾经小晶温柔的拥抱小心柔弱的地方，现在轮到小心救赎小晶了。</p>
+<p>之后，大家都回到了现实，关于城堡和这里发生的一切记忆都被消除了。可是大家的生活好像都发生了一些变化，有好像什么都没有变，仿佛一开始就是那样。</p>
+<p>回到现实后，小晶被心里不知道哪里传出来的声音所鼓励，在好好的长大，和喜欢的人结婚了，改名喜多岛晶，并且创建了“心的教室”，帮助那些因为一些原因而不去学校的孩子。原来小晶就是在现实中一直温柔的帮助和鼓励小心的喜多岛老师。</p>
+<p>我们从来都不是孤身一人，总有人会在未来等你，所以你要勇敢的长大。</p>
+<p>所幸，我也好好的长大了。</p>
 
                 
               </div>
@@ -388,7 +335,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/linux/" class="category-chain-item">linux</a>
+  <a href="/categories/%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0/" class="category-chain-item">读书笔记</a>
   
   
 
@@ -403,7 +350,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">#经验总结</a>
+        <a href="/tags/%E8%AF%BB%E5%90%8E%E6%84%9F/">#读后感</a>
       
     </div>
   
@@ -415,8 +362,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>linux 开机挂载磁盘和swap分区</div>
-      <div>http://ankia.top/2022/10/10/linux 开机挂载磁盘和swap分区/</div>
+      <div>总有人会在未来等你</div>
+      <div>http://ankia.top/2022/05/07/《镜之孤城》/</div>
     </div>
     <div class="license-meta">
       
@@ -428,7 +375,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年10月10日</div>
+          <div>2022年5月7日</div>
         </div>
       
       
@@ -460,9 +407,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/29/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88/" title="小区路口的理发师">
+                      <a href="/2022/05/29/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/" title="使用ffmpeg推送RTMP流">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">小区路口的理发师</span>
+                        <span class="hidden-mobile">使用ffmpeg推送RTMP流</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -470,8 +417,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/06/11/%E3%80%8A%E4%BB%A5%E5%A4%AA%E3%80%8B/" title="哑">
-                        <span class="hidden-mobile">哑</span>
+                      <a href="/2022/04/24/%E3%80%8A%E6%A1%B6%E5%B7%9D%E8%B7%9F%E8%B8%AA%E7%8B%82%E6%9D%80%E4%BA%BA%E4%BA%8B%E4%BB%B6%E3%80%8B/" title="死了三次的女孩">
+                        <span class="hidden-mobile">死了三次的女孩</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
