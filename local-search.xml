@@ -106,6 +106,31 @@
   
   
   <entry>
+    <title>将sheet批量保存为单独表格</title>
+    <link href="/2022/06/09/%E5%B0%86sheet%E6%89%B9%E9%87%8F%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%8D%95%E7%8B%AC%E8%A1%A8%E6%A0%BC/"/>
+    <url>/2022/06/09/%E5%B0%86sheet%E6%89%B9%E9%87%8F%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%8D%95%E7%8B%AC%E8%A1%A8%E6%A0%BC/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-keyword">Sub</span> ExportSheets()<br>    <span class="hljs-keyword">Dim</span> wsh <span class="hljs-keyword">As</span> Worksheet<br>    <span class="hljs-keyword">Dim</span> strPath <span class="hljs-keyword">As</span> <span class="hljs-type">String</span><br>    strPath = ThisWorkbook.Path &amp; <span class="hljs-string">&quot;\&quot;</span><br>    <span class="hljs-keyword">For</span> <span class="hljs-keyword">Each</span> wsh <span class="hljs-keyword">In</span> ActiveWindow.SelectedSheets<br>        wsh.Copy<br>        <span class="hljs-keyword">With</span> ActiveWorkbook<br>            .SaveAs strPath &amp; wsh.Name &amp; <span class="hljs-string">&quot;.xlsx&quot;</span>, FileFormat:=xlOpenXMLWorkbook<br>            .Close<br>        <span class="hljs-keyword">End</span> <span class="hljs-keyword">With</span><br>    <span class="hljs-keyword">Next</span> wsh<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Sub</span><br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>经验总结</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>excel</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>使用ffmpeg推送RTMP流</title>
     <link href="/2022/05/19/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/"/>
     <url>/2022/05/19/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81/</url>
@@ -175,6 +200,58 @@
     <tags>
       
       <tag>读后感</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>双拼的尝试</title>
+    <link href="/2022/04/13/%E5%8F%8C%E6%8B%BC%E7%9A%84%E5%B0%9D%E8%AF%95/"/>
+    <url>/2022/04/13/%E5%8F%8C%E6%8B%BC%E7%9A%84%E5%B0%9D%E8%AF%95/</url>
+    
+    <content type="html"><![CDATA[<p>因为时代的原因，我使用的打字方式一直是PC全拼加手机九宫格的打字习惯。这两种打字方式已经很习惯了，但是打字效率以及正确率方面还是有所不足。首先是PC自然码全拼，我虽然能做到手比脑更快，以及利用缩写和组词提高打字效率，但是其时大部分是利用了如今输入法的智能词云罢了，而且遇到生僻词，翻页找词就需要好久，尤其是对我这种平翘舌、前后鼻音不分的人来说使用起来就更不方便了。手机九宫格就更不用说了，词组重复率太高了。<br>于是今天尝试一下双拼，其实一直听说过双拼的大名，也被人推荐过，但每次都因为不愿意付出学习成本而浅尝辄止。毕竟要放弃自己使用了这么久的打字习惯，何必呢？学习双拼还得重新记住键盘的键位，看看这毫无逻辑的键位，实在是让人望而却步。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030182552.png"><br>要是搁我以前，我看一眼就放弃了，但是今天硬着头皮摸索了一番，并且在<a href="https://api.ihint.me/shuang/">双拼练习 @ BlueSky (ihint.me)</a>个网站上练习了一会儿，摸清楚了打字方法后，把手机和电脑的输入法全换成了小鹤双拼。<br>WINDOWS自带输入法并没有小鹤双拼的方案，需要进行如下设置：</p><blockquote><ol><li>win+R 输入 regedit，打开注册表</li><li>找到 HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS</li><li>新建一个字符串文件</li><li>名称为：<code>UserDefinedDoublePinyinScheme0</code></li><li>值为：<code>小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt</code></li></ol></blockquote><p>本文全程使用小鹤双拼打字，刚开始学习，实在是太折磨了，打着打着就想用全拼打字，脑袋和手不协调的感觉真是让人感觉心里有蚂蚁在爬，但是通过不断的使用和纠错，目前已经不需要借助键位图了。但是打字效率还是远远不及全拼打字，目前这个状态让我想起小学第一次接触电脑，在金山打字上玩“警察抓小偷”的时候，使用的“小鸡啄米打字法”。</p><p>不过目前的学习进度，我还是很满意的，应该过不了多久就就能熟练掌握了。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>经验总结</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>输入法</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>配置多用户共享磁盘</title>
+    <link href="/2022/03/25/%E9%85%8D%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E7%A3%81%E7%9B%98/"/>
+    <url>/2022/03/25/%E9%85%8D%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E7%A3%81%E7%9B%98/</url>
+    
+    <content type="html"><![CDATA[<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ol><li>每个人都有一个单独的文件夹，每个文件夹单独配置账户</li><li>授权用户可查看自己的文件夹和公用文件夹，不可访问其他用户的文件夹</li><li>在其他机子上能临时性的快速访问自己的文件夹</li></ol><h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>通过windows自带的smb共享协议，其他电脑可以轻松的通过资源管理器访问服务器上的文件，而且通过在服务器上为每个文件夹分配账户权限，可以实现多用户配置。</p><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>单位有100来号人，一个一个手动创建实在是太麻烦了，于是用python调用cmd指令进行批量操作。<br>主要流程如下：</p><ol><li>创建系统用户，包括姓名、部门、默认密码</li><li>为每个用户在服务器磁盘上创建单独的文件夹</li><li>在文件夹上配置共享，并设置对应的权限</li></ol><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>代码如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> xlrd<br><br>path = <span class="hljs-string">&#x27;F:\\服务器文件\\用户资料库&#x27;</span><br>book_path = path+<span class="hljs-string">&quot;\\name.xls&quot;</span><br>book = xlrd.open_workbook(book_path)<br>sheet = book.sheets()[<span class="hljs-number">0</span>]<br><br>rows = sheet.nrows<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,rows):<br>    username = sheet.cell_value(i,<span class="hljs-number">0</span>)<br>    group = sheet.cell_value(i,<span class="hljs-number">1</span>)<br>    password = <span class="hljs-string">&quot;123456&quot;</span><br><br>    <span class="hljs-comment"># 创建用户并设置密码及禁止修改密码</span><br>    command = <span class="hljs-string">&quot;net user %s %s /passwordchg:no /expires:never /FULLNAME:%s /add&quot;</span> %(username, password, username)<br>    os.system(command)<br> <br>    <span class="hljs-comment"># 设置密码永不过期</span><br>    command = <span class="hljs-string">&quot;wmic useraccount where \&quot;name=&#x27;%s&#x27;\&quot; set passwordexpires=false&quot;</span>%(username)<br>    os.system(command)<br>     <br>    <span class="hljs-comment"># 设置属组</span><br>    command = <span class="hljs-string">&quot;net localgroup %s %s /add&quot;</span> %(group, username)<br>    os.system(command)<br> <br>    <span class="hljs-comment"># 删除默认Users组</span><br>    command = <span class="hljs-string">&quot;net localgroup Users %s /del&quot;</span> %(username)<br>    os.system(command)<br><br>    <span class="hljs-comment"># 创建文件夹</span><br>    userpath = path+<span class="hljs-string">&quot;\\&quot;</span>+username<br>    os.mkdir(userpath,<span class="hljs-number">777</span>)<br><br>    <span class="hljs-comment"># 配置安全权限</span><br>    command = <span class="hljs-string">&quot;Cacls %s /t /e /c /g %s:F&quot;</span>%(userpath,username)<br>    os.system(command)<br><br>    <span class="hljs-comment"># 配置共享权限</span><br>    command = <span class="hljs-string">&quot;net share %s=%s /GRANT:%s,FULL&quot;</span>%(username,userpath,username)<br>    os.system(command)<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>经验总结</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>小工具</tag>
+      
+      <tag>python</tag>
       
     </tags>
     
@@ -289,7 +366,7 @@
     <link href="/2022/01/12/openwrt%20cloudflare%E7%9A%84ddns%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/"/>
     <url>/2022/01/12/openwrt%20cloudflare%E7%9A%84ddns%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/</url>
     
-    <content type="html"><![CDATA[<p>先下载cloudflareddns插件，下载地址：<a href="https://wws.lanzouy.com/iJvl3ybr32h">https://wws.lanzouy.com/iJvl3ybr32h</a><br>然后使用winscp登录路由器，将插件上传到tmp路径下。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190622.png"></p><p>接着使用xshell登录路由器，目录切换到tmp下，执行命令</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">opkg install ddns-scripts_cloudflare.com-v4_2<span class="hljs-number">.7</span><span class="hljs-number">.8</span>-13_<span class="hljs-built_in">all</span>.ipk<br></code></pre></td></tr></table></figure><p>等待安装完毕后，在网页上刷新路由器后台地址，打开动态dns插件，发现插件安装成功<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190655.png"><br>下面进行配置</p><p>主要有以下几项配置：</p><ul><li>查询主机名 – 你的主机名，主要用于显示域名是否与ip绑定成功，例如 text.com</li><li>域名 – 填写一个子域名，例如<a href="mailto:&#x64;&#101;&#64;&#116;&#101;&#120;&#116;&#x2e;&#x63;&#x6f;&#109;">&#x64;&#101;&#64;&#116;&#101;&#120;&#116;&#x2e;&#x63;&#x6f;&#109;</a>，如果使用主域名则只需要填写@text.com即可</li><li>用户名 – cloudflare的登录名</li><li>密码 – cloudflare后台中的Global API Key</li></ul><p>配置正确的话会出现如下界面<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190811.png"></p>]]></content>
+    <content type="html"><![CDATA[<p>先下载cloudflareddns插件，下载地址：<a href="https://wws.lanzouy.com/iJvl3ybr32h">https://wws.lanzouy.com/iJvl3ybr32h</a><br>然后使用winscp登录路由器，将插件上传到tmp路径下。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190622.png"></p><p>接着使用xshell登录路由器，目录切换到tmp下，执行命令</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">opkg install ddns-scripts_cloudflare.com-v4_2<span class="hljs-number">.7</span><span class="hljs-number">.8</span>-13_<span class="hljs-built_in">all</span>.ipk<br></code></pre></td></tr></table></figure><p>等待安装完毕后，在网页上刷新路由器后台地址，打开动态dns插件，发现插件安装成功<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190655.png"><br>下面进行配置</p><p>主要有以下几项配置：</p><ul><li>查询主机名 – 你的主机名，主要用于显示域名是否与ip绑定成功，例如 text.com</li><li>域名 – 填写一个子域名，例如<a href="mailto:&#100;&#101;&#64;&#x74;&#x65;&#x78;&#x74;&#x2e;&#99;&#111;&#x6d;">&#100;&#101;&#64;&#x74;&#x65;&#x78;&#x74;&#x2e;&#99;&#111;&#x6d;</a>，如果使用主域名则只需要填写@text.com即可</li><li>用户名 – cloudflare的登录名</li><li>密码 – cloudflare后台中的Global API Key</li></ul><p>配置正确的话会出现如下界面<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190811.png"></p>]]></content>
     
     
     <categories>
@@ -578,31 +655,6 @@
   
   
   <entry>
-    <title>将sheet批量保存为单独表格</title>
-    <link href="/2021/09/09/%E5%B0%86sheet%E6%89%B9%E9%87%8F%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%8D%95%E7%8B%AC%E8%A1%A8%E6%A0%BC/"/>
-    <url>/2021/09/09/%E5%B0%86sheet%E6%89%B9%E9%87%8F%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%8D%95%E7%8B%AC%E8%A1%A8%E6%A0%BC/</url>
-    
-    <content type="html"><![CDATA[<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs vbnet"><span class="hljs-keyword">Sub</span> ExportSheets()<br>    <span class="hljs-keyword">Dim</span> wsh <span class="hljs-keyword">As</span> Worksheet<br>    <span class="hljs-keyword">Dim</span> strPath <span class="hljs-keyword">As</span> <span class="hljs-type">String</span><br>    strPath = ThisWorkbook.Path &amp; <span class="hljs-string">&quot;\&quot;</span><br>    <span class="hljs-keyword">For</span> <span class="hljs-keyword">Each</span> wsh <span class="hljs-keyword">In</span> ActiveWindow.SelectedSheets<br>        wsh.Copy<br>        <span class="hljs-keyword">With</span> ActiveWorkbook<br>            .SaveAs strPath &amp; wsh.Name &amp; <span class="hljs-string">&quot;.xlsx&quot;</span>, FileFormat:=xlOpenXMLWorkbook<br>            .Close<br>        <span class="hljs-keyword">End</span> <span class="hljs-keyword">With</span><br>    <span class="hljs-keyword">Next</span> wsh<br><span class="hljs-keyword">End</span> <span class="hljs-keyword">Sub</span><br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>经验总结</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>excel</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>python内置函数</title>
     <link href="/2021/08/13/python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/"/>
     <url>/2021/08/13/python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/</url>
@@ -620,58 +672,6 @@
     
     
     <tags>
-      
-      <tag>python</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>双拼的尝试</title>
-    <link href="/2021/04/13/%E5%8F%8C%E6%8B%BC%E7%9A%84%E5%B0%9D%E8%AF%95/"/>
-    <url>/2021/04/13/%E5%8F%8C%E6%8B%BC%E7%9A%84%E5%B0%9D%E8%AF%95/</url>
-    
-    <content type="html"><![CDATA[<p>因为时代的原因，我使用的打字方式一直是PC全拼加手机九宫格的打字习惯。这两种打字方式已经很习惯了，但是打字效率以及正确率方面还是有所不足。首先是PC自然码全拼，我虽然能做到手比脑更快，以及利用缩写和组词提高打字效率，但是其时大部分是利用了如今输入法的智能词云罢了，而且遇到生僻词，翻页找词就需要好久，尤其是对我这种平翘舌、前后鼻音不分的人来说使用起来就更不方便了。手机九宫格就更不用说了，词组重复率太高了。<br>于是今天尝试一下双拼，其实一直听说过双拼的大名，也被人推荐过，但每次都因为不愿意付出学习成本而浅尝辄止。毕竟要放弃自己使用了这么久的打字习惯，何必呢？学习双拼还得重新记住键盘的键位，看看这毫无逻辑的键位，实在是让人望而却步。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030182552.png"><br>要是搁我以前，我看一眼就放弃了，但是今天硬着头皮摸索了一番，并且在<a href="https://api.ihint.me/shuang/">双拼练习 @ BlueSky (ihint.me)</a>个网站上练习了一会儿，摸清楚了打字方法后，把手机和电脑的输入法全换成了小鹤双拼。<br>WINDOWS自带输入法并没有小鹤双拼的方案，需要进行如下设置：</p><blockquote><ol><li>win+R 输入 regedit，打开注册表</li><li>找到 HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS</li><li>新建一个字符串文件</li><li>名称为：<code>UserDefinedDoublePinyinScheme0</code></li><li>值为：<code>小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt</code></li></ol></blockquote><p>本文全程使用小鹤双拼打字，刚开始学习，实在是太折磨了，打着打着就想用全拼打字，脑袋和手不协调的感觉真是让人感觉心里有蚂蚁在爬，但是通过不断的使用和纠错，目前已经不需要借助键位图了。但是打字效率还是远远不及全拼打字，目前这个状态让我想起小学第一次接触电脑，在金山打字上玩“警察抓小偷”的时候，使用的“小鸡啄米打字法”。</p><p>不过目前的学习进度，我还是很满意的，应该过不了多久就就能熟练掌握了。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>经验总结</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>输入法</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>配置多用户共享磁盘</title>
-    <link href="/2021/03/25/%E9%85%8D%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E7%A3%81%E7%9B%98/"/>
-    <url>/2021/03/25/%E9%85%8D%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E7%A3%81%E7%9B%98/</url>
-    
-    <content type="html"><![CDATA[<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><ol><li>每个人都有一个单独的文件夹，每个文件夹单独配置账户</li><li>授权用户可查看自己的文件夹和公用文件夹，不可访问其他用户的文件夹</li><li>在其他机子上能临时性的快速访问自己的文件夹</li></ol><h1 id="方案"><a href="#方案" class="headerlink" title="方案"></a>方案</h1><p>通过windows自带的smb共享协议，其他电脑可以轻松的通过资源管理器访问服务器上的文件，而且通过在服务器上为每个文件夹分配账户权限，可以实现多用户配置。</p><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><h2 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h2><p>单位有100来号人，一个一个手动创建实在是太麻烦了，于是用python调用cmd指令进行批量操作。<br>主要流程如下：</p><ol><li>创建系统用户，包括姓名、部门、默认密码</li><li>为每个用户在服务器磁盘上创建单独的文件夹</li><li>在文件夹上配置共享，并设置对应的权限</li></ol><h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><p>代码如下：</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment">#coding=utf-8</span><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> xlrd<br><br>path = <span class="hljs-string">&#x27;F:\\服务器文件\\用户资料库&#x27;</span><br>book_path = path+<span class="hljs-string">&quot;\\name.xls&quot;</span><br>book = xlrd.open_workbook(book_path)<br>sheet = book.sheets()[<span class="hljs-number">0</span>]<br><br>rows = sheet.nrows<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(<span class="hljs-number">1</span>,rows):<br>    username = sheet.cell_value(i,<span class="hljs-number">0</span>)<br>    group = sheet.cell_value(i,<span class="hljs-number">1</span>)<br>    password = <span class="hljs-string">&quot;123456&quot;</span><br><br>    <span class="hljs-comment"># 创建用户并设置密码及禁止修改密码</span><br>    command = <span class="hljs-string">&quot;net user %s %s /passwordchg:no /expires:never /FULLNAME:%s /add&quot;</span> %(username, password, username)<br>    os.system(command)<br> <br>    <span class="hljs-comment"># 设置密码永不过期</span><br>    command = <span class="hljs-string">&quot;wmic useraccount where \&quot;name=&#x27;%s&#x27;\&quot; set passwordexpires=false&quot;</span>%(username)<br>    os.system(command)<br>     <br>    <span class="hljs-comment"># 设置属组</span><br>    command = <span class="hljs-string">&quot;net localgroup %s %s /add&quot;</span> %(group, username)<br>    os.system(command)<br> <br>    <span class="hljs-comment"># 删除默认Users组</span><br>    command = <span class="hljs-string">&quot;net localgroup Users %s /del&quot;</span> %(username)<br>    os.system(command)<br><br>    <span class="hljs-comment"># 创建文件夹</span><br>    userpath = path+<span class="hljs-string">&quot;\\&quot;</span>+username<br>    os.mkdir(userpath,<span class="hljs-number">777</span>)<br><br>    <span class="hljs-comment"># 配置安全权限</span><br>    command = <span class="hljs-string">&quot;Cacls %s /t /e /c /g %s:F&quot;</span>%(userpath,username)<br>    os.system(command)<br><br>    <span class="hljs-comment"># 配置共享权限</span><br>    command = <span class="hljs-string">&quot;net share %s=%s /GRANT:%s,FULL&quot;</span>%(username,userpath,username)<br>    os.system(command)<br></code></pre></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>经验总结</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>小工具</tag>
       
       <tag>python</tag>
       
