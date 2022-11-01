@@ -1,0 +1,981 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/header.png">
+  <link rel="icon" href="/img/header.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="东东">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="前言python 中的 os 模块提供了非常丰富的方法用来处理文件和目录。是一个非常常用的模块。 方法os.access(path,mode)概述用于检测某个文件有什么属性 参数 path –  要用来检测是否有访问权限的路径。 mode – 需要测试的权限 os.F_OK:  测试path是否存在。 os.R_OK:  测试path是否可读。 os.W_OK：测试path是否可写。 os.X_O">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对文件的基本操作-os库">
+<meta property="og:url" content="http://ankia.top/2021/09/24/%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C-os%E5%BA%93/index.html">
+<meta property="og:site_name" content="东东的小黑盒">
+<meta property="og:description" content="前言python 中的 os 模块提供了非常丰富的方法用来处理文件和目录。是一个非常常用的模块。 方法os.access(path,mode)概述用于检测某个文件有什么属性 参数 path –  要用来检测是否有访问权限的路径。 mode – 需要测试的权限 os.F_OK:  测试path是否存在。 os.R_OK:  测试path是否可读。 os.W_OK：测试path是否可写。 os.X_O">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-24T10:43:00.000Z">
+<meta property="article:modified_time" content="2022-10-30T11:33:39.287Z">
+<meta property="article:author" content="东东">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>对文件的基本操作-os库 - 东东的小黑盒</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Ankia</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="对文件的基本操作-os库"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2021-09-24 18:43" pubdate>
+          2021年9月24日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          4.9k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          42 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">对文件的基本操作-os库</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>python 中的 os 模块提供了非常丰富的方法用来处理文件和目录。是一个非常常用的模块。</p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><h2 id="os-access-path-mode"><a href="#os-access-path-mode" class="headerlink" title="os.access(path,mode)"></a>os.access(path,mode)</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><p>用于检测某个文件有什么属性</p>
+<h3 id="参数"><a href="#参数" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>path –  要用来检测是否有访问权限的路径。</li>
+<li>mode – 需要测试的权限<ul>
+<li>os.F_OK:  测试path是否存在。</li>
+<li>os.R_OK:  测试path是否可读。</li>
+<li>os.W_OK：测试path是否可写。</li>
+<li>os.X_OK： 测试path是否可执行。</li>
+</ul>
+</li>
+</ul>
+<h3 id="返回值"><a href="#返回值" class="headerlink" title="返回值"></a>返回值</h3><p>如果允许访问返回 True , 否则返回False。</p>
+<h2 id="os-chdir-path"><a href="#os-chdir-path" class="headerlink" title="os.chdir(path)"></a>os.chdir(path)</h2><h3 id="概述-1"><a href="#概述-1" class="headerlink" title="概述"></a>概述</h3><p>用于改变当前工作目录到指定路径。</p>
+<h3 id="参数-1"><a href="#参数-1" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>path – 要切换到的新路径。</li>
+</ul>
+<h3 id="返回值-1"><a href="#返回值-1" class="headerlink" title="返回值"></a>返回值</h3><p>如果允许访问返回 True , 否则返回False。</p>
+<h2 id="os-chmod-path-mode"><a href="#os-chmod-path-mode" class="headerlink" title="os.chmod(path,mode)"></a>os.chmod(path,mode)</h2><h3 id="概述-2"><a href="#概述-2" class="headerlink" title="概述"></a>概述</h3><p>用于更改文件或目录的权限</p>
+<h3 id="参数-2"><a href="#参数-2" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><p><strong>path</strong> – 文件名路径或目录路径。</p>
+</li>
+<li><p><strong>flags</strong> – 可用以下选项按位或操作生成， 目录的读权限表示可以获取目录里文件名列表， ，执行权限表示可以把工作目录切换到此目录 ，删除添加目录里的文件必须同时有写和执行权限 ，文件权限以用户id-&gt;组id-&gt;其它顺序检验,最先匹配的允许或禁止权限被应用。</p>
+<ul>
+<li><strong>stat.S_IXOTH:</strong> 其他用户有执行权0o001</li>
+<li><strong>stat.S_IWOTH:</strong> 其他用户有写权限0o002</li>
+<li><strong>stat.S_IROTH:</strong> 其他用户有读权限0o004</li>
+<li><strong>stat.S_IRWXO:</strong> 其他用户有全部权限(权限掩码)0o007</li>
+<li><strong>stat.S_IXGRP:</strong> 组用户有执行权限0o010</li>
+<li><strong>stat.S_IWGRP:</strong> 组用户有写权限0o020</li>
+<li><strong>stat.S_IRGRP:</strong> 组用户有读权限0o040</li>
+<li><strong>stat.S_IRWXG:</strong> 组用户有全部权限(权限掩码)0o070</li>
+<li><strong>stat.S_IXUSR:</strong> 拥有者具有执行权限0o100</li>
+<li><strong>stat.S_IWUSR:</strong> 拥有者具有写权限0o200</li>
+<li><strong>stat.S_IRUSR:</strong> 拥有者具有读权限0o400</li>
+<li><strong>stat.S_IRWXU:</strong> 拥有者有全部权限(权限掩码)0o700</li>
+<li><strong>stat.S_ISVTX:</strong> 目录里文件目录只有拥有者才可删除更改0o1000</li>
+<li><strong>stat.S_ISGID:</strong> 执行此文件其进程有效组为文件所在组0o2000</li>
+<li><strong>stat.S_ISUID:</strong> 执行此文件其进程有效用户为文件所有者0o4000</li>
+<li><strong>stat.S_IREAD:</strong> windows下设为只读</li>
+<li><strong>stat.S_IWRITE:</strong> windows下取消只读</li>
+</ul>
+</li>
+</ul>
+<h2 id="os-close-fd"><a href="#os-close-fd" class="headerlink" title="os.close(fd)"></a>os.close(fd)</h2><h3 id="概述-3"><a href="#概述-3" class="headerlink" title="概述"></a>概述</h3><p>用于关闭文件描述符（引用），一般用open等函数打开文件的话，最后都需要用os.close()进行关闭。</p>
+<h3 id="参数-3"><a href="#参数-3" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>fd – 文件描述符</li>
+</ul>
+<h2 id="os-getcwd"><a href="#os-getcwd" class="headerlink" title="os.getcwd()"></a>os.getcwd()</h2><h3 id="概述-4"><a href="#概述-4" class="headerlink" title="概述"></a>概述</h3><p>用于返回当前工作目录</p>
+<h2 id="os-listdir-path"><a href="#os-listdir-path" class="headerlink" title="os.listdir(path)"></a>os.listdir(path)</h2><h3 id="概述-5"><a href="#概述-5" class="headerlink" title="概述"></a>概述</h3><p>os.listdir() 方法用于返回指定的文件夹包含的文件或文件夹的名字的列表。</p>
+<h2 id="os-link-src-dst"><a href="#os-link-src-dst" class="headerlink" title="os.link(src, dst)"></a>os.link(src, dst)</h2><h3 id="概述-6"><a href="#概述-6" class="headerlink" title="概述"></a>概述</h3><p>该方法可以用于创建硬链接，该硬连接可以随着源地址文件改动而实时改动</p>
+<h3 id="参数-4"><a href="#参数-4" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>src – 源地址</li>
+<li>dst – 目标地址</li>
+</ul>
+<h2 id="os-mkdir-path-mode"><a href="#os-mkdir-path-mode" class="headerlink" title="os.mkdir(path[,mode])"></a>os.mkdir(path[,mode])</h2><h3 id="概述-7"><a href="#概述-7" class="headerlink" title="概述"></a>概述</h3><p>os.mkdir() 方法用于以数字权限模式创建目录。默认的模式为 0777 (八进制)。<br>如果目录有多级，则创建最后一级，如果最后一级目录的上级目录有不存在的，则会抛出一个 OSError。</p>
+<h3 id="参数-5"><a href="#参数-5" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>path – 要创建的目录，可以是相对或者绝对路径。</li>
+<li>mode – 要为目录设置的权限数字模式。</li>
+</ul>
+<h2 id="os-open-file-flags-mode"><a href="#os-open-file-flags-mode" class="headerlink" title="os.open(file,flags[,mode])"></a>os.open(file,flags[,mode])</h2><h3 id="概述-8"><a href="#概述-8" class="headerlink" title="概述"></a>概述</h3><p>os.open() 方法用于打开一个文件，并且设置需要的打开选项，模式参数mode参数是可选的，默认为 0777。<br>注意与open()函数做区别，open返回的是文件对象，而open返回的是文件描述符</p>
+<h3 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h3><p>**open()**方法语法格式如下：</p>
+<figure class="highlight inform7"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs inform7">os.<span class="hljs-keyword">open</span>(file, flags\<span class="hljs-comment">[, mode\]</span>);<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数-6"><a href="#参数-6" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><p><strong>file</strong> – 要打开的文件</p>
+</li>
+<li><p><strong>flags</strong> – 该参数可以是以下选项，多个使用 “|” 隔开：</p>
+<ul>
+<li><strong>os.O_RDONLY:</strong> 以只读的方式打开</li>
+<li><strong>os.O_WRONLY:</strong> 以只写的方式打开</li>
+<li><strong>os.O_RDWR :</strong> 以读写的方式打开</li>
+<li><strong>os.O_NONBLOCK:</strong> 打开时不阻塞</li>
+<li><strong>os.O_APPEND:</strong> 以追加的方式打开</li>
+<li><strong>os.O_CREAT:</strong> 创建并打开一个新文件</li>
+<li><strong>os.O_TRUNC:</strong> 打开一个文件并截断它的长度为零（必须有写权限）</li>
+<li><strong>os.O_EXCL:</strong> 如果指定的文件存在，返回错误</li>
+<li><strong>os.O_SHLOCK:</strong> 自动获取共享锁</li>
+<li><strong>os.O_EXLOCK:</strong> 自动获取独立锁</li>
+<li><strong>os.O_DIRECT:</strong> 消除或减少缓存效果</li>
+<li><strong>os.O_FSYNC :</strong> 同步写入</li>
+<li><strong>os.O_NOFOLLOW:</strong> 不追踪软链接</li>
+</ul>
+</li>
+<li><p><strong>mode</strong> – 类似[[os库#os chmod path mode|chmod()]]</p>
+</li>
+</ul>
+<h3 id="返回值-2"><a href="#返回值-2" class="headerlink" title="返回值"></a>返回值</h3><p>返回新打开文件的描述符。</p>
+<h2 id="os-pipe"><a href="#os-pipe" class="headerlink" title="os.pipe()"></a>os.pipe()</h2><h3 id="概述-9"><a href="#概述-9" class="headerlink" title="概述"></a>概述</h3><p>os.pipe() 方法用于创建一个管道, 返回一对文件描述符(r, w) 分别为读和写。</p>
+<h3 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h3><p>**pipe()**方法语法格式如下：</p>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs gcode">os.pipe<span class="hljs-comment">()</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="参数-7"><a href="#参数-7" class="headerlink" title="参数"></a>参数</h3><ul>
+<li>无</li>
+</ul>
+<h3 id="返回值-3"><a href="#返回值-3" class="headerlink" title="返回值"></a>返回值</h3><p>返回文件描述符对。</p>
+<h3 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h3><p>以下实例演示了 pipe() 方法的使用：</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment">#!/usr/bin/python</span><br><span class="hljs-comment"># -*- coding: UTF-8 -*-</span><br><br>import os, sys<br><br>print <span class="hljs-string">&quot;The child will write text to a pipe and &quot;</span><br>print <span class="hljs-string">&quot;the parent will read the text written by child...&quot;</span><br><br><span class="hljs-comment"># file descriptors r, w for reading and writing</span><br>r, w = os.pipe() <br><br>processid = os.fork()<br><span class="hljs-keyword">if</span> processid:<br>    <span class="hljs-comment"># This is the parent process </span><br>    <span class="hljs-comment"># Closes file descriptor w</span><br>    os.close(w)<br>    r = os.fdopen(r)<br>    print <span class="hljs-string">&quot;Parent reading&quot;</span><br>    str = r.read()<br>    print <span class="hljs-string">&quot;text =&quot;</span>, str   <br>    sys.<span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>)<br><span class="hljs-keyword">else</span>:<br>    <span class="hljs-comment"># This is the child process</span><br>    os.close(r)<br>    w = os.fdopen(w, <span class="hljs-string">&#x27;w&#x27;</span>)<br>    print <span class="hljs-string">&quot;Child writing&quot;</span><br>    w.write(<span class="hljs-string">&quot;Text written by child...&quot;</span>)<br>    w.close()<br>    print <span class="hljs-string">&quot;Child closing&quot;</span><br>    sys.<span class="hljs-keyword">exit</span>(<span class="hljs-number">0</span>)<br></code></pre></td></tr></table></figure>
+
+<p>执行以上程序输出结果为：</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">The child will <span class="hljs-built_in">write</span> <span class="hljs-keyword">text</span> <span class="hljs-built_in">to</span> <span class="hljs-keyword">a</span> pipe <span class="hljs-keyword">and</span><br><span class="hljs-keyword">the</span> parent will <span class="hljs-built_in">read</span> <span class="hljs-keyword">the</span> <span class="hljs-keyword">text</span> written <span class="hljs-keyword">by</span> child...<br>Parent reading<br>Child writing<br>Child closing<br><span class="hljs-keyword">text</span> = Text written <span class="hljs-keyword">by</span> child...<br></code></pre></td></tr></table></figure>
+
+<h2 id="os-remove-file"><a href="#os-remove-file" class="headerlink" title="os.remove(file)"></a>os.remove(file)</h2><h3 id="概述-10"><a href="#概述-10" class="headerlink" title="概述"></a>概述</h3><p>移除一个文件</p>
+<h2 id="os-removedirs-path"><a href="#os-removedirs-path" class="headerlink" title="os.removedirs(path)"></a>os.removedirs(path)</h2><h3 id="概述-11"><a href="#概述-11" class="headerlink" title="概述"></a>概述</h3><p>递归删除一个目录</p>
+<h2 id="os-rename-src-dst"><a href="#os-rename-src-dst" class="headerlink" title="os.rename(src,dst)"></a>os.rename(src,dst)</h2><h3 id="概述-12"><a href="#概述-12" class="headerlink" title="概述"></a>概述</h3><p>该方法用于命名文件或目录，如果dst是一个存在的目录, 将抛出OSError。</p>
+<h2 id="os-renames-old-new"><a href="#os-renames-old-new" class="headerlink" title="os.renames(old,new)"></a>os.renames(old,new)</h2><h3 id="概述-13"><a href="#概述-13" class="headerlink" title="概述"></a>概述</h3><p>与rename()的区别是，该方法可以创建不存在的目录，而rename()使用不存在的目录时会报错。</p>
+<h2 id="os-rmdir-path"><a href="#os-rmdir-path" class="headerlink" title="os.rmdir(path)"></a>os.rmdir(path)</h2><h3 id="概述-14"><a href="#概述-14" class="headerlink" title="概述"></a>概述</h3><p>该方法用于删除指定路径的目录。仅当这文件夹是空的才可以, 否则, 抛出OSError。</p>
+<h2 id="os-stat"><a href="#os-stat" class="headerlink" title="os.stat()"></a>os.stat()</h2><h3 id="概述-15"><a href="#概述-15" class="headerlink" title="概述"></a>概述</h3><p>os.stat() 方法用于在给定的路径上执行一个系统 stat 的调用。</p>
+<h3 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h3><p>**stat()**方法语法格式如下：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">os</span>.stat(<span class="hljs-built_in">path</span>)<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数-8"><a href="#参数-8" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><strong>path</strong> – 指定路径</li>
+</ul>
+<h3 id="返回值-4"><a href="#返回值-4" class="headerlink" title="返回值"></a>返回值</h3><p>stat 结构:</p>
+<ul>
+<li><strong>st_mode:</strong> inode 保护模式</li>
+<li><strong>st_ino:</strong> inode 节点号。</li>
+<li><strong>st_dev:</strong> inode 驻留的设备。</li>
+<li><strong>st_nlink:</strong> inode 的链接数。</li>
+<li><strong>st_uid:</strong> 所有者的用户ID。</li>
+<li><strong>st_gid:</strong> 所有者的组ID。</li>
+<li><strong>st_size:</strong> 普通文件以字节为单位的大小；包含等待某些特殊文件的数据。</li>
+<li><strong>st_atime:</strong> 上次访问的时间。</li>
+<li><strong>st_mtime:</strong> 最后一次修改的时间。</li>
+<li><strong>st_ctime:</strong> 由操作系统报告的”ctime”。在某些系统上（如Unix）是最新的元数据更改的时间，在其它系统上（如Windows）是创建时间（详细信息参见平台的文档）。</li>
+</ul>
+<h2 id="os-symlink-src-dst"><a href="#os-symlink-src-dst" class="headerlink" title="os.symlink(src,dst)"></a>os.symlink(src,dst)</h2><h3 id="概述-16"><a href="#概述-16" class="headerlink" title="概述"></a>概述</h3><p>创建一个软链接，但是需要管理员权限</p>
+<h2 id="os-write-fd-str"><a href="#os-write-fd-str" class="headerlink" title="os.write(fd,str)"></a>os.write(fd,str)</h2><h3 id="概述-17"><a href="#概述-17" class="headerlink" title="概述"></a>概述</h3><p>os.write() 方法用于写入字符串到文件描述符 fd 中. 返回实际写入的字符串长度。</p>
+<p>在Unix中有效。</p>
+<h3 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h3><p>**write()**方法语法格式如下：</p>
+<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs lua"><span class="hljs-built_in">os</span>.<span class="hljs-built_in">write</span>(fd, str)<br></code></pre></td></tr></table></figure>
+
+<h3 id="参数-9"><a href="#参数-9" class="headerlink" title="参数"></a>参数</h3><ul>
+<li><p><strong>fd</strong> – 文件描述符。</p>
+</li>
+<li><p><strong>str</strong> – 写入的字符串。</p>
+</li>
+</ul>
+<h3 id="返回值-5"><a href="#返回值-5" class="headerlink" title="返回值"></a>返回值</h3><p>该方法返回写入的实际位数。</p>
+<h2 id="os-path模块"><a href="#os-path模块" class="headerlink" title="os.path模块"></a>os.path模块</h2><p>以下是 os.path 模块的几种常用方法：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>os.path.abspath(path)</td>
+<td>返回绝对路径</td>
+</tr>
+<tr>
+<td>os.path.basename(path)</td>
+<td>返回文件名</td>
+</tr>
+<tr>
+<td>os.path.commonprefix(list)</td>
+<td>返回list(多个路径)中，所有path共有的最长的路径</td>
+</tr>
+<tr>
+<td>os.path.dirname(path)</td>
+<td>返回文件路径</td>
+</tr>
+<tr>
+<td>os.path.exists(path)</td>
+<td>如果路径 path 存在，返回 True；如果路径 path 不存在，返回 False。</td>
+</tr>
+<tr>
+<td>os.path.lexists</td>
+<td>路径存在则返回True,路径损坏也返回True</td>
+</tr>
+<tr>
+<td>os.path.expanduser(path)</td>
+<td>把path中包含的”<del>“和”</del>user”转换成用户目录</td>
+</tr>
+<tr>
+<td>os.path.expandvars(path)</td>
+<td>根据环境变量的值替换path中包含的”$name”和”${name}”</td>
+</tr>
+<tr>
+<td>os.path.getatime(path)</td>
+<td>返回最近访问时间（浮点型秒数）</td>
+</tr>
+<tr>
+<td>os.path.getmtime(path)</td>
+<td>返回最近文件修改时间</td>
+</tr>
+<tr>
+<td>os.path.getctime(path)</td>
+<td>返回文件 path 创建时间</td>
+</tr>
+<tr>
+<td>os.path.getsize(path)</td>
+<td>返回文件大小，如果文件不存在就返回错误</td>
+</tr>
+<tr>
+<td>os.path.isabs(path)</td>
+<td>判断是否为绝对路径</td>
+</tr>
+<tr>
+<td>os.path.isfile(path)</td>
+<td>判断路径是否为文件</td>
+</tr>
+<tr>
+<td>os.path.isdir(path)</td>
+<td>判断路径是否为目录</td>
+</tr>
+<tr>
+<td>os.path.islink(path)</td>
+<td>判断路径是否为链接</td>
+</tr>
+<tr>
+<td>os.path.ismount(path)</td>
+<td>判断路径是否为挂载点</td>
+</tr>
+<tr>
+<td>os.path.join(path1[, path2[, …]])</td>
+<td>把目录和文件名合成一个路径</td>
+</tr>
+<tr>
+<td>os.path.normcase(path)</td>
+<td>转换path的大小写和斜杠</td>
+</tr>
+<tr>
+<td>os.path.normpath(path)</td>
+<td>规范path字符串形式</td>
+</tr>
+<tr>
+<td>os.path.realpath(path)</td>
+<td>返回path的真实路径</td>
+</tr>
+<tr>
+<td>os.path.relpath(path[, start])</td>
+<td>从start开始计算相对路径</td>
+</tr>
+<tr>
+<td>os.path.samefile(path1, path2)</td>
+<td>判断目录或文件是否相同</td>
+</tr>
+<tr>
+<td>os.path.sameopenfile(fp1, fp2)</td>
+<td>判断fp1和fp2是否指向同一文件</td>
+</tr>
+<tr>
+<td>os.path.samestat(stat1, stat2)</td>
+<td>判断stat tuple stat1和stat2是否指向同一个文件</td>
+</tr>
+<tr>
+<td>os.path.split(path)</td>
+<td>把路径分割成 dirname 和 basename，返回一个元组</td>
+</tr>
+<tr>
+<td>os.path.splitdrive(path)</td>
+<td>一般用在 windows 下，返回驱动器名和路径组成的元组</td>
+</tr>
+<tr>
+<td>os.path.splitext(path)</td>
+<td>分割路径，返回路径名和文件扩展名的元组</td>
+</tr>
+<tr>
+<td>os.path.splitunc(path)</td>
+<td>把路径分割为加载点与文件</td>
+</tr>
+<tr>
+<td>os.path.walk(path, visit, arg)</td>
+<td>遍历path，进入每个目录都调用visit函数，visit函数必须有3个参数(arg, dirname, names)，dirname表示当前目录的目录名，names代表当前目录下的所有文件名，args则为walk的第三个参数</td>
+</tr>
+<tr>
+<td>os.path.supports_unicode_filenames</td>
+<td>设置是否支持unicode路径名</td>
+</tr>
+</tbody></table>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="category-chain-item">经验总结</a>
+  
+  
+
+      </span>
+    
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/" class="category-chain-item">技术知识</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/python/">#python</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>对文件的基本操作-os库</div>
+      <div>http://ankia.top/2021/09/24/对文件的基本操作-os库/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>东东</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2021年9月24日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/27/%E5%A5%BD%E7%94%A8%E7%9A%84%E5%BC%80%E6%BA%90%E7%AC%94%E8%AE%B0-Joplin/" title="好用的开源笔记-Joplin">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">好用的开源笔记-Joplin</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/08/13/python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0/" title="python内置函数">
+                        <span class="hidden-mobile">python内置函数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+  <article id="comments" lazyload>
+    
+  <div id="waline"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#waline', function() {
+      Fluid.utils.createCssLink('https://lib.baomitu.com/waline/2.6.3/waline.min.css')
+      Fluid.utils.createScript('https://lib.baomitu.com/waline/2.6.3/waline.min.js', function() {
+        var options = Object.assign(
+          {"serverURL":"talk.ankia.top","path":"window.location.pathname","meta":["nick","mail","link"],"requiredMeta":["nick"],"lang":"zh-CN","emoji":["https://cdn.jsdelivr.net/gh/walinejs/emojis/weibo"],"dark":"html[data-user-color-scheme=\"dark\"]","wordLimit":0,"pageSize":10},
+          {
+            el: '#waline',
+            path: window.location.pathname
+          }
+        )
+        Waline.init(options);
+        Fluid.utils.waitElementVisible('#waline .vcontent', () => {
+          var imgSelector = '#waline .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+  </article>
+
+
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+    <div>
+      <span id="timeDate">载入天数...</span>
+      <span id="times">载入时分秒...</span>
+      <script>
+      var now = new Date();
+      function createtime(){
+          var grt= new Date("10/10/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
+          now.setTime(now.getTime()+250);
+          days = (now - grt ) / 1000 / 60 / 60 / 24;
+          dnum = Math.floor(days);
+          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
+          hnum = Math.floor(hours);
+          if(String(hnum).length ==1 ){
+              hnum = "0" + hnum;
+          }
+          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+          mnum = Math.floor(minutes);
+          if(String(mnum).length ==1 ){
+                    mnum = "0" + mnum;
+          }
+          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+          snum = Math.round(seconds);
+          if(String(snum).length ==1 ){
+                    snum = "0" + snum;
+          }
+          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
+      }
+      setInterval("createtime()",250);
+      </script>
+    </div>
+  </div>
+    <div>©2022<a href="/">-东东的小黑盒-</a></div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
