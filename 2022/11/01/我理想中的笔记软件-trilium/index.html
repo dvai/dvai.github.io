@@ -39,7 +39,7 @@
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101195722.png">
 <meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101200554.png">
 <meta property="article:published_time" content="2022-11-01T05:24:00.000Z">
-<meta property="article:modified_time" content="2022-11-01T14:32:37.941Z">
+<meta property="article:modified_time" content="2022-11-01T23:18:18.730Z">
 <meta property="article:author" content="东东">
 <meta property="article:tag" content="笔记软件">
 <meta property="article:tag" content="开源工具">
@@ -372,7 +372,7 @@
 <p>自己部署服务端之后的同步体验，在目前所有开源或半开源的笔记系统中比较下来都是十分优秀的，上一次让我觉得这么舒心的同步方式还是私有部署的为知笔记。</p>
 <h2 id="功能丰富的编辑器"><a href="#功能丰富的编辑器" class="headerlink" title="功能丰富的编辑器"></a>功能丰富的编辑器</h2><p>trilium的编辑器是基于开源编辑器：CKEditor 5，这是一款好用的富文本编辑器。虽然是富文本编辑器但是trilium能够把富文本笔记导出为markdown格式，而且转换出的格式十分规范。</p>
 <p>除了富文本编辑功能之外，还支持许多格式的笔记，你甚至可以直接在笔记中调试和运行js代码。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101162458.png" srcset="/img/loading.gif" lazyload></p>
-<p>当然，markdown格式也是支持的，由于博文中需要添加Front-matte信息，所以平时记录时我会使用富文本编辑，但是写永久笔记的时候我会直接写markdown。trilium实现了基本的markdown颜色渲染，对于我而言也够用了，如果有需求的话trilium也支持用外部程序打开进行编辑，比如typaro、marktext等软件。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101163007.png" srcset="/img/loading.gif" lazyload></p>
+<p>当然，markdown格式也是支持的，由于博文中需要添加Front-matter信息，所以平时记录时我会使用富文本编辑，但是写永久笔记的时候我会直接写markdown。trilium实现了基本的markdown颜色渲染，对于我而言也够用了，如果有需求的话trilium也支持用外部程序打开进行编辑，比如typaro、marktext等软件。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101163007.png" srcset="/img/loading.gif" lazyload></p>
 <p>除最基本的文本笔记之外，还支持画布笔记，渲染笔记，各种流程图、时序图等，功能不可谓不强大。</p>
 <h2 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h2><p>trilium的属性类似于其他笔记软件的标签，而且除用户自定义标签之外，trilium还提供了一些自带的标签功能，比如，使用<code>#archived</code>标签可以将笔记归档。</p>
 <p>此前使用obsidian时，如何处理归档文件令我十分头疼，存放在同一个库里时，总是出现在我的搜索结果和引用链接中，所以我只能建立一个新的库专门用于存放归档笔记，但这又令笔记的同步和管理出现问题。而在trilium中，归档的文件不会出现在搜索和引用中。</p>
@@ -382,7 +382,7 @@
 <h2 id="笔记加密"><a href="#笔记加密" class="headerlink" title="笔记加密"></a>笔记加密</h2><p>设置为保护笔记之后，这篇笔记包括笔记名都会被加密，只有输入密码解密后才可访问。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101192948.png" srcset="/img/loading.gif" lazyload></p>
 <p>其实这只是一个最基础的功能，大部分传统的笔记软件都可以进行笔记加密，但习惯了开源和自己掌控笔记数据之后，这一功能在obsidian之类的软件之中也显得尤为珍贵。</p>
 <h2 id="分享笔记"><a href="#分享笔记" class="headerlink" title="分享笔记"></a>分享笔记</h2><p>这是部署服务端后可使用的功能，点击分享按钮，即可生成一条公网链接分享你的笔记。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101195722.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="方便的笔记导入和导出"><a href="#方便的笔记导入和导出" class="headerlink" title="方便的笔记导入和导出"></a>方便的笔记导入和导出</h2><p>trilium的笔记导入十分方便，只需要将笔记打包成zip，即可一键导入，不过我遇到一个问题，不管是在linux还是windows下，导入zip的时候中文中文标题都会乱码，最后是通过bandizip在打包时选择使用AES256加密算法后才解决问题。</p>
+<h2 id="方便的笔记导入和导出"><a href="#方便的笔记导入和导出" class="headerlink" title="方便的笔记导入和导出"></a>方便的笔记导入和导出</h2><p>trilium的笔记导入十分方便，只需要将笔记打包成zip，即可一键导入，不过我遇到一个问题，不管是在linux还是windows下，导入zip的时候中文标题都会乱码，最后是通过bandizip在打包时选择使用AES256加密算法后才解决问题。</p>
 <p>导出也十分方便，有多种导出选择，如下图所示：<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221101200554.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="极强的拓展性"><a href="#极强的拓展性" class="headerlink" title="极强的拓展性"></a>极强的拓展性</h2><p>trilium本身的功能就已足够强大，但是其本质上是一个强大的”浏览器“，而且作者开放了笔记api，所以你完全可以将其打造成一个足够适合你的笔记软件。</p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>目前对于我来说，trilium是一款足够优秀的笔记软件，最重要的是它能让我沉下心来做好知识沉淀。</p>
@@ -609,41 +609,40 @@
   </main>
 
   <footer>
-    <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <div>
-      <span id="timeDate">载入天数...</span>
-      <span id="times">载入时分秒...</span>
-      <script>
-      var now = new Date();
-      function createtime(){
-          var grt= new Date("11/11/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24;
-          dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-          hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){
-              hnum = "0" + hnum;
-          }
-          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes);
-          if(String(mnum).length ==1 ){
-                    mnum = "0" + mnum;
-          }
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds);
-          if(String(snum).length ==1 ){
-                    snum = "0" + snum;
-          }
-          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
-          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-      }
-      setInterval("createtime()",250);
-      </script>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <div>｜©2022<a href="/">｜东东的小黑盒｜</a></div> 
     </div>
-  </div>
-    <div>｜©2022<a href="/">｜东东的小黑盒｜</a></div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
 
   </footer>
 

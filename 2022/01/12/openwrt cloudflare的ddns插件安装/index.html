@@ -255,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          436 字
+          437 字
         
       </span>
     
@@ -324,7 +324,7 @@
 <p>主要有以下几项配置：</p>
 <ul>
 <li>查询主机名 – 你的主机名，主要用于显示域名是否与ip绑定成功，例如 text.com</li>
-<li>域名 – 填写一个子域名，例如<a href="mailto:&#x64;&#x65;&#64;&#116;&#101;&#x78;&#116;&#x2e;&#99;&#x6f;&#x6d;">&#x64;&#x65;&#64;&#116;&#101;&#x78;&#116;&#x2e;&#99;&#x6f;&#x6d;</a>，如果使用主域名则只需要填写@text.com即可</li>
+<li>域名 – 填写一个子域名，例如<a href="mailto:&#100;&#x65;&#x40;&#116;&#101;&#120;&#116;&#46;&#x63;&#x6f;&#x6d;">&#100;&#x65;&#x40;&#116;&#101;&#120;&#116;&#46;&#x63;&#x6f;&#x6d;</a>，如果使用主域名则只需要填写@text.com即可</li>
 <li>用户名 – cloudflare的登录名</li>
 <li>密码 – cloudflare后台中的Global API Key</li>
 </ul>
@@ -555,41 +555,40 @@
   </main>
 
   <footer>
-    <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <div>
-      <span id="timeDate">载入天数...</span>
-      <span id="times">载入时分秒...</span>
-      <script>
-      var now = new Date();
-      function createtime(){
-          var grt= new Date("11/11/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24;
-          dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-          hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){
-              hnum = "0" + hnum;
-          }
-          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes);
-          if(String(mnum).length ==1 ){
-                    mnum = "0" + mnum;
-          }
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds);
-          if(String(snum).length ==1 ){
-                    snum = "0" + snum;
-          }
-          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
-          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-      }
-      setInterval("createtime()",250);
-      </script>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <div>｜©2022<a href="/">｜东东的小黑盒｜</a></div> 
     </div>
-  </div>
-    <div>｜©2022<a href="/">｜东东的小黑盒｜</a></div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
 
   </footer>
 
