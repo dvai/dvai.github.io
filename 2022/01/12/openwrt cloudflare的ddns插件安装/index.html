@@ -286,7 +286,7 @@
 <p>主要有以下几项配置：</p>
 <ul>
 <li>查询主机名 – 你的主机名，主要用于显示域名是否与ip绑定成功，例如 text.com</li>
-<li>域名 – 填写一个子域名，例如<a href="mailto:&#100;&#101;&#x40;&#x74;&#x65;&#120;&#x74;&#46;&#x63;&#111;&#x6d;">&#100;&#101;&#x40;&#x74;&#x65;&#120;&#x74;&#46;&#x63;&#111;&#x6d;</a>，如果使用主域名则只需要填写@text.com即可</li>
+<li>域名 – 填写一个子域名，例如<a href="mailto:&#x64;&#101;&#64;&#116;&#101;&#120;&#116;&#x2e;&#x63;&#x6f;&#109;">&#x64;&#101;&#64;&#116;&#101;&#120;&#116;&#x2e;&#x63;&#x6f;&#109;</a>，如果使用主域名则只需要填写@text.com即可</li>
 <li>用户名 – cloudflare的登录名</li>
 <li>密码 – cloudflare后台中的Global API Key</li>
 </ul>
@@ -405,6 +405,28 @@
             
   <article id="comments" lazyload>
     
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"8MLKxaUY7h8v8wcjSNHL3yeo-gzGzoHsz","appKey":"RNEw0aI8SHo8NZxEJtL7MJrl","path":"window.location.pathname","placeholder":null,"avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":false,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          var imgSelector = '#valine .vcontent img:not(.vemoji)';
+          Fluid.plugins.imageCaption(imgSelector);
+          Fluid.plugins.fancyBox(imgSelector);
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
 
   </article>
 
