@@ -21,7 +21,7 @@
     <meta name="description" content="前言机房里新的广播服务器有几个软件重启的时候需要手动启动，放入启动文件夹只能启动程序本体，但是服务还是需要手动启动，而且机房的键盘容易卡住，鼠标延迟严重，有误操作的可能，所以我写了个小工具自动启动。主要使用pyautoui这个库进行屏幕图像识别及自动操作。 代码123456789101112131415161718192021222324252627282930313233343536373839">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自动启动程序工具">
-<meta property="og:url" content="http://ankia.top/2021/10/23/%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F%E5%B7%A5%E5%85%B7/index.html">
+<meta property="og:url" content="https://www.ankia.top/2021/10/23/%E8%87%AA%E5%8A%A8%E5%90%AF%E5%8A%A8%E7%A8%8B%E5%BA%8F%E5%B7%A5%E5%85%B7/index.html">
 <meta property="og:site_name" content="东东的小黑盒">
 <meta property="og:description" content="前言机房里新的广播服务器有几个软件重启的时候需要手动启动，放入启动文件夹只能启动程序本体，但是服务还是需要手动启动，而且机房的键盘容易卡住，鼠标延迟严重，有误操作的可能，所以我写了个小工具自动启动。主要使用pyautoui这个库进行屏幕图像识别及自动操作。 代码123456789101112131415161718192021222324252627282930313233343536373839">
 <meta property="og:locale" content="zh_CN">
@@ -72,7 +72,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -326,7 +326,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>自动启动程序工具</div>
-      <div>http://ankia.top/2021/10/23/自动启动程序工具/</div>
+      <div>https://www.ankia.top/2021/10/23/自动启动程序工具/</div>
     </div>
     <div class="license-meta">
       
@@ -507,41 +507,16 @@
   </main>
 
   <footer>
-    <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <div>
-      <span id="timeDate">载入天数...</span>
-      <span id="times">载入时分秒...</span>
-      <script>
-      var now = new Date();
-      function createtime(){
-          var grt= new Date("10/10/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24;
-          dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-          hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){
-              hnum = "0" + hnum;
-          }
-          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes);
-          if(String(mnum).length ==1 ){
-                    mnum = "0" + mnum;
-          }
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds);
-          if(String(snum).length ==1 ){
-                    snum = "0" + snum;
-          }
-          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
-          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-      }
-      setInterval("createtime()",250);
-      </script>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  </div>
-    <div>©2022<a href="/">-东东的小黑盒-</a></div>
+  
+  
+  
+  
+</div>
 
   </footer>
 

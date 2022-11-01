@@ -21,7 +21,7 @@
     <meta name="description" content="前言这两天正好有扫描文件的需要，而办公室里的扫描仪只能扫描A4纸大小的文件，所以有很多局限性。而单位有一台Sharp DX-2508NC打印机，可以满足大纸张的扫描需要，但是据其他同事说，扫描功能坏了，不能用了。但我想着这玩意儿应该没这么容易坏吧，于是折腾了两天，绕了许多弯路，最终解决问题。 折腾记录一、怀疑是扫描软件的问题这台打印机具有扫描功能，所以很自然的想到，既然已经安装了打印机的驱动，打印">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sharp DX-2058NC的折腾记录">
-<meta property="og:url" content="http://ankia.top/2022/03/04/Sharp%20DX-2058NC%E7%9A%84%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/index.html">
+<meta property="og:url" content="https://www.ankia.top/2022/03/04/Sharp%20DX-2058NC%E7%9A%84%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="东东的小黑盒">
 <meta property="og:description" content="前言这两天正好有扫描文件的需要，而办公室里的扫描仪只能扫描A4纸大小的文件，所以有很多局限性。而单位有一台Sharp DX-2508NC打印机，可以满足大纸张的扫描需要，但是据其他同事说，扫描功能坏了，不能用了。但我想着这玩意儿应该没这么容易坏吧，于是折腾了两天，绕了许多弯路，最终解决问题。 折腾记录一、怀疑是扫描软件的问题这台打印机具有扫描功能，所以很自然的想到，既然已经安装了打印机的驱动，打印">
 <meta property="og:locale" content="zh_CN">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -351,7 +351,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>Sharp DX-2058NC的折腾记录</div>
-      <div>http://ankia.top/2022/03/04/Sharp DX-2058NC的折腾记录/</div>
+      <div>https://www.ankia.top/2022/03/04/Sharp DX-2058NC的折腾记录/</div>
     </div>
     <div class="license-meta">
       
@@ -532,41 +532,16 @@
   </main>
 
   <footer>
-    <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <div>
-      <span id="timeDate">载入天数...</span>
-      <span id="times">载入时分秒...</span>
-      <script>
-      var now = new Date();
-      function createtime(){
-          var grt= new Date("10/10/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24;
-          dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-          hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){
-              hnum = "0" + hnum;
-          }
-          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes);
-          if(String(mnum).length ==1 ){
-                    mnum = "0" + mnum;
-          }
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds);
-          if(String(snum).length ==1 ){
-                    snum = "0" + snum;
-          }
-          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
-          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-      }
-      setInterval("createtime()",250);
-      </script>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
     </div>
-  </div>
-    <div>©2022<a href="/">-东东的小黑盒-</a></div>
+  
+  
+  
+  
+</div>
 
   </footer>
 
