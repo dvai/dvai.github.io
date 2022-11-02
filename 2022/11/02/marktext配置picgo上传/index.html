@@ -18,26 +18,28 @@
   <meta name="author" content="东东">
   <meta name="keywords" content="">
   
-    <meta name="description" content="先下载cloudflareddns插件，下载地址：https:&#x2F;&#x2F;wws.lanzouy.com&#x2F;iJvl3ybr32h然后使用winscp登录路由器，将插件上传到tmp路径下。 接着使用xshell登录路由器，目录切换到tmp下，执行命令 1opkg install ddns-scripts_cloudflare.com-v4_2.7.8-13_all.ipk 等待安装完毕后，在网页上刷新路由器">
+    <meta name="description" content="前言linux下的picgo图形程序卡的一批，不得不使用命令行版本进行图片上传，但是使用marktext配置picgo上传时遇到不能上传剪切板图片的问题，所以这里做一个记录。 安装和配置picgo安装picgo-core： 1npm install picgo -g  选择使用的图床 1picgo set uploader  根据提示依次输入配置即可。  在marktext中选择pico进入【fi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="openwrt cloudflare的ddns插件安装">
-<meta property="og:url" content="https://www.ankia.top/2022/01/12/openwrt%20cloudflare%E7%9A%84ddns%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:title" content="marktext配置picgo上传">
+<meta property="og:url" content="https://www.ankia.top/2022/11/02/marktext%E9%85%8D%E7%BD%AEpicgo%E4%B8%8A%E4%BC%A0/index.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="先下载cloudflareddns插件，下载地址：https:&#x2F;&#x2F;wws.lanzouy.com&#x2F;iJvl3ybr32h然后使用winscp登录路由器，将插件上传到tmp路径下。 接着使用xshell登录路由器，目录切换到tmp下，执行命令 1opkg install ddns-scripts_cloudflare.com-v4_2.7.8-13_all.ipk 等待安装完毕后，在网页上刷新路由器">
+<meta property="og:description" content="前言linux下的picgo图形程序卡的一批，不得不使用命令行版本进行图片上传，但是使用marktext配置picgo上传时遇到不能上传剪切板图片的问题，所以这里做一个记录。 安装和配置picgo安装picgo-core： 1npm install picgo -g  选择使用的图床 1picgo set uploader  根据提示依次输入配置即可。  在marktext中选择pico进入【fi">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190622.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190655.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190811.png">
-<meta property="article:published_time" content="2022-01-12T13:17:00.000Z">
-<meta property="article:modified_time" content="2022-10-30T11:34:43.441Z">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/1667403445698.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/1667403019345.png">
+<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/1667403145287.png">
+<meta property="article:published_time" content="2022-11-02T15:24:00.000Z">
+<meta property="article:modified_time" content="2022-11-02T15:42:13.076Z">
 <meta property="article:author" content="东东">
-<meta property="article:tag" content="路由器">
+<meta property="article:tag" content="开源工具">
+<meta property="article:tag" content="笔记软件">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190622.png">
+<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/1667403445698.png">
   
   
   
-  <title>openwrt cloudflare的ddns插件安装 - 东东的小黑盒</title>
+  <title>marktext配置picgo上传 - 东东的小黑盒</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +232,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="openwrt cloudflare的ddns插件安装"></span>
+            <span id="subtitle" data-typed-text="marktext配置picgo上传"></span>
           
         </div>
 
@@ -241,8 +243,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-01-12 21:17" pubdate>
-          2022年1月12日 晚上
+        <time datetime="2022-11-02 23:24" pubdate>
+          2022年11月2日 晚上
         </time>
       </span>
     
@@ -253,7 +255,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          437 字
+          1.3k 字
         
       </span>
     
@@ -264,7 +266,7 @@
         
         
         
-          4 分钟
+          11 分钟
         
       </span>
     
@@ -302,23 +304,70 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">openwrt cloudflare的ddns插件安装</h1>
+            <h1 style="display: none">marktext配置picgo上传</h1>
             
             
               <div class="markdown-body">
                 
-                <p>先下载cloudflareddns插件，下载地址：<a target="_blank" rel="noopener" href="https://wws.lanzouy.com/iJvl3ybr32h">https://wws.lanzouy.com/iJvl3ybr32h</a><br>然后使用winscp登录路由器，将插件上传到tmp路径下。<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190622.png" srcset="/img/loading.gif" lazyload></p>
-<p>接着使用xshell登录路由器，目录切换到tmp下，执行命令</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">opkg install ddns-scripts_cloudflare.com-v4_2<span class="hljs-number">.7</span><span class="hljs-number">.8</span>-13_<span class="hljs-built_in">all</span>.ipk<br></code></pre></td></tr></table></figure>
-<p>等待安装完毕后，在网页上刷新路由器后台地址，打开动态dns插件，发现插件安装成功<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190655.png" srcset="/img/loading.gif" lazyload><br>下面进行配置</p>
-<p>主要有以下几项配置：</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>linux下的picgo图形程序卡的一批，不得不使用命令行版本进行图片上传，但是使用marktext配置picgo上传时遇到不能上传剪切板图片的问题，所以这里做一个记录。</p>
+<h1 id="安装和配置picgo"><a href="#安装和配置picgo" class="headerlink" title="安装和配置picgo"></a>安装和配置picgo</h1><p>安装picgo-core：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">npm install picgo -g<br></code></pre></td></tr></table></figure>
+
+<p>选择使用的图床</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs shell">picgo set uploader<br></code></pre></td></tr></table></figure>
+
+<p>根据提示依次输入配置即可。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/1667403445698.png" srcset="/img/loading.gif" lazyload></p>
+<p>在marktext中选择pico<br>进入【file】-【preferences】-【image】选择picgo。</p>
+<p>配置完成后发现手动拖入图片可正常上传，但是无法上传剪切板图片，我使用剪切板的频率比较高，于是需要动手解决这一问题。</p>
+<h1 id="解决marktext无法上传剪切板图片的问题"><a href="#解决marktext无法上传剪切板图片的问题" class="headerlink" title="解决marktext无法上传剪切板图片的问题"></a>解决marktext无法上传剪切板图片的问题</h1><p>参考这个<a target="_blank" rel="noopener" href="https://github.com/marktext/marktext/pull/3296/commits/5775b28a20dc66ae05fbd47536b6286943f1dcd2">解决方案</a>，我们需要更改marktext源码然后重新编译。</p>
+<p>根据作者给出的<a target="_blank" rel="noopener" href="https://github.com/marktext/marktext/blob/develop/docs/dev/BUILD.md">编译流程</a>，首先我们的环境中需要满足以下条件：</p>
+<blockquote>
 <ul>
-<li>查询主机名 – 你的主机名，主要用于显示域名是否与ip绑定成功，例如 text.com</li>
-<li>域名 – 填写一个子域名，例如<a href="mailto:&#100;&#x65;&#64;&#116;&#x65;&#120;&#x74;&#x2e;&#x63;&#x6f;&#x6d;">&#100;&#x65;&#64;&#116;&#x65;&#120;&#x74;&#x2e;&#x63;&#x6f;&#x6d;</a>，如果使用主域名则只需要填写@text.com即可</li>
-<li>用户名 – cloudflare的登录名</li>
-<li>密码 – cloudflare后台中的Global API Key</li>
+<li>Node.js <code>&gt;=v16</code> but <code>&lt;v17</code> and yarn</li>
+<li>Python <code>&gt;=v3.6</code> for node-gyp</li>
+<li>C++ compiler and development tools</li>
+<li>Build is supported on Linux, macOS and Windows</li>
 </ul>
-<p>配置正确的话会出现如下界面<br><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190811.png" srcset="/img/loading.gif" lazyload></p>
+</blockquote>
+<p>依次检查后发现我的node.js版本为v18，所以需要更改其版本号。</p>
+<h2 id="使用nvm更改nodejs版本号"><a href="#使用nvm更改nodejs版本号" class="headerlink" title="使用nvm更改nodejs版本号"></a>使用nvm更改nodejs版本号</h2><p>下载安装脚本</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs awk">curl -o- https:<span class="hljs-regexp">//</span>raw.githubusercontent.com<span class="hljs-regexp">/nvm-sh/</span>nvm<span class="hljs-regexp">/v0.39.2/i</span>nstall.sh | bash<br></code></pre></td></tr></table></figure>
+
+<p>配置环境变量</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">source</span> ~/.profile<br></code></pre></td></tr></table></figure>
+
+<p>下载nodejs v16版本</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">nvm</span> install <span class="hljs-number">16</span><br></code></pre></td></tr></table></figure>
+
+<p>下载完成后会自动将nodejs版本更改为v16</p>
+<h2 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h2><p>编译marktext需要以下依赖：</p>
+<blockquote>
+<ul>
+<li>libX11 (with headers)</li>
+<li>libxkbfile (with headers)</li>
+<li>libsecret (with headers)</li>
+<li>libfontconfig (with headers)</li>
+</ul>
+</blockquote>
+<p>直接命令行安装即可：</p>
+<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs q">sudo apt-<span class="hljs-built_in">get</span> install libx11-<span class="hljs-built_in">dev</span> libxkbfile-<span class="hljs-built_in">dev</span> libsecret<span class="hljs-number">-1</span>-<span class="hljs-built_in">dev</span> libfontconfig-<span class="hljs-built_in">dev</span><br></code></pre></td></tr></table></figure>
+
+<h2 id="重新打包"><a href="#重新打包" class="headerlink" title="重新打包"></a>重新打包</h2><p>首先打开marktext源码，进入<code>src/renderer/util/fileSystem.js</code>将以下几行进行如下修改：</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs reasonml"># <span class="hljs-number">152</span>行<br>const uploadByCommand = async<span class="hljs-function"> (<span class="hljs-params">uploader</span>, <span class="hljs-params">filepath</span>, <span class="hljs-params">suffix</span> = &#x27;&#x27;) =&gt;</span> &#123;<br># <span class="hljs-number">157</span>行<br>filepath = path.join(tmpdir<span class="hljs-literal">()</span>, +<span class="hljs-keyword">new</span> <span class="hljs-constructor">Date()</span> + suffix)<br># <span class="hljs-number">227</span>行<br>upload<span class="hljs-constructor">ByCommand(<span class="hljs-params">currentUploader</span>, <span class="hljs-params">reader</span>.<span class="hljs-params">result</span>, <span class="hljs-params">path</span>.<span class="hljs-params">extname</span>(<span class="hljs-params">image</span>.<span class="hljs-params">name</span>)</span>)<br></code></pre></td></tr></table></figure>
+
+<p>进入marktext文件夹。</p>
+<p>安装依赖：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmake">yarn <span class="hljs-keyword">install</span><br></code></pre></td></tr></table></figure>
+
+<p>漫长的等待结束后，进行打包：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">yarn <span class="hljs-built_in">run</span> build<br></code></pre></td></tr></table></figure>
+
+<p>又是漫长的等待，打包完成。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/1667403019345.png" srcset="/img/loading.gif" lazyload></p>
+<p>进入build文件夹安装appimage文件，打开marktext测试是否能够上传剪切板图片。</p>
+<p>如图所示，成功上传到github图床。</p>
+<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/1667403145287.png" srcset="/img/loading.gif" lazyload></p>
 
                 
               </div>
@@ -352,7 +401,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%B7%AF%E7%94%B1%E5%99%A8/">#路由器</a>
+        <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/">#开源工具</a>
+      
+        <a href="/tags/%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6/">#笔记软件</a>
+      
+        <a href="/tags/linux/">#linux</a>
       
     </div>
   
@@ -364,8 +417,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>openwrt cloudflare的ddns插件安装</div>
-      <div>https://www.ankia.top/2022/01/12/openwrt cloudflare的ddns插件安装/</div>
+      <div>marktext配置picgo上传</div>
+      <div>https://www.ankia.top/2022/11/02/marktext配置picgo上传/</div>
     </div>
     <div class="license-meta">
       
@@ -377,7 +430,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年1月12日</div>
+          <div>2022年11月2日</div>
         </div>
       
       
@@ -409,18 +462,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/01/24/%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E9%AB%98%E9%98%B6%E6%93%8D%E4%BD%9C-shutil%E5%BA%93/" title="对文件的高阶操作-shutil库">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">对文件的高阶操作-shutil库</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/12/13/markdown%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/" title="markdown语法学习">
-                        <span class="hidden-mobile">markdown语法学习</span>
+                      <a href="/2022/11/01/%E6%88%91%E7%90%86%E6%83%B3%E4%B8%AD%E7%9A%84%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6-trilium/" title="我理想中的笔记软件-trilium">
+                        <span class="hidden-mobile">我理想中的笔记软件-trilium</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
