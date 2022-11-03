@@ -251,7 +251,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
+  <p class="h4">共计 3 篇文章</p>
   <hr>
   
   
@@ -262,6 +262,21 @@
     <a href="/2022/06/09/%E5%B0%86sheet%E6%89%B9%E9%87%8F%E4%BF%9D%E5%AD%98%E4%B8%BA%E5%8D%95%E7%8B%AC%E8%A1%A8%E6%A0%BC/" class="list-group-item list-group-item-action">
       <time>06-09</time>
       <div class="list-group-item-title">将sheet批量保存为单独表格</div>
+    </a>
+  
+    
+      
+      <p class="h5">2021</p>
+    
+    <a href="/2021/10/23/python%20%E8%AF%BB%E5%86%99excel/" class="list-group-item list-group-item-action">
+      <time>10-23</time>
+      <div class="list-group-item-title">python 读写excel</div>
+    </a>
+  
+    
+    <a href="/2021/10/13/excel2cfg%E5%B7%A5%E5%85%B7/" class="list-group-item list-group-item-action">
+      <time>10-13</time>
+      <div class="list-group-item-title">excel转换cfg配置工具</div>
     </a>
   
 </div>
@@ -338,7 +353,7 @@
           if(String(snum).length ==1 ){
                     snum = "0" + snum;
           }
-          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("timeDate").innerHTML = "🚀  已运行："+dnum+"&nbsp天";  //此次自定义显示内容
           document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
       }
       setInterval("createtime()",250);
@@ -350,6 +365,7 @@
       <span>&</span>
       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
     </div>
+    
   </div>
 
   </footer>

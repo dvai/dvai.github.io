@@ -251,7 +251,7 @@
                 
 
 <div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
+  <p class="h4">共计 2 篇文章</p>
   <hr>
   
   
@@ -262,6 +262,12 @@
     <a href="/2022/11/02/marktext%E9%85%8D%E7%BD%AEpicgo%E5%9B%BE%E7%89%87%E4%B8%8A%E4%BC%A0/" class="list-group-item list-group-item-action">
       <time>11-02</time>
       <div class="list-group-item-title">marktext配置picgo图片上传</div>
+    </a>
+  
+    
+    <a href="/2022/10/10/linux%20%E5%BC%80%E6%9C%BA%E6%8C%82%E8%BD%BD%E7%A3%81%E7%9B%98%E5%92%8Cswap%E5%88%86%E5%8C%BA/" class="list-group-item list-group-item-action">
+      <time>10-10</time>
+      <div class="list-group-item-title">linux 开机挂载磁盘和swap分区</div>
     </a>
   
 </div>
@@ -338,7 +344,7 @@
           if(String(snum).length ==1 ){
                     snum = "0" + snum;
           }
-          document.getElementById("timeDate").innerHTML = "🚀  "+dnum+"&nbsp天";  //此次自定义显示内容
+          document.getElementById("timeDate").innerHTML = "🚀  已运行："+dnum+"&nbsp天";  //此次自定义显示内容
           document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
       }
       setInterval("createtime()",250);
@@ -350,6 +356,7 @@
       <span>&</span>
       <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
     </div>
+    
   </div>
 
   </footer>
