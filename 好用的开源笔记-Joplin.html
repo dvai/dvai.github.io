@@ -25,16 +25,15 @@
 <meta property="og:site_name" content="东东的小黑盒">
 <meta property="og:description" content="背景最近花了很多时间寻找一款私有化笔记，我的需求如下    开源 可私有化部署 笔记文件保存在本地 支持多端同步 支持双链 最好支持markdown所见所得 迁移笔记方便   我这段时间试用了为知笔记Docker版、Trilium、思源笔记、Mrdoc、showdoc、Obsidian等笔记软件，诚然，这些软件都有独特的优点，但是对我而言也有一些缺点。其中尤其让我惊喜的是为知笔记Docker版本，">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190156.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190233.png">
-<meta property="og:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190302.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/05/4IjHd6TvtGC82qA.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/05/WQF6oUPfaYGERNe.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/05/8tLh7JKoPxCF36W.png">
 <meta property="article:published_time" content="2021-09-27T11:43:00.000Z">
-<meta property="article:modified_time" content="2022-11-01T12:21:44.226Z">
+<meta property="article:modified_time" content="2022-11-05T15:07:50.169Z">
 <meta property="article:author" content="东东">
 <meta property="article:tag" content="开源工具">
-<meta property="article:tag" content="笔记软件">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190156.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/05/4IjHd6TvtGC82qA.png">
   
   
   
@@ -338,9 +337,9 @@
 <p>貌似不支持浏览器直接访问，不过咱也不需要这个功能。</p>
 <p>到此FileRun部署结束，重头戏在下面，我配置Joplin的WebDAV同步踩了不少坑。</p>
 <h2 id="配置同步"><a href="#配置同步" class="headerlink" title="配置同步"></a>配置同步</h2><p>打开【工具】-【选项】-【同步】，可以看到joplin支持非常多的同步方式，在这里我当然选择使用WebDAV的同步方式</p>
-<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190156.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/11/05/4IjHd6TvtGC82qA.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
 <p>根据提示，填入WebDAV URL ，FIleRun用户名和密码，我这里填入的是http的域名，点击检查同步配置。嗯…提示成功，看起来没问题</p>
-<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190233.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/11/05/WQF6oUPfaYGERNe.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
 <p>第一个坑，检查同步配置没问题，可是在笔记中点击同步后，却出了问题</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">Last <span class="hljs-keyword">error</span>: Error: Could <span class="hljs-keyword">not</span> upgrade <span class="hljs-keyword">from</span> <span class="hljs-built_in">version</span> <span class="hljs-number">0</span> <span class="hljs-keyword">to</span> <span class="hljs-built_in">version</span> <span class="hljs-number">1</span>: MKCOL ./sync/: Unknown <span class="hljs-keyword">error</span> <span class="hljs-number">2</span> (<span class="hljs-number">403</span>): You are <span class="hljs-keyword">not</span> allowed <span class="hljs-keyword">to</span> use this folder <span class="hljs-built_in">name</span>!<br></code></pre></td></tr></table></figure>
 
@@ -359,7 +358,7 @@
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">reason: unable <span class="hljs-built_in">to</span> verify <span class="hljs-keyword">the</span> <span class="hljs-keyword">first</span> certificate (Code UNABLE_TO_VERIFY_LEAF_SIGNATURE)<br></code></pre></td></tr></table></figure>
 
 <p>查阅一番资料后，估计是Joplin对免费SSL证书的认证有问题，目前的解决方案是打开【高级选项】，勾选上【忽略TLS证书错误】</p>
-<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190302.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<p><img src="https://s2.loli.net/2022/11/05/8tLh7JKoPxCF36W.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
 <p>经过以上折腾后，Joplin终于支持全平台同步了，而且保存的笔记文件在FileRun中也可以查看，舒服了。</p>
 
                 
@@ -395,8 +394,6 @@
       <i class="iconfont icon-tags"></i>
       
         <a href="/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/">#开源工具</a>
-      
-        <a href="/tags/%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6/">#笔记软件</a>
       
     </div>
   

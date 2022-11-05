@@ -18,24 +18,28 @@
   <meta name="author" content="东东">
   <meta name="keywords" content="">
   
-    <meta name="description" content="因为时代的原因，我使用的打字方式一直是PC全拼加手机九宫格的打字习惯。这两种打字方式已经很习惯了，但是打字效率以及正确率方面还是有所不足。首先是PC自然码全拼，我虽然能做到手比脑更快，以及利用缩写和组词提高打字效率，但是其时大部分是利用了如今输入法的智能词云罢了，而且遇到生僻词，翻页找词就需要好久，尤其是对我这种平翘舌、前后鼻音不分的人来说使用起来就更不方便了。手机九宫格就更不用说了，词组重复率太">
+    <meta name="description" content="前言 本软件是解决obsidian使用icloud时产生碎片文件的问题的小工具。  主要原理是通过定时向icloud中备份本地笔记数据，所以如果你是第一次使用本工具，则需要先在本地创建一个笔记库，把icloud中的笔记文件全部复制过来，并且将你obsidian中的库切换为本地笔记库！  配置前请注意备份。  由于本人已经不再使用obsidian作为主力笔记工具，所以本软件不再更新，请自行判断工具是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="双拼的尝试">
-<meta property="og:url" content="https://www.ankia.top/%E5%8F%8C%E6%8B%BC%E7%9A%84%E5%B0%9D%E8%AF%95.html">
+<meta property="og:title" content="comfile使用指南">
+<meta property="og:url" content="https://www.ankia.top/comfile%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="因为时代的原因，我使用的打字方式一直是PC全拼加手机九宫格的打字习惯。这两种打字方式已经很习惯了，但是打字效率以及正确率方面还是有所不足。首先是PC自然码全拼，我虽然能做到手比脑更快，以及利用缩写和组词提高打字效率，但是其时大部分是利用了如今输入法的智能词云罢了，而且遇到生僻词，翻页找词就需要好久，尤其是对我这种平翘舌、前后鼻音不分的人来说使用起来就更不方便了。手机九宫格就更不用说了，词组重复率太">
+<meta property="og:description" content="前言 本软件是解决obsidian使用icloud时产生碎片文件的问题的小工具。  主要原理是通过定时向icloud中备份本地笔记数据，所以如果你是第一次使用本工具，则需要先在本地创建一个笔记库，把icloud中的笔记文件全部复制过来，并且将你obsidian中的库切换为本地笔记库！  配置前请注意备份。  由于本人已经不再使用obsidian作为主力笔记工具，所以本软件不再更新，请自行判断工具是">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/BxpE3aJRKbytCPD.png">
-<meta property="article:published_time" content="2022-04-13T06:59:00.000Z">
-<meta property="article:modified_time" content="2022-11-05T15:58:55.115Z">
+<meta property="og:image" content="https://s2.loli.net/2022/11/05/xIcywgmb29SG5dJ.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/05/TkieR1PUlAvD8rK.png">
+<meta property="og:image" content="https://s2.loli.net/2022/11/05/e4SVdyGWmpJkhLZ.png">
+<meta property="article:published_time" content="2022-07-02T15:24:00.000Z">
+<meta property="article:modified_time" content="2022-11-05T15:57:58.179Z">
 <meta property="article:author" content="东东">
-<meta property="article:tag" content="输入法">
+<meta property="article:tag" content="小工具">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/11/05/BxpE3aJRKbytCPD.png">
+<meta name="twitter:image" content="https://s2.loli.net/2022/11/05/xIcywgmb29SG5dJ.png">
   
   
   
-  <title>双拼的尝试 - 东东的小黑盒</title>
+  <title>comfile使用指南 - 东东的小黑盒</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +234,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="双拼的尝试"></span>
+            <span id="subtitle" data-typed-text="comfile使用指南"></span>
           
         </div>
 
@@ -241,8 +245,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-04-13 14:59" pubdate>
-          2022年4月13日 下午
+        <time datetime="2022-07-02 23:24" pubdate>
+          2022年7月2日 晚上
         </time>
       </span>
     
@@ -253,7 +257,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          804 字
+          821 字
         
       </span>
     
@@ -302,24 +306,46 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">双拼的尝试</h1>
+            <h1 style="display: none">comfile使用指南</h1>
             
             
               <div class="markdown-body">
                 
-                <p>因为时代的原因，我使用的打字方式一直是PC全拼加手机九宫格的打字习惯。这两种打字方式已经很习惯了，但是打字效率以及正确率方面还是有所不足。首先是PC自然码全拼，我虽然能做到手比脑更快，以及利用缩写和组词提高打字效率，但是其时大部分是利用了如今输入法的智能词云罢了，而且遇到生僻词，翻页找词就需要好久，尤其是对我这种平翘舌、前后鼻音不分的人来说使用起来就更不方便了。手机九宫格就更不用说了，词组重复率太高了。<br>于是今天尝试一下双拼，其实一直听说过双拼的大名，也被人推荐过，但每次都因为不愿意付出学习成本而浅尝辄止。毕竟要放弃自己使用了这么久的打字习惯，何必呢？学习双拼还得重新记住键盘的键位，看看这毫无逻辑的键位，实在是让人望而却步。<br><img src="https://s2.loli.net/2022/11/05/BxpE3aJRKbytCPD.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
-<p>要是搁我以前，我看一眼就放弃了，但是今天硬着头皮摸索了一番，并且在<a target="_blank" rel="noopener" href="https://api.ihint.me/shuang/">双拼练习 @ BlueSky (ihint.me)</a>个网站上练习了一会儿，摸清楚了打字方法后，把手机和电脑的输入法全换成了小鹤双拼。<br>WINDOWS自带输入法并没有小鹤双拼的方案，需要进行如下设置：</p>
-<blockquote>
-<ol>
-<li>win+R 输入 regedit，打开注册表</li>
-<li>找到 HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS</li>
-<li>新建一个字符串文件</li>
-<li>名称为：<code>UserDefinedDoublePinyinScheme0</code></li>
-<li>值为：<code>小鹤双拼*2*^*iuvdjhcwfg^xmlnpbksqszxkrltvyovt</code></li>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><ol>
+<li><p>本软件是解决obsidian使用icloud时产生碎片文件的问题的小工具。</p>
+</li>
+<li><p>主要原理是通过定时向icloud中备份本地笔记数据，所以如果你是第一次使用本工具，则需要先在本地创建一个笔记库，把icloud中的笔记文件全部复制过来，并且将你obsidian中的库切换为本地笔记库！</p>
+</li>
+<li><p>配置前请注意备份。</p>
+</li>
+<li><p>由于本人已经不再使用obsidian作为主力笔记工具，所以本软件不再更新，请自行判断工具是否能够正常使用。</p>
+</li>
 </ol>
+<h1 id="使用指南"><a href="#使用指南" class="headerlink" title="# 使用指南"></a># 使用指南</h1><h2 id="软件下载地址"><a href="#软件下载地址" class="headerlink" title="软件下载地址"></a>软件下载地址</h2><p><a target="_blank" rel="noopener" href="https://wwt.lanzouy.com/i0Vqd03cemhe">https://wwt.lanzouy.com/i0Vqd03cemhe</a></p>
+<p>下载后解压即可，为防止意外情况，请不要有中文路径。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><p>点开comfile.exe，如果有问题请使用用管理员模式打开。</p>
+<p>正常打开后如下图所示：</p>
+<p><img src="https://s2.loli.net/2022/11/05/xIcywgmb29SG5dJ.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<p>有四项配置：</p>
+<blockquote>
+<p>icloud笔记目录：icloud中存放笔记的目录</p>
+<p>本地笔记目录：你在本地磁盘中的笔记库，也是你obsidian中实际打开的笔记库</p>
+<p>obsidian软件路径：一般在users&#x2F;用户名&#x2F;AppData&#x2F;Local中</p>
+<p>备份间隔：定时向icloud文件夹中同步的间隔，推荐2分钟以上</p>
 </blockquote>
-<p>本文全程使用小鹤双拼打字，刚开始学习，实在是太折磨了，打着打着就想用全拼打字，脑袋和手不协调的感觉真是让人感觉心里有蚂蚁在爬，但是通过不断的使用和纠错，目前已经不需要借助键位图了。但是打字效率还是远远不及全拼打字，目前这个状态让我想起小学第一次接触电脑，在金山打字上玩“警察抓小偷”的时候，使用的“小鸡啄米打字法”。</p>
-<p>不过目前的学习进度，我还是很满意的，应该过不了多久就就能熟练掌握了。</p>
+<p>点击确定即可，以后使用obsidian的时候，请点击comfile.exe而不是obsidian，comfile会自动打开obsidian，comfile会在后台按照配置进行运作。</p>
+<p>如果需要更改配置，右键桌面右下角图标，点击修改配置即可修改。另外如果软件遇到遇到问题无法退出可以使用强制退出功能，退出前请先点击手动同步。</p>
+<p><img src="https://s2.loli.net/2022/11/05/TkieR1PUlAvD8rK.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<h2 id="意外情况"><a href="#意外情况" class="headerlink" title="意外情况"></a>意外情况</h2><p>如果在配置的时候由于 配置错误，软件遇到问题无法打开，则可以打开注册表进行手动修改配置。</p>
+<p>按下win+R键，输入<code>regedit</code>，依次打开<code>计算机\HKEY_CURRENT_USER\Software\comfile</code></p>
+<p><img src="https://s2.loli.net/2022/11/05/e4SVdyGWmpJkhLZ.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<blockquote>
+<p>bktime - 备份时间</p>
+<p>icloudpath - icloud笔记库位置</p>
+<p>localpath - 本地笔记库位置</p>
+<p>obpath - obsidian软件位置</p>
+</blockquote>
+<p>根据配置项对应修改即可。</p>
 
                 
               </div>
@@ -345,6 +371,16 @@
       </span>
     
   
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/" class="category-chain-item">好软推荐</a>
+  
+  
+
+      </span>
+    
+  
 </span>
 
     </div>
@@ -353,7 +389,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%BE%93%E5%85%A5%E6%B3%95/">#输入法</a>
+        <a href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/">#小工具</a>
+      
+        <a href="/tags/python/">#python</a>
+      
+        <a href="/tags/linux/">#linux</a>
       
     </div>
   
@@ -365,15 +405,15 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>双拼的尝试</div>
-      <div>https://www.ankia.top/双拼的尝试.html</div>
+      <div>comfile使用指南</div>
+      <div>https://www.ankia.top/comfile使用指南.html</div>
     </div>
     <div class="license-meta">
       
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年4月13日</div>
+          <div>2022年7月2日</div>
         </div>
       
       
@@ -405,9 +445,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E3%80%8A%E6%A1%B6%E5%B7%9D%E8%B7%9F%E8%B8%AA%E7%8B%82%E6%9D%80%E4%BA%BA%E4%BA%8B%E4%BB%B6%E3%80%8B.html" title="死了三次的女孩">
+                      <a href="/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88-%E5%85%B6%E4%BA%8C.html" title="小区路口的理发师-其二">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">死了三次的女孩</span>
+                        <span class="hidden-mobile">小区路口的理发师-其二</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -415,8 +455,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E9%85%8D%E7%BD%AE%E5%A4%9A%E7%94%A8%E6%88%B7%E5%85%B1%E4%BA%AB%E7%A3%81%E7%9B%98.html" title="配置多用户共享磁盘">
-                        <span class="hidden-mobile">配置多用户共享磁盘</span>
+                      <a href="/%E5%B0%8F%E5%8C%BA%E8%B7%AF%E5%8F%A3%E7%9A%84%E7%90%86%E5%8F%91%E5%B8%88-%E5%85%B6%E4%B8%80.html" title="小区路口的理发师-其一">
+                        <span class="hidden-mobile">小区路口的理发师-其一</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
