@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/header.png">
-  <link rel="icon" href="/img/header.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png">
+  <link rel="icon" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -76,7 +76,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"www.ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d127e1152974a852668e3a1a501484a6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"IMeE3F1rC4AekEBlbNdeLTHy-MdYXbMMI","app_key":"s9vNqX5iIbtvrbvvcoA6Ozmc","server_url":"https://imee3f1r.api.lncldglobal.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"www.ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d127e1152974a852668e3a1a501484a6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"IMeE3F1rC4AekEBlbNdeLTHy-MdYXbMMI","app_key":"s9vNqX5iIbtvrbvvcoA6Ozmc","server_url":"https://imee3f1r.api.lncldglobal.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -338,9 +338,9 @@
 <p>貌似不支持浏览器直接访问，不过咱也不需要这个功能。</p>
 <p>到此FileRun部署结束，重头戏在下面，我配置Joplin的WebDAV同步踩了不少坑。</p>
 <h2 id="配置同步"><a href="#配置同步" class="headerlink" title="配置同步"></a>配置同步</h2><p>打开【工具】-【选项】-【同步】，可以看到joplin支持非常多的同步方式，在这里我当然选择使用WebDAV的同步方式</p>
-<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190156.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190156.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
 <p>根据提示，填入WebDAV URL ，FIleRun用户名和密码，我这里填入的是http的域名，点击检查同步配置。嗯…提示成功，看起来没问题</p>
-<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190233.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190233.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
 <p>第一个坑，检查同步配置没问题，可是在笔记中点击同步后，却出了问题</p>
 <figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs applescript">Last <span class="hljs-keyword">error</span>: Error: Could <span class="hljs-keyword">not</span> upgrade <span class="hljs-keyword">from</span> <span class="hljs-built_in">version</span> <span class="hljs-number">0</span> <span class="hljs-keyword">to</span> <span class="hljs-built_in">version</span> <span class="hljs-number">1</span>: MKCOL ./sync/: Unknown <span class="hljs-keyword">error</span> <span class="hljs-number">2</span> (<span class="hljs-number">403</span>): You are <span class="hljs-keyword">not</span> allowed <span class="hljs-keyword">to</span> use this folder <span class="hljs-built_in">name</span>!<br></code></pre></td></tr></table></figure>
 
@@ -359,7 +359,7 @@
 <figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">reason: unable <span class="hljs-built_in">to</span> verify <span class="hljs-keyword">the</span> <span class="hljs-keyword">first</span> certificate (Code UNABLE_TO_VERIFY_LEAF_SIGNATURE)<br></code></pre></td></tr></table></figure>
 
 <p>查阅一番资料后，估计是Joplin对免费SSL证书的认证有问题，目前的解决方案是打开【高级选项】，勾选上【忽略TLS证书错误】</p>
-<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190302.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="https://cdn.jsdelivr.net/gh/dvai/imageshost//img/20221030190302.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
 <p>经过以上折腾后，Joplin终于支持全平台同步了，而且保存的笔记文件在FileRun中也可以查看，舒服了。</p>
 
                 
