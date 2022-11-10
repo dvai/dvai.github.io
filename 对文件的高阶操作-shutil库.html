@@ -1,388 +1,230 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png">
-  <link rel="icon" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="东东">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="前言shutil模块提供了一系列对文件和文件集合的高阶操作。 特别是提供了一些支持文件拷贝和删除的函数。  即便是高阶文件拷贝函数 ([shutil.copy()], [shutil.copy2()]也无法拷贝所有的文件元数据。  文件夹与文件操作copyfileobj将fsrc文件内容复制至fdst文件，length为fsrc每次读取的长度，用做缓冲区大小 完整语法： 1copyfileobj(">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>对文件的高阶操作-shutil库 | 东东的小黑盒</title><meta name="author" content="东东"><meta name="copyright" content="东东"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言shutil模块提供了一系列对文件和文件集合的高阶操作。 特别是提供了一些支持文件拷贝和删除的函数。  即便是高阶文件拷贝函数 ([shutil.copy()], [shutil.copy2()]也无法拷贝所有的文件元数据。  文件夹与文件操作copyfileobj将fsrc文件内容复制至fdst文件，length为fsrc每次读取的长度，用做缓冲区大小 完整语法： copyfileobj(f">
 <meta property="og:type" content="article">
 <meta property="og:title" content="对文件的高阶操作-shutil库">
 <meta property="og:url" content="https://www.ankia.top/%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E9%AB%98%E9%98%B6%E6%93%8D%E4%BD%9C-shutil%E5%BA%93.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="前言shutil模块提供了一系列对文件和文件集合的高阶操作。 特别是提供了一些支持文件拷贝和删除的函数。  即便是高阶文件拷贝函数 ([shutil.copy()], [shutil.copy2()]也无法拷贝所有的文件元数据。  文件夹与文件操作copyfileobj将fsrc文件内容复制至fdst文件，length为fsrc每次读取的长度，用做缓冲区大小 完整语法： 1copyfileobj(">
+<meta property="og:description" content="前言shutil模块提供了一系列对文件和文件集合的高阶操作。 特别是提供了一些支持文件拷贝和删除的函数。  即便是高阶文件拷贝函数 ([shutil.copy()], [shutil.copy2()]也无法拷贝所有的文件元数据。  文件夹与文件操作copyfileobj将fsrc文件内容复制至fdst文件，length为fsrc每次读取的长度，用做缓冲区大小 完整语法： copyfileobj(f">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2022-01-24T10:24:00.000Z">
 <meta property="article:modified_time" content="2022-10-30T11:33:28.759Z">
 <meta property="article:author" content="东东">
 <meta property="article:tag" content="python">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  
-  <title>对文件的高阶操作-shutil库 - 东东的小黑盒</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"www.ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d127e1152974a852668e3a1a501484a6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"IMeE3F1rC4AekEBlbNdeLTHy-MdYXbMMI","app_key":"s9vNqX5iIbtvrbvvcoA6Ozmc","server_url":"https://imee3f1r.api.lncldglobal.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png"><link rel="canonical" href="https://www.ankia.top/%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E9%AB%98%E9%98%B6%E6%93%8D%E4%BD%9C-shutil%E5%BA%93"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d127e1152974a852668e3a1a501484a6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
     }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '对文件的高阶操作-shutil库',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-30 19:33:28'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-  
-    <!-- Baidu Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?d127e1152974a852668e3a1a501484a6";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
-    </script>
+    }
   
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
-
-  
-
-  
-
-  
-
-  
-
-  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-  
-
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Ankia</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('https://s2.loli.net/2022/11/05/4ycWTG5OSrqJKEp.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="对文件的高阶操作-shutil库"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-01-24 18:24" pubdate>
-          2022年1月24日 晚上
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          5.6k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          26 分钟
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">对文件的高阶操作-shutil库</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>shutil模块提供了一系列对文件和文件集合的高阶操作。 特别是提供了一些支持文件拷贝和删除的函数。</p>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2022/11/05/zxaDBrmY6HWKPet.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">东东的小黑盒</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">对文件的高阶操作-shutil库</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-01-24T10:24:00.000Z" title="发表于 2022-01-24 18:24:00">2022-01-24</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">经验总结</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/">技术知识</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span></div></div></div><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>shutil模块提供了一系列对文件和文件集合的高阶操作。 特别是提供了一些支持文件拷贝和删除的函数。</p>
 <blockquote>
 <p>即便是高阶文件拷贝函数 ([<code>shutil.copy()</code>], [<code>shutil.copy2()</code>]也无法拷贝所有的文件元数据。</p>
 </blockquote>
 <h1 id="文件夹与文件操作"><a href="#文件夹与文件操作" class="headerlink" title="文件夹与文件操作"></a>文件夹与文件操作</h1><h2 id="copyfileobj"><a href="#copyfileobj" class="headerlink" title="copyfileobj"></a>copyfileobj</h2><p>将fsrc文件内容复制至fdst文件，length为fsrc每次读取的长度，用做缓冲区大小</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">copyfileobj(fsrc, fdst, length=<span class="hljs-number">16</span>\*<span class="hljs-number">1024</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">copyfileobj(fsrc, fdst, length=<span class="number">16</span>\*<span class="number">1024</span>)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>fsrc： 源文件</li>
 <li>fdst： 复制至fdst文件</li>
 <li>length： 缓冲区大小，即fsrc每次读取的长度</li>
 </ul>
-<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs kotlin"><span class="hljs-keyword">import</span> shutil<br>f1 = <span class="hljs-keyword">open</span>(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-string">&quot;r&quot;</span>)<br>f2 = <span class="hljs-keyword">open</span>(<span class="hljs-string">&quot;file_copy.txt&quot;</span>,<span class="hljs-string">&quot;a+&quot;</span>)<br>shutil.copyfileobj(f1,f2,length=<span class="hljs-number">1024</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil</span><br><span class="line">f1 = open(&quot;file.txt&quot;,&quot;r&quot;)</span><br><span class="line">f2 = open(&quot;file_copy.txt&quot;,&quot;a+&quot;)</span><br><span class="line">shutil.copyfileobj(f1,f2,length=1024)</span><br></pre></td></tr></table></figure>
 
 <h2 id="copyfile"><a href="#copyfile" class="headerlink" title="copyfile"></a>copyfile</h2><p>将src文件内容复制至dst文件</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">copyfile(src, dst[,follow_symlinks])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">copyfile(src, dst[,follow_symlinks])</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>src： 源文件路径</li>
 <li>dst： 复制至dst文件，若dst文件不存在，将会生成一个dst文件；若存在将会被覆盖</li>
 <li>follow_symlinks：设置为True时，若src为软连接，则当成文件复制；如果设置为False，复制软连接。默认为True。Python3新增参数</li>
 </ul>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> shutil<br><span class="hljs-title">shutil</span>.copyfile(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-string">&quot;file_copy.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil</span><br><span class="line">shutil.copyfile(&quot;file.txt&quot;,&quot;file_copy.txt&quot;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="copymode"><a href="#copymode" class="headerlink" title="copymode"></a>copymode</h2><p>将src文件权限复制至dst文件。文件内容，所有者和组不受影响</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">copymode(src, dst[,follow_symlinks])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">copymode(src, dst[,follow_symlinks])</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>src： 源文件路径</li>
 <li>dst： 将权限复制至dst文件，dst路径必须是真实的路径，并且文件必须存在，否则将会报文件找不到错误</li>
 <li>follow_symlinks：设置为False时，src, dst皆为软连接，可以复制软连接权限，如果设置为True，则当成普通文件复制权限。默认为True。Python3新增参数</li>
 </ul>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> shutil<br><span class="hljs-title">shutil</span>.copymode(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-string">&quot;file_copy.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil</span><br><span class="line">shutil.copymode(&quot;file.txt&quot;,&quot;file_copy.txt&quot;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="copystat"><a href="#copystat" class="headerlink" title="copystat"></a>copystat</h2><p>将权限，上次访问时间，上次修改时间以及src的标志复制到dst。文件内容，所有者和组不受影响</p>
 <p>完整语法:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">copystat(src, dst[,follow_symlinks])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">copystat(src, dst[,follow_symlinks])</span><br></pre></td></tr></table></figure>
 <ul>
 <li>src： 源文件路径</li>
 <li>dst： 将权限复制至dst文件，dst路径必须是真实的路径，并且文件必须存在，否则将会报文件找不到错误</li>
 <li>follow_symlinks：设置为False时，src, dst皆为软连接，可以复制软连接权限、上次访问时间，上次修改时间以及src的标志，如果设置为True，则当成普通文件复制权限。默认为True。Python3新增参数</li>
 </ul>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs elm"><span class="hljs-keyword">import</span> shutil<br><span class="hljs-title">shutil</span>.copystat(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-string">&quot;file_copy.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil</span><br><span class="line">shutil.copystat(&quot;file.txt&quot;,&quot;file_copy.txt&quot;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="copy"><a href="#copy" class="headerlink" title="copy"></a>copy</h2><p>将文件src复制至dst。dst可以是个目录，会在该目录下创建与src同名的文件，若该目录下存在同名文件，将会报错提示已经存在同名文件。权限会被一并复制。本质是先后调用了copyfile与copymode而已</p>
 <p>完整语法:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">copy(src, dst[,follow_symlinks])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">copy(src, dst[,follow_symlinks])</span><br></pre></td></tr></table></figure>
 <ul>
 <li>src：源文件路径</li>
 <li>dst：复制至dst文件夹或文件</li>
 <li>follow_symlinks：设置为False时，src, dst皆为软连接，可以复制软连接权限，如果设置为True，则当成普通文件复制权限。默认为True。Python3新增参数</li>
 </ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua">improt shutil,<span class="hljs-built_in">os</span><br>shutil.copy(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-string">&quot;file_copy.txt&quot;</span>)<br># 或者<br>shutil.copy(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;copy&quot;</span>))<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">improt shutil,os</span><br><span class="line">shutil.copy(&quot;file.txt&quot;,&quot;file_copy.txt&quot;)</span><br><span class="line"># 或者</span><br><span class="line">shutil.copy(&quot;file.txt&quot;,os.path.join(os.getcwd(),&quot;copy&quot;))</span><br></pre></td></tr></table></figure>
 
 <h2 id="copy2"><a href="#copy2" class="headerlink" title="copy2"></a>copy2</h2><p>将文件src复制至dst。dst可以是个目录，会在该目录下创建与src同名的文件，若该目录下存在同名文件，将会报错提示已经存在同名文件。权限、上次访问时间、上次修改时间和src的标志会一并复制至dst。本质是先后调用了copyfile与copystat方法而已</p>
 <p>完整语法:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">copy2(src, dst[,follow_symlinks])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">copy2(src, dst[,follow_symlinks])</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>src：源文件路径</li>
 <li>dst：复制至dst文件夹或文件</li>
 <li>follow_symlinks：设置为False时，src, dst皆为软连接，可以复制软连接权限、上次访问时间，上次修改时间以及src的标志，如果设置为True，则当成普通文件复制权限。默认为True。Python3新增参数</li>
 </ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua">improt shutil,<span class="hljs-built_in">os</span><br>shutil.copy2(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-string">&quot;file_copy.txt&quot;</span>)<br># 或者<br>shutil.copy2(<span class="hljs-string">&quot;file.txt&quot;</span>,<span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;copy&quot;</span>))<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">improt shutil,os</span><br><span class="line">shutil.copy2(&quot;file.txt&quot;,&quot;file_copy.txt&quot;)</span><br><span class="line"># 或者</span><br><span class="line">shutil.copy2(&quot;file.txt&quot;,os.path.join(os.getcwd(),&quot;copy&quot;))</span><br></pre></td></tr></table></figure>
 
 <h2 id="ignore-patterns"><a href="#ignore-patterns" class="headerlink" title="ignore_patterns"></a>ignore_patterns</h2><p>忽略模式，用于配合<code>copytree()</code>方法，传递文件将会被忽略，不会被拷贝</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">ignore_patterns(patterns)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">ignore_patterns(patterns)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>patterns：文件名称，元组</li>
 </ul>
 <h2 id="copytree"><a href="#copytree" class="headerlink" title="copytree"></a>copytree</h2><p>拷贝文档树，将src文件夹里的所有内容拷贝至dst文件夹</p>
 <p>完整语法:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">copytree(src,dst[,symlinks=<span class="hljs-literal">False</span>,ignore=<span class="hljs-literal">None</span>,copy_function=copy2,ignore_dangling_symlinks=false])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">copytree(src,dst[,symlinks=<span class="literal">False</span>,ignore=<span class="literal">None</span>,copy_function=copy2,ignore_dangling_symlinks=false])</span><br></pre></td></tr></table></figure>
 <ul>
 <li>src：源文件夹</li>
 <li>dst：复制至dst文件夹，该文件夹会自动创建，需保证此文件夹不存在，否则将报错</li>
@@ -391,501 +233,135 @@
 <li>copy_function：拷贝文件的方式，可以传入一个可执行的处理函数，默认为copy2，Python3新增参数</li>
 <li>ignore_dangling_symlinks：sysmlinks设置为False时，拷贝指向文件已删除的软连接时，将会报错，如果想消除这个异常，可以设置此值为True。默认为False,Python3新增参数</li>
 </ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua">import shutil,<span class="hljs-built_in">os</span><br>folder1 = <span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;aaa&quot;</span>)<br># bbb与ccc文件夹都可以不存在,会自动创建<br>folder2 = <span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;bbb&quot;</span>,<span class="hljs-string">&quot;ccc&quot;</span>)<br># 将<span class="hljs-string">&quot;abc.txt&quot;</span>,<span class="hljs-string">&quot;bcd.txt&quot;</span>忽略，不复制<br>shutil.copytree(folder1,folder2,ignore=shutil.ignore_patterns(<span class="hljs-string">&quot;abc.txt&quot;</span>,<span class="hljs-string">&quot;bcd.txt&quot;</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil,os</span><br><span class="line">folder1 = os.path.join(os.getcwd(),&quot;aaa&quot;)</span><br><span class="line"># bbb与ccc文件夹都可以不存在,会自动创建</span><br><span class="line">folder2 = os.path.join(os.getcwd(),&quot;bbb&quot;,&quot;ccc&quot;)</span><br><span class="line"># 将&quot;abc.txt&quot;,&quot;bcd.txt&quot;忽略，不复制</span><br><span class="line">shutil.copytree(folder1,folder2,ignore=shutil.ignore_patterns(&quot;abc.txt&quot;,&quot;bcd.txt&quot;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="rmtree"><a href="#rmtree" class="headerlink" title="rmtree"></a>rmtree</h2><p>移除文档树，将文件夹目录删除</p>
 <p>完整语法:</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">rmtree(path, ignore_errors=<span class="hljs-literal">False</span>, onerror=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">rmtree(path, ignore_errors=<span class="literal">False</span>, onerror=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>ignore_errors：是否忽略错误，默认False</li>
 <li>onerror：定义错误处理函数，需传递一个可执行的处理函数，该处理函数接收三个参数：函数、路径和excinfo</li>
 </ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs lua">import shutil,<span class="hljs-built_in">os</span><br>folder1 = <span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;aaa&quot;</span>)<br>shutil.rmtree(folder1)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil,os</span><br><span class="line">folder1 = os.path.join(os.getcwd(),&quot;aaa&quot;)</span><br><span class="line">shutil.rmtree(folder1)</span><br></pre></td></tr></table></figure>
 
 <h2 id="move"><a href="#move" class="headerlink" title="move"></a>move</h2><p>将src移动至dst目录下。若dst目录不存在，则效果等同于src改名为dst。若dst目录存在，将会把src文件夹的所有内容移动至该目录下面</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">move(src, dst[,copy_function])<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">move(src, dst[,copy_function])</span><br></pre></td></tr></table></figure>
 <ul>
 <li>src：源文件夹或文件</li>
 <li>dst：移动至dst文件夹，或将文件改名为dst文件。如果src为文件夹，而dst为文件将会报错</li>
 <li>copy_function：拷贝文件的方式，可以传入一个可执行的处理函数。默认为copy2，Python3新增参数</li>
 </ul>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> shutil,os<br># 示例一，将src文件夹移动至dst文件夹下面，如果bbb文件夹不存在，则变成了重命名操作<br>folder1 = os.path.<span class="hljs-keyword">join</span>(os.getcwd(),&quot;aaa&quot;)<br>folder2 = os.path.<span class="hljs-keyword">join</span>(os.getcwd(),&quot;bbb&quot;)<br>shutil.<span class="hljs-keyword">move</span>(folder1, folder2)<br># 示例二，将src文件移动至dst文件夹下面，如果bbb文件夹不存在，则变成了重命名操作<br>file1 = os.path.<span class="hljs-keyword">join</span>(os.getcwd(),&quot;aaa.txt&quot;)<br>folder2 = os.path.<span class="hljs-keyword">join</span>(os.getcwd(),&quot;bbb&quot;)<br>shutil.<span class="hljs-keyword">move</span>(file1, folder2)<br># 示例三，将src文件重命名为dst文件(dst文件存在，将会覆盖)<br>file1 = os.path.<span class="hljs-keyword">join</span>(os.getcwd(),&quot;aaa.txt&quot;)<br>file2 = os.path.<span class="hljs-keyword">join</span>(os.getcwd(),&quot;bbb.txt&quot;)<br>shutil.<span class="hljs-keyword">move</span>(file1, file2)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil,os</span><br><span class="line"># 示例一，将src文件夹移动至dst文件夹下面，如果bbb文件夹不存在，则变成了重命名操作</span><br><span class="line">folder1 = os.path.join(os.getcwd(),&quot;aaa&quot;)</span><br><span class="line">folder2 = os.path.join(os.getcwd(),&quot;bbb&quot;)</span><br><span class="line">shutil.move(folder1, folder2)</span><br><span class="line"># 示例二，将src文件移动至dst文件夹下面，如果bbb文件夹不存在，则变成了重命名操作</span><br><span class="line">file1 = os.path.join(os.getcwd(),&quot;aaa.txt&quot;)</span><br><span class="line">folder2 = os.path.join(os.getcwd(),&quot;bbb&quot;)</span><br><span class="line">shutil.move(file1, folder2)</span><br><span class="line"># 示例三，将src文件重命名为dst文件(dst文件存在，将会覆盖)</span><br><span class="line">file1 = os.path.join(os.getcwd(),&quot;aaa.txt&quot;)</span><br><span class="line">file2 = os.path.join(os.getcwd(),&quot;bbb.txt&quot;)</span><br><span class="line">shutil.move(file1, file2)</span><br></pre></td></tr></table></figure>
 
 <h2 id="disk-usage"><a href="#disk-usage" class="headerlink" title="disk_usage"></a>disk_usage</h2><p>获取当前目录所在硬盘使用情况。Python3新增方法<br>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">disk_usage(path)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">disk_usage(path)</span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>path：文件夹或文件路径。windows中必须是文件夹路径，在linux中可以是文件路径和文件夹路径</li>
 </ul>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs routeros">import shutil.os<br>path = os.path.join(os.getcwd(),<span class="hljs-string">&quot;aaa&quot;</span>)<br><span class="hljs-built_in">info</span> = shutil.disk_usage(path)<br><span class="hljs-built_in">print</span>(info)   # usage(<span class="hljs-attribute">total</span>=95089164288, <span class="hljs-attribute">used</span>=7953104896, <span class="hljs-attribute">free</span>=87136059392)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil.os</span><br><span class="line">path = os.path.join(os.getcwd(),&quot;aaa&quot;)</span><br><span class="line">info = shutil.disk_usage(path)</span><br><span class="line">print(info)   # usage(total=95089164288, used=7953104896, free=87136059392)</span><br></pre></td></tr></table></figure>
 
 <h2 id="chown"><a href="#chown" class="headerlink" title="chown"></a>chown</h2><p>修改路径指向的文件或文件夹的所有者或分组。Python3新增方法</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">chown(path, user=<span class="hljs-literal">None</span>, group=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">chown(path, user=<span class="literal">None</span>, group=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>path：路径</li>
 <li>user：所有者，传递user的值必须是真实的，否则将报错no such user</li>
 <li>group：分组，传递group的值必须是真实的，否则将报错no such group</li>
 </ul>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-keyword">import</span> shutil,os<br><span class="hljs-type">path</span> = os.path.<span class="hljs-keyword">join</span>(os.getcwd(),&quot;file.txt&quot;)<br>shutil.chown(<span class="hljs-type">path</span>,<span class="hljs-keyword">user</span>=&quot;root&quot;,<span class="hljs-keyword">group</span>=&quot;root&quot;)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil,os</span><br><span class="line">path = os.path.join(os.getcwd(),&quot;file.txt&quot;)</span><br><span class="line">shutil.chown(path,user=&quot;root&quot;,group=&quot;root&quot;)</span><br></pre></td></tr></table></figure>
 
 <h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>获取给定的cmd命令的可执行文件的路径。Python3新增方法</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">which(cmd, mode=os.F_OK | os.X_OK, path=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
-<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gradle"><span class="hljs-keyword">import</span> shutil<br>info = shutil.which(<span class="hljs-string">&quot;python3&quot;</span>)<br><span class="hljs-keyword">print</span>(info)   # <span class="hljs-regexp">/usr/</span>bin/python3<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">which(cmd, mode=os.F_OK | os.X_OK, path=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil</span><br><span class="line">info = shutil.which(&quot;python3&quot;)</span><br><span class="line">print(info)   # /usr/bin/python3</span><br></pre></td></tr></table></figure>
 
 <h1 id="归档操作"><a href="#归档操作" class="headerlink" title="归档操作"></a>归档操作</h1><p>shutil还提供了创建和读取压缩和存档文件的高级使用程序。内部实现主要依靠的是zipfile和tarfile模块</p>
 <h2 id="make-archive"><a href="#make-archive" class="headerlink" title="make_archive"></a>make_archive</h2><p>生成压缩文件</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">make_archive(base_name, <span class="hljs-built_in">format</span>, root\_<span class="hljs-built_in">dir</span>, …)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">make_archive(base_name, <span class="built_in">format</span>, root\_<span class="built_in">dir</span>, …)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>base_name：压缩文件的文件名，不允许有扩展名，因为会根据压缩格式生成相应的扩展名</li>
 <li>format：压缩格式</li>
 <li>root_dir：将制定文件夹进行压缩</li>
 </ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs lua">import shutil,<span class="hljs-built_in">os</span><br>base_name = <span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;aaa&quot;</span>)<br><span class="hljs-built_in">format</span> = <span class="hljs-string">&quot;zip&quot;</span><br>root_dir = <span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;aaa&quot;</span>)<br># 将会root_dir文件夹下的内容进行压缩，生成一个aaa.zip文件<br>shutil.make_archive(base_name, <span class="hljs-built_in">format</span>, root_dir)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil,os</span><br><span class="line">base_name = os.path.join(os.getcwd(),&quot;aaa&quot;)</span><br><span class="line">format = &quot;zip&quot;</span><br><span class="line">root_dir = os.path.join(os.getcwd(),&quot;aaa&quot;)</span><br><span class="line"># 将会root_dir文件夹下的内容进行压缩，生成一个aaa.zip文件</span><br><span class="line">shutil.make_archive(base_name, format, root_dir)</span><br></pre></td></tr></table></figure>
 
 <h1 id="get-archive-formats"><a href="#get-archive-formats" class="headerlink" title="get_archive_formats()"></a>get_archive_formats()</h1><p>获取支持的压缩文件格式。目前支持的有：tar、zip、gztar、bztar。在Python3还多支持一种格式xztar</p>
 <h1 id="unpack-archive"><a href="#unpack-archive" class="headerlink" title="unpack_archive"></a>unpack_archive</h1><p>解压操作。Python3新增方法</p>
 <p>完整语法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">unpack_archive(filename, extract_dir=<span class="hljs-literal">None</span>, <span class="hljs-built_in">format</span>=<span class="hljs-literal">None</span>)<br></code></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">unpack_archive(filename, extract_dir=<span class="literal">None</span>, <span class="built_in">format</span>=<span class="literal">None</span>)</span><br></pre></td></tr></table></figure>
 <ul>
 <li>filename：文件路径</li>
 <li>extract_dir：解压至的文件夹路径。文件夹可以不存在，会自动生成</li>
 <li>format：解压格式，默认为None，会根据扩展名自动选择解压格式</li>
 </ul>
-<figure class="highlight lua"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs lua">import shutil,<span class="hljs-built_in">os</span><br>zip_path = <span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;aaa.zip&quot;</span>)<br>extract_dir = <span class="hljs-built_in">os</span>.<span class="hljs-built_in">path</span>.join(<span class="hljs-built_in">os</span>.getcwd(),<span class="hljs-string">&quot;aaa&quot;</span>)<br>shutil.unpack_archive(zip_path, extract_dir)<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">import shutil,os</span><br><span class="line">zip_path = os.path.join(os.getcwd(),&quot;aaa.zip&quot;)</span><br><span class="line">extract_dir = os.path.join(os.getcwd(),&quot;aaa&quot;)</span><br><span class="line">shutil.unpack_archive(zip_path, extract_dir)</span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.ankia.top">东东</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.ankia.top/%E5%AF%B9%E6%96%87%E4%BB%B6%E7%9A%84%E9%AB%98%E9%98%B6%E6%93%8D%E4%BD%9C-shutil%E5%BA%93.html">https://www.ankia.top/对文件的高阶操作-shutil库.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.ankia.top" target="_blank">东东的小黑盒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/python/">python</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E3%80%8A%E6%80%92%E3%80%8B.html"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">信任</div></div></a></div><div class="next-post pull-right"><a href="/openwrt%20cloudflare%E7%9A%84ddns%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85.html"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">openwrt cloudflare的ddns插件安装</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/comfile%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" title="comfile使用指南"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">comfile使用指南</div></div></a></div><div><a href="/excel2cfg%E5%B7%A5%E5%85%B7.html" title="excel转换cfg配置工具"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">excel转换cfg配置工具</div></div></a></div><div><a href="/obsidian%E7%AC%94%E8%AE%B0%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88.html" title="obsidian笔记同步方案"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-23</div><div class="title">obsidian笔记同步方案</div></div></a></div><div><a href="/python%20subprocess%E5%BA%93.html" title="python subprocess库"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-13</div><div class="title">python subprocess库</div></div></a></div><div><a href="/python%20%E8%AF%BB%E5%86%99excel.html" title="python 读写excel"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-23</div><div class="title">python 读写excel</div></div></a></div><div><a href="/python%E5%86%85%E7%BD%AE%E5%87%BD%E6%95%B0.html" title="python内置函数"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-08-13</div><div class="title">python内置函数</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%A4%B9%E4%B8%8E%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">2.</span> <span class="toc-text">文件夹与文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#copyfileobj"><span class="toc-number">2.1.</span> <span class="toc-text">copyfileobj</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copyfile"><span class="toc-number">2.2.</span> <span class="toc-text">copyfile</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copymode"><span class="toc-number">2.3.</span> <span class="toc-text">copymode</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copystat"><span class="toc-number">2.4.</span> <span class="toc-text">copystat</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copy"><span class="toc-number">2.5.</span> <span class="toc-text">copy</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copy2"><span class="toc-number">2.6.</span> <span class="toc-text">copy2</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ignore-patterns"><span class="toc-number">2.7.</span> <span class="toc-text">ignore_patterns</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#copytree"><span class="toc-number">2.8.</span> <span class="toc-text">copytree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#rmtree"><span class="toc-number">2.9.</span> <span class="toc-text">rmtree</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#move"><span class="toc-number">2.10.</span> <span class="toc-text">move</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#disk-usage"><span class="toc-number">2.11.</span> <span class="toc-text">disk_usage</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chown"><span class="toc-number">2.12.</span> <span class="toc-text">chown</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#which"><span class="toc-number">2.13.</span> <span class="toc-text">which</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BD%92%E6%A1%A3%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">归档操作</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#make-archive"><span class="toc-number">3.1.</span> <span class="toc-text">make_archive</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#get-archive-formats"><span class="toc-number">4.</span> <span class="toc-text">get_archive_formats()</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#unpack-archive"><span class="toc-number">5.</span> <span class="toc-text">unpack_archive</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 东东</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
 
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="category-chain-item">经验总结</a>
-  
-  
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://talk.ankia.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
 
-      </span>
-    
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%9F%A5%E8%AF%86/" class="category-chain-item">技术知识</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/python/">#python</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>对文件的高阶操作-shutil库</div>
-      <div>https://www.ankia.top/对文件的高阶操作-shutil库.html</div>
-    </div>
-    <div class="license-meta">
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年1月24日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/%E3%80%8A%E6%80%92%E3%80%8B.html" title="信任">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">信任</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/openwrt%20cloudflare%E7%9A%84ddns%E6%8F%92%E4%BB%B6%E5%AE%89%E8%A3%85.html" title="openwrt cloudflare的ddns插件安装">
-                        <span class="hidden-mobile">openwrt cloudflare的ddns插件安装</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="twikoo"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.7/twikoo.all.min.js', function() {
-        var options = Object.assign(
-          {"envId":"https://talk.ankia.top/","region":"ap-shanghai","path":"window.location.pathname"},
-          {
-            el: '#twikoo',
-            path: 'window.location.pathname',
-            onCommentLoaded: function() {
-              var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
-              Fluid.plugins.imageCaption(imgSelector);
-              Fluid.plugins.fancyBox(imgSelector);
-            }
-          }
-        )
-        twikoo.init(options)
-      });
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://talk.ankia.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
     });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+  }
 
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
+  const runFn = () => {
+    init()
     
+  }
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <div>
-      <span id="timeDate">载入天数...</span>
-      <span id="times">载入时分秒...</span>
-      <script>
-      var now = new Date();
-      function createtime(){
-          var grt= new Date("11/11/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24;
-          dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-          hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){
-              hnum = "0" + hnum;
-          }
-          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes);
-          if(String(mnum).length ==1 ){
-                    mnum = "0" + mnum;
-          }
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds);
-          if(String(snum).length ==1 ){
-                    snum = "0" + snum;
-          }
-          document.getElementById("timeDate").innerHTML = "🚀  已运行："+dnum+"&nbsp天";  //此次自定义显示内容
-          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-      }
-      setInterval("createtime()",250);
-      </script>
-    </div>
-    <div>｜©2021-2022<a href="/">｜东东的小黑盒｜</a></div>
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <span>&</span>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
-    </div>
-    
-  </div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
     }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script defer src="/js/leancloud.js" ></script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-</body>
-</html>
+  }
+})()</script></div></div></body></html>

@@ -1,760 +1,238 @@
-
-
-<!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
-<head>
-  <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png">
-  <link rel="icon" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="东东">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="前言这两天正好有扫描文件的需要，而办公室里的扫描仪只能扫描A4纸大小的文件，所以有很多局限性。而单位有一台Sharp DX-2508NC打印机，可以满足大纸张的扫描需要，但是据其他同事说，扫描功能坏了，不能用了。但我想着这玩意儿应该没这么容易坏吧，于是折腾了两天，绕了许多弯路，最终解决问题。 折腾记录一、怀疑是扫描软件的问题这台打印机具有扫描功能，所以很自然的想到，既然已经安装了打印机的驱动，打印">
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Sharp DX-2058NC的折腾记录 | 东东的小黑盒</title><meta name="author" content="东东"><meta name="copyright" content="东东"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言这两天正好有扫描文件的需要，而办公室里的扫描仪只能扫描A4纸大小的文件，所以有很多局限性。而单位有一台Sharp DX-2508NC打印机，可以满足大纸张的扫描需要，但是据其他同事说，扫描功能坏了，不能用了。但我想着这玩意儿应该没这么容易坏吧，于是折腾了两天，绕了许多弯路，最终解决问题。 折腾记录一、怀疑是扫描软件的问题这台打印机具有扫描功能，所以很自然的想到，既然已经安装了打印机的驱动，打印">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Sharp DX-2058NC的折腾记录">
 <meta property="og:url" content="https://www.ankia.top/Sharp%20DX-2058NC%E7%9A%84%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95.html">
 <meta property="og:site_name" content="东东的小黑盒">
 <meta property="og:description" content="前言这两天正好有扫描文件的需要，而办公室里的扫描仪只能扫描A4纸大小的文件，所以有很多局限性。而单位有一台Sharp DX-2508NC打印机，可以满足大纸张的扫描需要，但是据其他同事说，扫描功能坏了，不能用了。但我想着这玩意儿应该没这么容易坏吧，于是折腾了两天，绕了许多弯路，最终解决问题。 折腾记录一、怀疑是扫描软件的问题这台打印机具有扫描功能，所以很自然的想到，既然已经安装了打印机的驱动，打印">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/BD1eLAK8cs9oVad.png">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/nKgi4TpEuVbfvAy.png">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/HAM6ipoUWL4NPDm.png">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/oHYslQupWqIGN9U.png">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/4bwViKG23CdAZHg.png">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/sFSz58rX6ModuqT.png">
-<meta property="og:image" content="https://s2.loli.net/2022/11/05/XhqSTwJzP1bytsM.png">
 <meta property="article:published_time" content="2022-03-04T10:17:00.000Z">
 <meta property="article:modified_time" content="2022-11-05T15:59:37.128Z">
 <meta property="article:author" content="东东">
 <meta property="article:tag" content="打印机">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/11/05/BD1eLAK8cs9oVad.png">
-  
-  
-  
-  <title>Sharp DX-2058NC的折腾记录 - 东东的小黑盒</title>
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
-
-
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
-
-  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
-
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-<!-- Do not modify the link that theme dependent icons -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
-
-
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
-  
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
-
-
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"www.ankia.top","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":"d127e1152974a852668e3a1a501484a6","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":"IMeE3F1rC4AekEBlbNdeLTHy-MdYXbMMI","app_key":"s9vNqX5iIbtvrbvvcoA6Ozmc","server_url":"https://imee3f1r.api.lncldglobal.com","path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
-
-    if (CONFIG.web_analytics.follow_dnt) {
-      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
-      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+<meta name="twitter:card" content="summary"><link rel="shortcut icon" href="https://s2.loli.net/2022/11/05/yp5VUK8MtkFDoOd.png"><link rel="canonical" href="https://www.ankia.top/Sharp%20DX-2058NC%E7%9A%84%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d127e1152974a852668e3a1a501484a6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
     }
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-  
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Sharp DX-2058NC的折腾记录',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-11-05 23:59:37'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-  
-    <!-- Baidu Analytics -->
-    <script async>
-      if (!Fluid.ctx.dnt) {
-        var _hmt = _hmt || [];
-        (function() {
-          var hm = document.createElement("script");
-          hm.src = "https://hm.baidu.com/hm.js?d127e1152974a852668e3a1a501484a6";
-          var s = document.getElementsByTagName("script")[0];
-          s.parentNode.insertBefore(hm, s);
-        })();
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
       }
-    </script>
+    }
   
-
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
   
-
-  
-
-  
-
-  
-
-  
-
-  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-  
-
-
-
-  
-<meta name="generator" content="Hexo 6.3.0"></head>
-
-
-<body>
-  
-
-  <header>
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-
-<div class="header-inner" style="height: 70vh;">
-  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Ankia</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-          
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-</nav>
-
-  
-
-<div id="banner" class="banner" parallax=true
-     style="background: url('https://s2.loli.net/2022/11/05/4ycWTG5OSrqJKEp.png') no-repeat center center; background-size: cover;">
-  <div class="full-bg-img">
-    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-      <div class="banner-text text-center fade-in-up">
-        <div class="h2">
-          
-            <span id="subtitle" data-typed-text="Sharp DX-2058NC的折腾记录"></span>
-          
-        </div>
-
-        
-          
-  <div class="mt-3">
-    
-    
-      <span class="post-meta">
-        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-03-04 18:17" pubdate>
-          2022年3月4日 晚上
-        </time>
-      </span>
-    
-  </div>
-
-  <div class="mt-1">
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-chart"></i>
-        
-          1.1k 字
-        
-      </span>
-    
-
-    
-      <span class="post-meta mr-2">
-        <i class="iconfont icon-clock-fill"></i>
-        
-        
-        
-          5 分钟
-        
-      </span>
-    
-
-    
-    
-  </div>
-
-
-        
-      </div>
-
-      
-    </div>
-  </div>
-</div>
-
-</div>
-
-  </header>
-
-  <main>
-    
-      
-
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-
-    </div>
-
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Sharp DX-2058NC的折腾记录</h1>
-            
-            
-              <div class="markdown-body">
-                
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这两天正好有扫描文件的需要，而办公室里的扫描仪只能扫描A4纸大小的文件，所以有很多局限性。而单位有一台Sharp DX-2508NC打印机，可以满足大纸张的扫描需要，但是据其他同事说，扫描功能坏了，不能用了。但我想着这玩意儿应该没这么容易坏吧，于是折腾了两天，绕了许多弯路，最终解决问题。</p>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2022/11/05/zxaDBrmY6HWKPet.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">33</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">21</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">5</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">东东的小黑盒</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Sharp DX-2058NC的折腾记录</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-03-04T10:17:00.000Z" title="发表于 2022-03-04 18:17:00">2022-03-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">经验总结</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">858</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span></div></div></div><article class="post-content" id="article-container"><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>这两天正好有扫描文件的需要，而办公室里的扫描仪只能扫描A4纸大小的文件，所以有很多局限性。而单位有一台Sharp DX-2508NC打印机，可以满足大纸张的扫描需要，但是据其他同事说，扫描功能坏了，不能用了。但我想着这玩意儿应该没这么容易坏吧，于是折腾了两天，绕了许多弯路，最终解决问题。</p>
 <h1 id="折腾记录"><a href="#折腾记录" class="headerlink" title="折腾记录"></a>折腾记录</h1><h2 id="一、怀疑是扫描软件的问题"><a href="#一、怀疑是扫描软件的问题" class="headerlink" title="一、怀疑是扫描软件的问题"></a>一、怀疑是扫描软件的问题</h2><p>这台打印机具有扫描功能，所以很自然的想到，既然已经安装了打印机的驱动，打印正常，那么扫描应该也能用吧。<br>于是打开Acrobat，选择从扫描仪创建PDF，但是很遗憾找不到Sharp的扫描仪。<br>以为是扫描软件的问题，于是下载了其他扫描软件，皆失败。</p>
-<h2 id="二、怀疑是驱动不完整"><a href="#二、怀疑是驱动不完整" class="headerlink" title="二、怀疑是驱动不完整"></a>二、怀疑是驱动不完整</h2><p>或许是我只安装了打印模块，没有安装扫描模块？我这么想。于是上夏普官网，找到SharpDX-2508型号，一看，<br><img src="https://s2.loli.net/2022/11/05/BD1eLAK8cs9oVad.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<h2 id="二、怀疑是驱动不完整"><a href="#二、怀疑是驱动不完整" class="headerlink" title="二、怀疑是驱动不完整"></a>二、怀疑是驱动不完整</h2><p>或许是我只安装了打印模块，没有安装扫描模块？我这么想。于是上夏普官网，找到SharpDX-2508型号，一看，<br><img src="https://s2.loli.net/2022/11/05/BD1eLAK8cs9oVad.png"></p>
 <p>DX-2508NC只有一种打印驱动，但是看到下面兄弟型号2008UC有一款TWAIN扫描驱动程序，想着兄弟型号的扫描驱动说不定也能用。<br>下载安装后，测试失败。</p>
-<h2 id="三、怀疑是后台配置出错"><a href="#三、怀疑是后台配置出错" class="headerlink" title="三、怀疑是后台配置出错"></a>三、怀疑是后台配置出错</h2><p>后来发现该设备具有网络扫描功能，于是登陆该设备后台，发现，其他同事已经尝试过了，不死心的我继续尝试。在后台中可看见有四种图像发送方式<br><img src="https://s2.loli.net/2022/11/05/nKgi4TpEuVbfvAy.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
-<h3 id="1-测试E-mail发送"><a href="#1-测试E-mail发送" class="headerlink" title="1.测试E-mail发送"></a>1.测试E-mail发送</h3><p>首先需要配置SMTP，在网络设置中，配置好使用的SMTP服务器，这里我用的是网易的服务器，配置好后连接测试通过。<br><img src="https://s2.loli.net/2022/11/05/HAM6ipoUWL4NPDm.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<h2 id="三、怀疑是后台配置出错"><a href="#三、怀疑是后台配置出错" class="headerlink" title="三、怀疑是后台配置出错"></a>三、怀疑是后台配置出错</h2><p>后来发现该设备具有网络扫描功能，于是登陆该设备后台，发现，其他同事已经尝试过了，不死心的我继续尝试。在后台中可看见有四种图像发送方式<br><img src="https://s2.loli.net/2022/11/05/nKgi4TpEuVbfvAy.png"></p>
+<h3 id="1-测试E-mail发送"><a href="#1-测试E-mail发送" class="headerlink" title="1.测试E-mail发送"></a>1.测试E-mail发送</h3><p>首先需要配置SMTP，在网络设置中，配置好使用的SMTP服务器，这里我用的是网易的服务器，配置好后连接测试通过。<br><img src="https://s2.loli.net/2022/11/05/HAM6ipoUWL4NPDm.png"></p>
 <p>之后在后台像其他邮箱发送测试页也成功。</p>
 <p>于是上机测试，在打印机的图像发送界面中选择发送的邮箱地址，点击发送，显示“寻找网络服务器失败”，邮箱中未收到扫描文件。</p>
-<h3 id="2-测试共享文件夹"><a href="#2-测试共享文件夹" class="headerlink" title="2.测试共享文件夹"></a>2.测试共享文件夹</h3><p>在局域网内的办公电脑上，创建了一个共享文件夹，将该地址填入打印机后台的地址簿中，配置如下:<br><img src="https://s2.loli.net/2022/11/05/oHYslQupWqIGN9U.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload>2.168.1.205”、“192.168.1.205&#x2F;打印共享”、“192.168.1.205\打印共享”，皆失败。</p>
+<h3 id="2-测试共享文件夹"><a href="#2-测试共享文件夹" class="headerlink" title="2.测试共享文件夹"></a>2.测试共享文件夹</h3><p>在局域网内的办公电脑上，创建了一个共享文件夹，将该地址填入打印机后台的地址簿中，配置如下:<br><img src="https://s2.loli.net/2022/11/05/oHYslQupWqIGN9U.png">2.168.1.205”、“192.168.1.205&#x2F;打印共享”、“192.168.1.205\打印共享”，皆失败。</p>
 <h3 id="3-其他方式"><a href="#3-其他方式" class="headerlink" title="3.其他方式"></a>3.其他方式</h3><p>之后测试了FTP、桌面等方式，也都不行。</p>
-<h2 id="四、找到解决办法"><a href="#四、找到解决办法" class="headerlink" title="四、找到解决办法"></a>四、找到解决办法</h2><p>在夏普官网的服务支持的下载专区中（就是之前下载驱动的地方）有个被我忽略的东西<br><img src="https://s2.loli.net/2022/11/05/4bwViKG23CdAZHg.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<h2 id="四、找到解决办法"><a href="#四、找到解决办法" class="headerlink" title="四、找到解决办法"></a>四、找到解决办法</h2><p>在夏普官网的服务支持的下载专区中（就是之前下载驱动的地方）有个被我忽略的东西<br><img src="https://s2.loli.net/2022/11/05/4bwViKG23CdAZHg.png"></p>
 <p>我下载了试试，发现这正是夏普官方的扫描软件。<br>按照文件中的流程将sharpdesk下载并安装好，打开软件，我发现扫描居然如此简单。</p>
 <ol>
 <li><p>打开软件，点击【工具】-【产品配置】-【网络扫描工具】</p>
 </li>
-<li><p>添加扫描仪<br><img src="https://s2.loli.net/2022/11/05/sFSz58rX6ModuqT.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<li><p>添加扫描仪<br><img src="https://s2.loli.net/2022/11/05/sFSz58rX6ModuqT.png"></p>
 </li>
-<li><p>然后新建一个地址，用于保存扫描文件。<br><img src="https://s2.loli.net/2022/11/05/XhqSTwJzP1bytsM.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
+<li><p>然后新建一个地址，用于保存扫描文件。<br><img src="https://s2.loli.net/2022/11/05/XhqSTwJzP1bytsM.png"></p>
 </li>
 </ol>
 <p>之后再打印机上选择我们刚才建立的地址，点击发送即可成功将扫描文件传输到我们设置的文件夹中。</p>
 <h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><p>正确的配置流程其实很简单，问题就在于不知道哪条道路是正确的，仅凭借以往的经验也很容易碰壁。所以还是需要多思考，验证各种可能性。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.ankia.top">东东</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.ankia.top/Sharp%20DX-2058NC%E7%9A%84%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95.html">https://www.ankia.top/Sharp DX-2058NC的折腾记录.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.ankia.top" target="_blank">东东的小黑盒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/">打印机</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/%E3%80%8A%E6%B6%88%E5%A4%B1%E7%9A%8413%E7%BA%A7%E5%8F%B0%E9%98%B6%E3%80%8B.html"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">我们都是无期徒刑</div></div></a></div><div class="next-post pull-right"><a href="/%E3%80%8A%E6%80%92%E3%80%8B.html"><img class="next-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">信任</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%8A%98%E8%85%BE%E8%AE%B0%E5%BD%95"><span class="toc-number">2.</span> <span class="toc-text">折腾记录</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%80%80%E7%96%91%E6%98%AF%E6%89%AB%E6%8F%8F%E8%BD%AF%E4%BB%B6%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">一、怀疑是扫描软件的问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E6%80%80%E7%96%91%E6%98%AF%E9%A9%B1%E5%8A%A8%E4%B8%8D%E5%AE%8C%E6%95%B4"><span class="toc-number">2.2.</span> <span class="toc-text">二、怀疑是驱动不完整</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%80%80%E7%96%91%E6%98%AF%E5%90%8E%E5%8F%B0%E9%85%8D%E7%BD%AE%E5%87%BA%E9%94%99"><span class="toc-number">2.3.</span> <span class="toc-text">三、怀疑是后台配置出错</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E6%B5%8B%E8%AF%95E-mail%E5%8F%91%E9%80%81"><span class="toc-number">2.3.1.</span> <span class="toc-text">1.测试E-mail发送</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E6%B5%8B%E8%AF%95%E5%85%B1%E4%BA%AB%E6%96%87%E4%BB%B6%E5%A4%B9"><span class="toc-number">2.3.2.</span> <span class="toc-text">2.测试共享文件夹</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%85%B6%E4%BB%96%E6%96%B9%E5%BC%8F"><span class="toc-number">2.3.3.</span> <span class="toc-text">3.其他方式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%89%BE%E5%88%B0%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95"><span class="toc-number">2.4.</span> <span class="toc-text">四、找到解决办法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">3.</span> <span class="toc-text">结语</span></a></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 东东</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
 
-                
-              </div>
-            
-            <hr/>
-            <div>
-              <div class="post-metas my-3">
-  
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
 
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="category-chain-item">经验总结</a>
-  
-  
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://talk.ankia.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
 
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E6%89%93%E5%8D%B0%E6%9C%BA/">#打印机</a>
-      
-    </div>
-  
-</div>
-
-
-              
-  
-
-  <div class="license-box my-3">
-    <div class="license-title">
-      <div>Sharp DX-2058NC的折腾记录</div>
-      <div>https://www.ankia.top/Sharp DX-2058NC的折腾记录.html</div>
-    </div>
-    <div class="license-meta">
-      
-      
-        <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年3月4日</div>
-        </div>
-      
-      
-      
-        <div class="license-meta-item">
-          <div>许可协议</div>
-          <div>
-            
-              
-              
-                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
-                    <i class="iconfont icon-by"></i>
-                  </span>
-                </a>
-              
-            
-          </div>
-        </div>
-      
-    </div>
-    <div class="license-icon iconfont"></div>
-  </div>
-
-
-
-              
-                <div class="post-prevnext my-3">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/%E3%80%8A%E6%B6%88%E5%A4%B1%E7%9A%8413%E7%BA%A7%E5%8F%B0%E9%98%B6%E3%80%8B.html" title="我们都是无期徒刑">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">我们都是无期徒刑</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/%E3%80%8A%E6%80%92%E3%80%8B.html" title="信任">
-                        <span class="hidden-mobile">信任</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-  <article id="comments" lazyload>
-    
-  <div id="twikoo"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#comments', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/twikoo/1.6.7/twikoo.all.min.js', function() {
-        var options = Object.assign(
-          {"envId":"https://talk.ankia.top/","region":"ap-shanghai","path":"window.location.pathname"},
-          {
-            el: '#twikoo',
-            path: 'window.location.pathname',
-            onCommentLoaded: function() {
-              var imgSelector = '#twikoo .tk-content img:not(.tk-owo-emotion)';
-              Fluid.plugins.imageCaption(imgSelector);
-              Fluid.plugins.fancyBox(imgSelector);
-            }
-          }
-        )
-        twikoo.init(options)
-      });
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://talk.ankia.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
     });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+  }
 
-
-  </article>
-
-
-          </article>
-        </div>
-      </div>
-    </div>
-
-    <div class="side-col d-none d-lg-block col-lg-2">
-      
-  <aside class="sidebar" style="margin-left: -1rem">
-    <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-
-
-  </aside>
-
-
-    </div>
-  </div>
-</div>
-
-
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-  
-
-
-
-
-
-
-
+  const runFn = () => {
+    init()
     
+  }
 
-    
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
-    
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
-    </div>
-  </div>
-</div>
-
-    
-
-    
-  </main>
-
-  <footer>
-    <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-    <div>
-      <span id="timeDate">载入天数...</span>
-      <span id="times">载入时分秒...</span>
-      <script>
-      var now = new Date();
-      function createtime(){
-          var grt= new Date("11/11/2021 00:00:00");//此处修改你的建站时间或者网站上线时间
-          now.setTime(now.getTime()+250);
-          days = (now - grt ) / 1000 / 60 / 60 / 24;
-          dnum = Math.floor(days);
-          hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum);
-          hnum = Math.floor(hours);
-          if(String(hnum).length ==1 ){
-              hnum = "0" + hnum;
-          }
-          minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
-          mnum = Math.floor(minutes);
-          if(String(mnum).length ==1 ){
-                    mnum = "0" + mnum;
-          }
-          seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
-          snum = Math.round(seconds);
-          if(String(snum).length ==1 ){
-                    snum = "0" + snum;
-          }
-          document.getElementById("timeDate").innerHTML = "🚀  已运行："+dnum+"&nbsp天";  //此次自定义显示内容
-          document.getElementById("times").innerHTML = hnum + "&nbsp小时&nbsp" + mnum + "&nbsp分&nbsp" + snum + "&nbsp秒";
-      }
-      setInterval("createtime()",250);
-      </script>
-    </div>
-    <div>｜©2021-2022<a href="/">｜东东的小黑盒｜</a></div>
-    <div>
-      <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a>
-      <span>&</span>
-      <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a>
-    </div>
-    
-  </div>
-
-  </footer>
-
-  <!-- Scripts -->
-  
-  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
-<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-
-  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var subtitle = document.getElementById('subtitle');
-      if (!subtitle || !typing) {
-        return;
-      }
-      var text = subtitle.getAttribute('data-typed-text');
-      
-        typing(text);
-      
-    })(window, document);
-  </script>
-
-
-
-
-  
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
-    var toc = jQuery('#toc');
-    if (toc.length === 0 || !window.tocbot) { return; }
-    var boardCtn = jQuery('#board-ctn');
-    var boardTop = boardCtn.offset().top;
-
-    window.tocbot.init(Object.assign({
-      tocSelector     : '#toc-body',
-      contentSelector : '.markdown-body',
-      linkClass       : 'tocbot-link',
-      activeLinkClass : 'tocbot-active-link',
-      listClass       : 'tocbot-list',
-      isCollapsedClass: 'tocbot-is-collapsed',
-      collapsibleClass: 'tocbot-is-collapsible',
-      scrollSmooth    : true,
-      includeTitleTags: true,
-      headingsOffset  : -boardTop,
-    }, CONFIG.toc));
-    if (toc.find('.toc-list-item').length > 0) {
-      toc.css('visibility', 'visible');
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
     }
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('tocbot' in window) {
-        tocbot.refresh();
-        var toc = jQuery('#toc');
-        if (toc.length === 0 || !tocbot) {
-          return;
-        }
-        if (toc.find('.toc-list-item').length > 0) {
-          toc.css('visibility', 'visible');
-        }
-      }
-    });
-  });
-</script>
-
-
-  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
-
-  <script>Fluid.plugins.codeWidget();</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
-    window.anchors.options = {
-      placement: CONFIG.anchorjs.placement,
-      visible  : CONFIG.anchorjs.visible
-    };
-    if (CONFIG.anchorjs.icon) {
-      window.anchors.options.icon = CONFIG.anchorjs.icon;
-    }
-    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-    var res = [];
-    for (var item of el) {
-      res.push('.markdown-body > ' + item.trim());
-    }
-    if (CONFIG.anchorjs.placement === 'left') {
-      window.anchors.options.class = 'anchorjs-link-left';
-    }
-    window.anchors.add(res.join(', '));
-
-    Fluid.events.registerRefreshCallback(function() {
-      if ('anchors' in window) {
-        anchors.removeAll();
-        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
-        var res = [];
-        for (var item of el) {
-          res.push('.markdown-body > ' + item.trim());
-        }
-        if (CONFIG.anchorjs.placement === 'left') {
-          anchors.options.class = 'anchorjs-link-left';
-        }
-        anchors.add(res.join(', '));
-      }
-    });
-  });
-</script>
-
-
-  
-<script>
-  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
-    Fluid.plugins.fancyBox();
-  });
-</script>
-
-
-  <script>Fluid.plugins.imageCaption();</script>
-
-  <script defer src="/js/leancloud.js" ></script>
-
-  <script  src="/js/local-search.js" ></script>
-
-
-
-
-
-<!-- 主题的启动项，将它保持在最底部 -->
-<!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
-
-
-  
-
-  <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
-  </noscript>
-</body>
-</html>
+  }
+})()</script></div></div></body></html>

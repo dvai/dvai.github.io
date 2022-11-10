@@ -2,6 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.ankia.top/about/index.html</loc>
+    
+    <lastmod>2022-11-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ankia.top/categories/index.html</loc>
+    
+    <lastmod>2022-11-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ankia.top/tags/index.html</loc>
+    
+    <lastmod>2022-11-10</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ankia.top/%E4%B8%80%E8%82%A1%E9%9A%BE%E9%97%BB%E7%9A%84%E6%B0%94%E5%91%B3.html</loc>
     
     <lastmod>2022-11-10</lastmod>
@@ -149,15 +176,6 @@
     <loc>https://www.ankia.top/%E4%BD%BF%E7%94%A8ffmpeg%E6%8E%A8%E9%80%81RTMP%E6%B5%81.html</loc>
     
     <lastmod>2022-11-02</lastmod>
-    
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.ankia.top/about/index.html</loc>
-    
-    <lastmod>2022-11-01</lastmod>
     
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -359,14 +377,14 @@
   </url>
   
   <url>
-    <loc>https://www.ankia.top/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/</loc>
+    <loc>https://www.ankia.top/tags/%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6/</loc>
     <lastmod>2022-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.ankia.top/tags/%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6/</loc>
+    <loc>https://www.ankia.top/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2022-11-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
