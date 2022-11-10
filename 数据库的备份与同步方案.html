@@ -18,25 +18,23 @@
   <meta name="author" content="东东">
   <meta name="keywords" content="">
   
-    <meta name="description" content="今天浏览知乎的时候看到一个问题：  有没有什么方法可以不那么痛苦且安静的离开方式？  这个问题下有只有寥寥二十几个回答，或许如果不是在搜索话题的时候偶然看见，根据知乎的推送规则，我永远也不会在首页看见这个问题。 但是由此也证明，生活并不只是我们眼中看到的样子，你稀疏平常的日常或许是某些人眼中的美好向往。 在我们看不见的地方，还有有许多人生活在绝望之中。 这个问题下有一个答主说：  我知道，一个体面">
+    <meta name="description" content="前言数据的重要性不言而喻，所以需要定时做好数据备份工作。 备份针对自己服务器上的一些网站服务，我使用python进行定期备份，并且删除超过指定天数的备份。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656">
 <meta property="og:type" content="article">
-<meta property="og:title" content="希望世界对你温柔以待">
-<meta property="og:url" content="https://www.ankia.top/%E5%B8%8C%E6%9C%9B%E4%B8%96%E7%95%8C%E5%AF%B9%E4%BD%A0%E6%B8%A9%E6%9F%94%E4%BB%A5%E5%BE%85.html">
+<meta property="og:title" content="数据库的备份与同步方案">
+<meta property="og:url" content="https://www.ankia.top/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88.html">
 <meta property="og:site_name" content="东东的小黑盒">
-<meta property="og:description" content="今天浏览知乎的时候看到一个问题：  有没有什么方法可以不那么痛苦且安静的离开方式？  这个问题下有只有寥寥二十几个回答，或许如果不是在搜索话题的时候偶然看见，根据知乎的推送规则，我永远也不会在首页看见这个问题。 但是由此也证明，生活并不只是我们眼中看到的样子，你稀疏平常的日常或许是某些人眼中的美好向往。 在我们看不见的地方，还有有许多人生活在绝望之中。 这个问题下有一个答主说：  我知道，一个体面">
+<meta property="og:description" content="前言数据的重要性不言而喻，所以需要定时做好数据备份工作。 备份针对自己服务器上的一些网站服务，我使用python进行定期备份，并且删除超过指定天数的备份。 12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://s2.loli.net/2022/11/08/i7cAVrt5ZGD9hyf.png">
-<meta property="article:published_time" content="2022-11-08T05:29:00.000Z">
-<meta property="article:modified_time" content="2022-11-08T05:51:18.420Z">
+<meta property="article:published_time" content="2022-11-10T07:49:00.000Z">
+<meta property="article:modified_time" content="2022-11-10T10:16:20.453Z">
 <meta property="article:author" content="东东">
-<meta property="article:tag" content="知乎">
-<meta property="article:tag" content="心理">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="mysql">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://s2.loli.net/2022/11/08/i7cAVrt5ZGD9hyf.png">
   
   
   
-  <title>希望世界对你温柔以待 - 东东的小黑盒</title>
+  <title>数据库的备份与同步方案 - 东东的小黑盒</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +229,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="希望世界对你温柔以待"></span>
+            <span id="subtitle" data-typed-text="数据库的备份与同步方案"></span>
           
         </div>
 
@@ -242,8 +240,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2022-11-08 13:29" pubdate>
-          2022年11月8日 下午
+        <time datetime="2022-11-10 15:49" pubdate>
+          2022年11月10日 下午
         </time>
       </span>
     
@@ -254,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.3k 字
+          2k 字
         
       </span>
     
@@ -265,7 +263,7 @@
         
         
         
-          7 分钟
+          10 分钟
         
       </span>
     
@@ -303,43 +301,22 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">希望世界对你温柔以待</h1>
+            <h1 style="display: none">数据库的备份与同步方案</h1>
             
             
               <div class="markdown-body">
                 
-                <p>今天浏览知乎的时候看到一个问题：</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>数据的重要性不言而喻，所以需要定时做好数据备份工作。</p>
+<h1 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h1><p>针对自己服务器上的一些网站服务，我使用python进行定期备份，并且删除超过指定天数的备份。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-comment"># -*- coding:utf-8 -*-</span><br><span class="hljs-keyword">import</span> os<br><span class="hljs-keyword">import</span> time<br><span class="hljs-keyword">import</span> shutil<br><span class="hljs-keyword">import</span> schedule<br><span class="hljs-keyword">from</span> datetime <span class="hljs-keyword">import</span> datetime,timedelta<br><span class="hljs-keyword">import</span> zipfile<br><span class="hljs-keyword">from</span> bkfile <span class="hljs-keyword">import</span> *<br><br>DB_HOST = <span class="hljs-string">&#x27;&#x27;</span><br>DB_USER = <span class="hljs-string">&#x27;&#x27;</span><br>DB_USER_PASSWD = <span class="hljs-string">&#x27;&#x27;</span><br>BACKUP_PATH = <span class="hljs-string">&#x27;&#x27;</span><br>DB_NAME = []<br>day=<span class="hljs-number">3</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Run_backups</span>:<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        self.DATETIME = time.strftime(<span class="hljs-string">&#x27;%Y%m%d-%H%M%S&#x27;</span>)<br>        self.TODAYBACKUPPATH = BACKUP_PATH + <span class="hljs-string">&#x27;/&#x27;</span> + self.DATETIME<br>        <span class="hljs-comment">#创建备份文件夹</span><br>        <span class="hljs-keyword">if</span> <span class="hljs-keyword">not</span> os.path.exists(self.TODAYBACKUPPATH):<br>            os.makedirs(self.TODAYBACKUPPATH)<br>        self.run()<br><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">run_backup</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-keyword">for</span> dbname <span class="hljs-keyword">in</span> DB_NAME:<br>            dumpcmd = <span class="hljs-string">&quot;mysqldump -u&quot;</span> + DB_USER + <span class="hljs-string">&quot; -p&quot;</span> + DB_USER_PASSWD + <span class="hljs-string">&quot; &quot;</span> + dbname + <span class="hljs-string">&quot; &gt; &quot;</span> + self.TODAYBACKUPPATH + <span class="hljs-string">&quot;/&quot;</span> + dbname + <span class="hljs-string">&quot;.sql&quot;</span><br>            os.system(dumpcmd)<br>   <br>    <span class="hljs-comment">#执行压缩的函数</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">run_tar</span>(<span class="hljs-params">self</span>):<br>        make_zip(self.TODAYBACKUPPATH,BACKUP_PATH+<span class="hljs-string">&#x27;/&#x27;</span>+<span class="hljs-built_in">str</span>(self.DATETIME)+<span class="hljs-string">&#x27;.zip&#x27;</span>)<br>        <span class="hljs-comment">#删除备份文件夹</span><br>        shutil.rmtree(self.TODAYBACKUPPATH)<br>   <br>    <span class="hljs-comment">#备份数据库文件存在就执行备份和压缩，否则退出</span><br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">run</span>(<span class="hljs-params">self</span>):<br>        self.run_backup()<br>        self.run_tar()<br>            <br><span class="hljs-keyword">def</span> <span class="hljs-title function_">rmAssignDir</span>(<span class="hljs-params">path, day=<span class="hljs-number">3</span></span>):<br>    dirs = os.listdir(path)<br>    current_date = datetime.utcnow()+timedelta(hours=<span class="hljs-number">8</span>)<br>    <span class="hljs-keyword">for</span> <span class="hljs-built_in">dir</span> <span class="hljs-keyword">in</span> dirs:<br>        _date = <span class="hljs-built_in">dir</span>.split(<span class="hljs-string">&#x27;-&#x27;</span>)[<span class="hljs-number">0</span>]<br>        _date = datetime.strptime(_date,<span class="hljs-string">&quot;%Y%m%d&quot;</span>)+timedelta(days=day)<br>        <span class="hljs-keyword">if</span> _date &lt; current_date:<br>            os.remove(path+<span class="hljs-string">&#x27;/&#x27;</span>+<span class="hljs-built_in">dir</span>)<br>            <span class="hljs-built_in">print</span>(<span class="hljs-string">&#x27;已删除超过%s天的备份：  %s&#x27;</span>%(day,path+<span class="hljs-built_in">dir</span>))<br>                <br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">make_zip</span>(<span class="hljs-params">source_dir, output_filename</span>):<br>    zipf = zipfile.ZipFile(output_filename, <span class="hljs-string">&#x27;w&#x27;</span>)<br>    dirlist = os.listdir(source_dir)<br>    <span class="hljs-keyword">for</span> file <span class="hljs-keyword">in</span> dirlist:<br>        zipf.write(os.path.join(source_dir, file))<br>    zipf.close()<br><br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">job</span>(<span class="hljs-params">path, day</span>):<br>    Run_backups()<br>    rmAssignDir(path, day)<br><br><span class="hljs-comment">#定时任务</span><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">runSchedule</span>(<span class="hljs-params">job, path, day</span>):<br>    schedule.every().day.at(<span class="hljs-string">&quot;23:00&quot;</span>).do(job, path, day)<br>    <span class="hljs-comment"># 备份图片</span><br>    schedule.every().day.at(<span class="hljs-string">&quot;23:30&quot;</span>).do(runbkfile)<br><br><span class="hljs-keyword">def</span> <span class="hljs-title function_">runbackup</span>():<br>    <span class="hljs-comment">#打印信息</span><br>    runSchedule(job, BACKUP_PATH, day)<br>    <span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>        schedule.run_pending()<br>        time.sleep(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure>
+
+<h1 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h1><p>由于备份的是<code>.sql</code>文件所以登录mysql命令行直接恢复即可。</p>
 <blockquote>
-<p>有没有什么方法可以不那么痛苦且安静的离开方式？</p>
+<p>mysql  -u root -p;</p>
+<p>set dbname;</p>
+<p>use names utf8;</p>
+<p>source  &lt;sql文件位置&gt;;</p>
 </blockquote>
-<p>这个问题下有只有寥寥二十几个回答，或许如果不是在搜索话题的时候偶然看见，根据知乎的推送规则，我永远也不会在首页看见这个问题。</p>
-<p>但是由此也证明，生活并不只是我们眼中看到的样子，你稀疏平常的日常或许是某些人眼中的美好向往。</p>
-<p>在我们看不见的地方，还有有许多人生活在绝望之中。</p>
-<p>这个问题下有一个答主说：</p>
-<blockquote>
-<p>我知道，一个体面，安静，又不伤害别人的方式。但我不能说。</p>
-</blockquote>
-<p>令我感到不是滋味的是，下面大部分的评论都是：</p>
-<blockquote>
-<p>求求你告诉我</p>
-</blockquote>
-<p>点进其中一个评论的主页，是我不曾体会过的绝望。</p>
-<p>以下内容摘自她的主页：</p>
-<blockquote>
-<p>做梦都想安乐死。活着已经千疮百孔，痛苦不堪了，不想死的时候在受罪。安乐死不可能了，想买一把手枪。去哪买呢？好像犯法没有卖的？这个不许那个也不许，艹泥🐴，繁殖动物一时性起。把我带人间十八层地狱受苦难不犯罪？别人欺负羞辱我，。。不是犯罪？我受苦受难谁替我负责？我该怨谁？我只能自己受着？受不住就自己了结。我都这般模样了，低保还不给我办，别人家家产万贯吃香喝辣享用低保。去哪说理去？到处都是虚假做作虚与委蛇丑陋的嘴脸。。肮脏的一切。。</p>
-</blockquote>
-<blockquote>
-<p>这个世界对傻人一点善意都没有。身体上的缺陷疾病，人们都会同情和帮助。唯有对智障患者没有任何同情。人们仇视，厌恶，智障者，百般凌辱排挤智障患。有些恶毒的人恨不得踩死我。人间是地狱没有光没有希望，无尽头的苦难折磨，绝望。活着只剩下绝望。</p>
-</blockquote>
-<blockquote>
-<p>心又冷，又痛，迷茫，悲催的未来，眼泪都流不出来了，人到绝境反倒哭不出来了这是真的。大脑有点空闲就开始回忆，每天时常陷入回忆中，过往一样不堪回首。从呱呱坠地来到世上的那刻起就注定了悲惨的命运，贫穷的家庭，不好的基因我没选择！连发霉的奶粉都不够吃，从生下来就开始日夜不停的哭我妈说我是难受不会表达只能哭，我觉得是哭我自己悲惨命运的开始！两岁多了脑子还歪一边抬不起来，我的皮肤大人都不敢使劲碰水葫芦一样透明的！稍微不注意一个血窟窿出来了。从科学角度来讲这些症状其实已经说明了，我是个与众不同的小孩子，慢慢的我的问题伴随着我的成长全部显现出来了，我没有别的小孩子聪明。伶俐，，不想别的小孩子那样肉嘟嘟的讨人喜欢，我脑子大脖子细，皮肤褶皱形容枯槁，整日呆头楞脑，木讷，固执，说话被取笑责骂，就不愿意说话了。就是因为这样吧，天天被欺负，从有记忆开始一直到现在记不清楚被欺负过多少次，什么人欺负过我。。。。太多了，记不清楚了，别人的童年是在童真快乐中度过的，我其实没有童年吧！家里是压抑难受的贫穷和责骂，白眼。外边是无止尽的欺凌，。，欺骗。别人拿一张白纸就能换我帮别人干一天活，，。别人的一句话就能骗的我去做愚蠢的事。</p>
-</blockquote>
-<p>看到这些，我深感无力，大脑也不知道在思考什么，短暂地陷入一片空白之中。</p>
-<p>之前在这篇文章  <a href="https://www.ankia.top/%E5%AF%B9%E5%90%B8%E5%BC%95%E5%8A%9B%E6%B3%95%E5%88%99%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83.html">对吸引力法则的一些思考</a>  中写道，世界上根本没有什么绝境，可作为单一的个体，我们的思想只能影响自己，无法强加于人。有句话说：“未经他人苦，莫劝他人善”，也是如此。或许，我们永远无法对他人感同身受吧。</p>
-<p>最后，我点进她的私信留下这么一句话：</p>
-<p><img src="https://s2.loli.net/2022/11/08/i7cAVrt5ZGD9hyf.png" srcset="https://s2.loli.net/2022/11/05/Nkudv32hpLiD7RX.gif" lazyload></p>
-<p>我只不过是一个过客，一段时间后就会忘记此事，但无情的现实却仍将伴随她的一生。</p>
-<p>我不知该如何做，只是希望世界能够对你温柔以待。</p>
 
                 
               </div>
@@ -358,7 +335,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/" class="category-chain-item">生活随笔</a>
+  <a href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="category-chain-item">经验总结</a>
   
   
 
@@ -373,9 +350,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E7%9F%A5%E4%B9%8E/">#知乎</a>
+        <a href="/tags/python/">#python</a>
       
-        <a href="/tags/%E5%BF%83%E7%90%86/">#心理</a>
+        <a href="/tags/mysql/">#mysql</a>
       
     </div>
   
@@ -387,15 +364,15 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>希望世界对你温柔以待</div>
-      <div>https://www.ankia.top/希望世界对你温柔以待.html</div>
+      <div>数据库的备份与同步方案</div>
+      <div>https://www.ankia.top/数据库的备份与同步方案.html</div>
     </div>
     <div class="license-meta">
       
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2022年11月8日</div>
+          <div>2022年11月10日</div>
         </div>
       
       
@@ -427,9 +404,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%A4%87%E4%BB%BD%E4%B8%8E%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88.html" title="数据库的备份与同步方案">
+                      <a href="/%E4%B8%80%E8%82%A1%E9%9A%BE%E9%97%BB%E7%9A%84%E6%B0%94%E5%91%B3.html" title="一股难闻的气味">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">数据库的备份与同步方案</span>
+                        <span class="hidden-mobile">一股难闻的气味</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -437,8 +414,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/%E5%AF%B9%E5%90%B8%E5%BC%95%E5%8A%9B%E6%B3%95%E5%88%99%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83.html" title="对吸引力法则的一些思考">
-                        <span class="hidden-mobile">对吸引力法则的一些思考</span>
+                      <a href="/%E5%B8%8C%E6%9C%9B%E4%B8%96%E7%95%8C%E5%AF%B9%E4%BD%A0%E6%B8%A9%E6%9F%94%E4%BB%A5%E5%BE%85.html" title="希望世界对你温柔以待">
+                        <span class="hidden-mobile">希望世界对你温柔以待</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
