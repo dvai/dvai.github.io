@@ -1,0 +1,328 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>将trilium导出的文章转换为hexo博文 | 东东的小黑盒</title><meta name="author" content="东东"><meta name="copyright" content="东东"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="将trilium导出的文章转换为hexo博文前言trilium对markdown的支持不太友好，之前一直是使用&lt;代码笔记&gt;+marktext组合的方式写博文，这样子虽然在写作上不成问题，但是在知识库中回顾整理的时候发现浏览体验比较差，毕竟写博客是一件自娱自乐的事情（笑），自己看的舒服最重要。 在加上前几天折腾了trilium的css样式，使得其编辑体验大幅提高，于是开始思考能否把tri">
+<meta property="og:type" content="article">
+<meta property="og:title" content="将trilium导出的文章转换为hexo博文">
+<meta property="og:url" content="https://www.ankia.top/%E5%B0%86trilium%E5%AF%BC%E5%87%BA%E7%9A%84%E6%96%87%E7%AB%A0%E8%BD%AC%E6%8D%A2%E4%B8%BAhexo%E5%8D%9A%E6%96%87.html">
+<meta property="og:site_name" content="东东的小黑盒">
+<meta property="og:description" content="将trilium导出的文章转换为hexo博文前言trilium对markdown的支持不太友好，之前一直是使用&lt;代码笔记&gt;+marktext组合的方式写博文，这样子虽然在写作上不成问题，但是在知识库中回顾整理的时候发现浏览体验比较差，毕竟写博客是一件自娱自乐的事情（笑），自己看的舒服最重要。 在加上前几天折腾了trilium的css样式，使得其编辑体验大幅提高，于是开始思考能否把tri">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2022/12/11/KopVRXD4weEGB67.webp">
+<meta property="article:published_time" content="2022-12-10T16:00:00.000Z">
+<meta property="article:modified_time" content="2022-12-11T08:59:57.000Z">
+<meta property="article:author" content="东东">
+<meta property="article:tag" content="小工具">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="trilium">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2022/12/11/KopVRXD4weEGB67.webp"><link rel="shortcut icon" href="https://s2.loli.net/2022/11/11/HoZn8BiEushq1kr.png"><link rel="canonical" href="https://www.ankia.top/%E5%B0%86trilium%E5%AF%BC%E5%87%BA%E7%9A%84%E6%96%87%E7%AB%A0%E8%BD%AC%E6%8D%A2%E4%B8%BAhexo%E5%8D%9A%E6%96%87"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//hm.baidu.com"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?d127e1152974a852668e3a1a501484a6";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: {"limitDay":500,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":false,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'mediumZoom',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: true,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '将trilium导出的文章转换为hexo博文',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-12-11 16:59:57'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(function (e) {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://s2.loli.net/2022/11/05/zxaDBrmY6HWKPet.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">38</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">25</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">6</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">东东的小黑盒</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间线</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">将trilium导出的文章转换为hexo博文</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2022-12-10T16:00:00.000Z" title="发表于 2022-12-11 00:00:00">2022-12-11</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">经验总结</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB/">技术分享</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title="将trilium导出的文章转换为hexo博文"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div><article class="post-content" id="article-container"><h1 id="将trilium导出的文章转换为hexo博文"><a href="#将trilium导出的文章转换为hexo博文" class="headerlink" title="将trilium导出的文章转换为hexo博文"></a>将trilium导出的文章转换为hexo博文</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>trilium对markdown的支持不太友好，之前一直是使用&lt;代码笔记&gt;+marktext组合的方式写博文，这样子虽然在写作上不成问题，但是在知识库中回顾整理的时候发现浏览体验比较差，毕竟写博客是一件自娱自乐的事情（笑），自己看的舒服最重要。</p>
+<p>在加上前几天折腾了trilium的css样式，使得其编辑体验大幅提高，于是开始思考能否把trilium导出的文章一键转换成标准的markdown格式，于是有了本次折腾经历。</p>
+<h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>本次折腾旨在实现以下功能</p>
+<ol>
+<li>博文自动生成front-matter信息</li>
+<li>图片自动上传到图床，并且插入原文中</li>
+<li>博文自动移入hexo本地库中</li>
+</ol>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h3 id="制作博文模板"><a href="#制作博文模板" class="headerlink" title="制作博文模板"></a>制作博文模板</h3><p>在制作脚本之前，我需要使文章具备统一的特征，以便程序能够准确无误地识别文章信息。通过trilium的模板功能，可以制作一个统一的模板。</p>
+<p>新建一个文本笔记，在标签信息中加入如下属性：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">~runOnAttributeChange=blogStateChange #template #label:categories=promoted,single,text #label:tags=promoted,single,text #label:cover=promoted,single,text #label:date=promoted,single,date #label:发布=promoted,single,boolean </span><br></pre></td></tr></table></figure>
+
+<p>加入后，博文会呈现出如下效果：</p>
+<p><img src="https://s2.loli.net/2022/12/11/MusEndWgb1o3PSy.webp"></p>
+<p>对应的标签为：</p>
+<blockquote>
+<p>categories – 分类</p>
+<p>tags – 标签</p>
+<p>cover – 文章主图</p>
+<p>date – 写作时间</p>
+</blockquote>
+<p>为了方便程序处理，每一项需要按照统一的格式书写，这里我自己定义了<code>、</code>作为分隔符，其他按照标准的数组形式。比如categories这项的内容可以写入：</p>
+<blockquote>
+<p>[“经验总结,技术分享”]、[生活随笔]</p>
+</blockquote>
+<p>其中还有一个发布按钮，本来是打算点击后自动导出文章并且运行之后写的python脚本，但是我没有在api中找到导出笔记相关的接口，而且笔记中的js无法调取shell指令。于是只实现了把已发布的文章移动入归档文件夹的功能。通过绑定`<code>~runOnAttributeChange=blogStateChange</code>事件，在<code>blogStateChange中</code>写入如下脚本，当“发布”标签发生变化时执行。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">if (api.originEntity.isDeleted) &#123;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">blogUnpublishedRoot = api.getNoteWithLabel(&quot;blogUnpublished&quot;)</span><br><span class="line">blogPublishedRoot = api.getNoteWithLabel(&quot;blogPublished&quot;)</span><br><span class="line"></span><br><span class="line">if(!blogUnpublishedRoot || !blogPublishedRoot) &#123;</span><br><span class="line">    return</span><br><span class="line">&#125;</span><br><span class="line">const note = api.originEntity.getNote();</span><br><span class="line">isPublished = note.getLabelValue(&quot;发布&quot;) == &quot;true&quot;</span><br><span class="line"></span><br><span class="line">if (blogUnpublishedRoot.getChildNotes().includes(note)) &#123;</span><br><span class="line">    api.toggleNoteInParent(isPublished, note.noteId, blogPublishedRoot.noteId);</span><br><span class="line">    api.toggleNoteInParent(!isPublished, note.noteId, blogUnpublishedRoot.noteId);</span><br><span class="line">&#125;else &#123;</span><br><span class="line">    api.toggleNoteInParent(!isPublished, note.noteId, blogUnpublishedRoot.noteId);</span><br><span class="line">    api.toggleNoteInParent(isPublished, note.noteId, blogPublishedRoot.noteId);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>博文模板制作完成，之后创建博文时，需要使用这个模板进行生成并且填好相应的标签。</p>
+<h3 id="观察导出的文件规律"><a href="#观察导出的文件规律" class="headerlink" title="观察导出的文件规律"></a>观察导出的文件规律</h3><p>首先trilium的导出格式选择【此笔记及其所有子笔记】-【Markdown】。这种导出格式会将正文按照markdown格式进行格式化，但是还不能直接导入至hexo中，一是因为没有front-matter信息，二是因为图片信息使用的是相对路径，没有上传至图床，博客无法直接使用。</p>
+<p><img src="https://s2.loli.net/2022/12/11/RxWbp4LkoAMDuNG.webp"></p>
+<p>导出后是一个<code>.zip</code>包，解压后发现里面有三个文件，依次是本地图片文件夹、元数据信息、文章正文。</p>
+<p><img src="https://s2.loli.net/2022/12/11/KwuWUiJb2cza9nY.webp"></p>
+<p>首先打开<code>!!!meta.json</code>文件，这是一个标准的json格式文件,截取了一些片段，格式大致如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	&quot;formatVersion&quot;: 1,</span><br><span class="line">	&quot;appVersion&quot;: &quot;0.57.3&quot;,</span><br><span class="line">	&quot;files&quot;: [</span><br><span class="line">		&#123;</span><br><span class="line">			&quot;isClone&quot;: false,</span><br><span class="line">			&quot;noteId&quot;: &quot;sYiayejGUksl&quot;,</span><br><span class="line">			&quot;notePath&quot;: [</span><br><span class="line">				&quot;sYiayejGUksl&quot;</span><br><span class="line">			],</span><br><span class="line">			&quot;title&quot;: &quot;将trilium导出的文章转换为hexo博文&quot;,</span><br><span class="line">			&quot;notePosition&quot;: 10,</span><br><span class="line">			&quot;prefix&quot;: null,</span><br><span class="line">			&quot;isExpanded&quot;: true,</span><br><span class="line">			&quot;type&quot;: &quot;text&quot;,</span><br><span class="line">			&quot;mime&quot;: &quot;text/html&quot;,</span><br><span class="line">			&quot;attributes&quot;: [</span><br><span class="line">				&#123;</span><br><span class="line">					&quot;type&quot;: &quot;label&quot;,</span><br><span class="line">					&quot;name&quot;: &quot;categories&quot;,是</span><br><span class="line">					&quot;value&quot;: &quot;[\&quot;经验总结\&quot;,\&quot;技术分享\&quot;]&quot;,</span><br><span class="line">					&quot;isInheritable&quot;: false,</span><br><span class="line">					&quot;position&quot;: 20</span><br><span class="line">				&#125;,</span><br><span class="line">				</span><br><span class="line">				......</span><br></pre></td></tr></table></figure>
+
+<p>观察后发现格式有一定的规律，我们需要的是“attributes”下的内容，其中记录了我们在模板中定义的标签的值，这就是我们需要的front-matter信息。</p>
+<p>以笔记名称命名的文件夹中保存了文章中的图片数据，trilium是自带图片压缩功能，导出的图片也是经过压缩后的图片。</p>
+<p>最后的md文件是文章的正文，打开后发现格式已经成为标准的markdown格式，但是缺少front-matter信息，而且图片是以相对路径插入，后文的目的就是对这个文件按照我们的需求进行格式化。</p>
+<p><img src="https://s2.loli.net/2022/12/11/KJL8yVropdHm4Q7.webp"></p>
+<h2 id="制作脚本"><a href="#制作脚本" class="headerlink" title="制作脚本"></a>制作脚本</h2><h3 id="解压文件"><a href="#解压文件" class="headerlink" title="解压文件"></a>解压文件</h3><p>统一一下文件的路径，这里我进行如下定义：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">trilium_export_path = &#x27;/home/用户名/文档/trilium_export_blogs&#x27;</span><br><span class="line">hexo_ports_path = &#x27;/home/用户名/文档/myfile/blog/source/_posts&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><code>trilium_export_path</code>为trilium导出的文件夹，<code>hexo_ports_path</code>为hexo的博文文件夹。</p>
+<p>由于导出的是zip文件，所以首先对zip进行解压操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">files = os.listdir(trilium_export_path)</span><br><span class="line">for file in files:</span><br><span class="line">    if file.split(&#x27;.&#x27;)[-1] != &quot;zip&quot;:</span><br><span class="line">        break</span><br><span class="line">    fileName = file.split(&quot;.&quot;)[0]</span><br><span class="line">    filePath = os.path.join(trilium_export_path,file)</span><br><span class="line">    readZip = zipfile.ZipFile(filePath)</span><br><span class="line">    readZip.extractall(os.path.join(trilium_export_path,fileName))</span><br><span class="line">    readZip.close()</span><br><span class="line">    os.remove(filePath)</span><br></pre></td></tr></table></figure>
+
+<p>此时<code>trilium_export_path</code>中只剩下解压后的文件，我们重新遍历一次。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">files = os.listdir(trilium_export_path)</span><br><span class="line">for file in files:</span><br><span class="line">    fileNameCode = urllib.parse.quote(file)</span><br><span class="line">    filePath = os.path.join(trilium_export_path,file)</span><br></pre></td></tr></table></figure>
+
+<h3 id="获取json内容"><a href="#获取json内容" class="headerlink" title="获取json内容"></a>获取json内容</h3><p>在上文中我们发现一篇笔记下有三个文件，接下来先读取json，获取front-matter信息并且格式化。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">jsonFile = os.path.join(filePath,&quot;!!!meta.json&quot;)</span><br><span class="line">front_matter = &quot;---&quot;</span><br><span class="line">with open(jsonFile) as jf:</span><br><span class="line">    data = json.load(jf)</span><br><span class="line">    for attributes in data[&quot;files&quot;][0][&quot;attributes&quot;]:</span><br><span class="line">        if (attributes[&quot;type&quot;]) == &quot;label&quot;:</span><br><span class="line">            if (attributes[&quot;name&quot;]) == &quot;categories&quot;:</span><br><span class="line">                categories = attributes[&quot;value&quot;].split(&quot;、&quot;)</span><br><span class="line">                front_matter += &quot;\n\n&quot; +  attributes[&quot;name&quot;] + &quot;: &quot;</span><br><span class="line">                for categorie in categories:</span><br><span class="line">                    front_matter += &quot;\n\n- &quot; + str(categorie)</span><br><span class="line">            else:</span><br><span class="line">                front_matter += &quot;\n\n&quot; +  attributes[&quot;name&quot;] + &quot;: &quot; + attributes[&quot;value&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>通过以上代码获取了我们在博文模板中定义的标签值，并且按照一定格式进行了格式化，但一篇文章还需要标题和更新时间，这是没有在模板中定义的。可以加入以下代码自动获取文章标题和更新时间：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">front_matter += &quot;\n\n&quot; + &quot;title: &quot; + file</span><br><span class="line">front_matter += &quot;\n\n&quot; + &quot;updated: &quot; + datetime.datetime.now().strftime(&#x27;%Y-%m-%d %H:%M:%S&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h3 id="读取md内容"><a href="#读取md内容" class="headerlink" title="读取md内容"></a>读取md内容</h3><p>md是纯文本文件，可以直接读取，因为下文中需要将原文中的图片链接做替换，所以先将md内容缓存起来。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">mdFile = os.path.join(filePath,file+&quot;.md&quot;)</span><br><span class="line">content = &quot;&quot;</span><br><span class="line">with open(mdFile,&quot;r&quot;) as mf:</span><br><span class="line">    content = mf.readlines()</span><br><span class="line">    mf.close()</span><br><span class="line">#将front-matter写入content</span><br><span class="line">content.insert(0,front_matter)</span><br><span class="line">content = &quot;&quot;.join(content)</span><br></pre></td></tr></table></figure>
+
+<h3 id="上传图片至图床"><a href="#上传图片至图床" class="headerlink" title="上传图片至图床"></a>上传图片至图床</h3><p>我已经配置好了picgo-core中的相应参数，此处直接调用picgo的指令即可。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 使用picgo上传文件夹的图片并且对md文件中的图片链接做替换</span><br><span class="line">imgPath = os.path.join(filePath,file)</span><br><span class="line">imgs = os.listdir(imgPath)</span><br><span class="line">for img in imgs:</span><br><span class="line">    # picgo上传并且获取返回的链接</span><br><span class="line">    imgLink = os.popen(&quot;picgo u &quot; + os.path.join(imgPath,img)).read().split(&quot;\n&quot;)[-2]</span><br><span class="line">    content = content.replace(fileNameCode+&#x27;/&#x27;+img,imgLink)</span><br></pre></td></tr></table></figure>
+
+<h3 id="将博文移到hexo中"><a href="#将博文移到hexo中" class="headerlink" title="将博文移到hexo中"></a>将博文移到hexo中</h3><p>先将格式化完成的文本保存回md文件。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">with open(mdFile,&quot;w&quot;) as mf:</span><br><span class="line">       mf.write(content)</span><br><span class="line">       mf.close()</span><br></pre></td></tr></table></figure>
+
+<p>使用<code>shutil</code>库中的<code>copy</code>方法将格式化后的文件移动到hexo中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">shutil.copy(mdFile,hexo_ports_path)</span><br></pre></td></tr></table></figure>
+
+<p>至此主要功能已经实现，下文继续进行一些其他配置以方便使用。</p>
+<h3 id="将脚本配置为指令"><a href="#将脚本配置为指令" class="headerlink" title="将脚本配置为指令"></a>将脚本配置为指令</h3><p>在头部文件中加入如下声明，这样python文件就可以省略为.py的后缀，将文件命名为<code>tohexo</code></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#!/usr/bin/python</span><br></pre></td></tr></table></figure>
+
+<p>赋予脚本可执行权限：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">chmod a+x tohexo</span><br></pre></td></tr></table></figure>
+
+<p>将脚本放入<code>/usr/local/bin/</code>文件夹下，这样脚本就可以全局执行。</p>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>经过如上配置后，整个发布流程变为如下：</p>
+<ol>
+<li>导出文章</li>
+<li>打开cmd输入<code>tohexo</code></li>
+<li>此时文件已经存到本地hexo中，如果需要发布到博客的话按照hexo的发布流程即可</li>
+</ol>
+<p>tohexo前：</p>
+<p><img src="https://s2.loli.net/2022/12/11/ef346DBOq5gvoL7.webp"></p>
+<p>tohexo后：</p>
+<p><img src="https://s2.loli.net/2022/12/11/Ea4lb9yR785h1fn.webp"></p>
+<p>可以看到tohexo后文章多了front-matter信息，图片链接也由原来的相对路径替换为图床链接。</p>
+<h2 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h2><p>经过配置后发布体验较原来有了提高，我可以专注于写作上，无需操心图片压缩和front-matter的事情，这些重复的工作就交给程序完成。</p>
+<p>但是目前还有一个小问题：如果文章有修改，图片会重新上传一次。不过按照我的发图频率来看sm.ms图床的容量应该是绰绰有余。</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://www.ankia.top">东东</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://www.ankia.top/%E5%B0%86trilium%E5%AF%BC%E5%87%BA%E7%9A%84%E6%96%87%E7%AB%A0%E8%BD%AC%E6%8D%A2%E4%B8%BAhexo%E5%8D%9A%E6%96%87.html">https://www.ankia.top/将trilium导出的文章转换为hexo博文.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="external nofollow noreferrer" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://www.ankia.top" target="_blank">东东的小黑盒</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%B0%8F%E5%B7%A5%E5%85%B7/">小工具</a><a class="post-meta__tags" href="/tags/python/">python</a><a class="post-meta__tags" href="/tags/trilium/">trilium</a></div><div class="post_share"><div class="social-share" data-image="https://s2.loli.net/2022/12/11/KopVRXD4weEGB67.webp" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/%E6%94%B9%E8%BF%9Btrilium%E7%9A%84%E4%BB%BB%E5%8A%A1%E7%AE%A1%E7%90%86%E5%8A%9F%E8%83%BD.html"><img class="next-cover" src="https://s2.loli.net/2022/12/05/6R4MzFCmc5y1hdP.webp" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">改进trilium的任务管理功能</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/comfile%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97.html" title="comfile使用指南"><img class="cover" src="https://s2.loli.net/2022/11/11/lPjYvsnKBUAm8Q7.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-07-02</div><div class="title">comfile使用指南</div></div></a></div><div><a href="/excel2cfg%E5%B7%A5%E5%85%B7.html" title="excel转换cfg配置工具"><img class="cover" src="https://s2.loli.net/2022/11/11/GUJKyIezOVdM48h.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-10-13</div><div class="title">excel转换cfg配置工具</div></div></a></div><div><a href="/obsidian%E7%AC%94%E8%AE%B0%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88.html" title="obsidian笔记同步方案"><img class="cover" src="https://s2.loli.net/2022/11/11/oGPxVhDSvgqFXuc.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2021-11-23</div><div class="title">obsidian笔记同步方案</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%86trilium%E5%AF%BC%E5%87%BA%E7%9A%84%E6%96%87%E7%AB%A0%E8%BD%AC%E6%8D%A2%E4%B8%BAhexo%E5%8D%9A%E6%96%87"><span class="toc-number">1.</span> <span class="toc-text">将trilium导出的文章转换为hexo博文</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84"><span class="toc-number">1.2.</span> <span class="toc-text">目的</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.3.</span> <span class="toc-text">准备工作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E5%8D%9A%E6%96%87%E6%A8%A1%E6%9D%BF"><span class="toc-number">1.3.1.</span> <span class="toc-text">制作博文模板</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%82%E5%AF%9F%E5%AF%BC%E5%87%BA%E7%9A%84%E6%96%87%E4%BB%B6%E8%A7%84%E5%BE%8B"><span class="toc-number">1.3.2.</span> <span class="toc-text">观察导出的文件规律</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E8%84%9A%E6%9C%AC"><span class="toc-number">1.4.</span> <span class="toc-text">制作脚本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%8E%8B%E6%96%87%E4%BB%B6"><span class="toc-number">1.4.1.</span> <span class="toc-text">解压文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96json%E5%86%85%E5%AE%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">获取json内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96md%E5%86%85%E5%AE%B9"><span class="toc-number">1.4.3.</span> <span class="toc-text">读取md内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8A%E4%BC%A0%E5%9B%BE%E7%89%87%E8%87%B3%E5%9B%BE%E5%BA%8A"><span class="toc-number">1.4.4.</span> <span class="toc-text">上传图片至图床</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%8D%9A%E6%96%87%E7%A7%BB%E5%88%B0hexo%E4%B8%AD"><span class="toc-number">1.4.5.</span> <span class="toc-text">将博文移到hexo中</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E8%84%9A%E6%9C%AC%E9%85%8D%E7%BD%AE%E4%B8%BA%E6%8C%87%E4%BB%A4"><span class="toc-number">1.4.6.</span> <span class="toc-text">将脚本配置为指令</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%93%E8%AF%AD"><span class="toc-number">1.6.</span> <span class="toc-text">结语</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By 东东</div><div class="framework-info"><span> </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span> </span><a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/medium-zoom/dist/medium-zoom.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdn.jsdelivr.net/npm/pangu/dist/browser/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'https://talk.ankia.top/',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://talk.ankia.top/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
