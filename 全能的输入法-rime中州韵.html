@@ -7,7 +7,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://s2.loli.net/2022/11/12/pWFmL9hArjPflGH.jpg">
 <meta property="article:published_time" content="2022-11-12T04:12:00.000Z">
-<meta property="article:modified_time" content="2022-11-12T10:38:15.513Z">
+<meta property="article:modified_time" content="2022-12-15T10:24:53.469Z">
 <meta property="article:author" content="东东">
 <meta property="article:tag" content="开源工具">
 <meta property="article:tag" content="输入法">
@@ -61,7 +61,7 @@
   isHome: false,
   isHighlightShrink: false,
   isToc: true,
-  postUpdate: '2022-11-12 18:38:15'
+  postUpdate: '2022-12-15 18:24:53'
 }</script><noscript><style type="text/css">
   #nav {
     opacity: 1
@@ -197,23 +197,10 @@
 <p>不过词库也不是越多越好，根据自己平时的习惯建立合适的词库为宜。</p>
 <p>这里我推荐使用中文wiki词库：仓库地址 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/felixonmars/fcitx5-pinyin-zhwiki">felixonmars&#x2F;fcitx5-pinyin-zhwiki</a>。但是从这儿下载下来是一份巨大的词库，出于性能考虑我将其拆分为一个个小词库。可以前往我的仓库下载使用 <a target="_blank" rel="noopener external nofollow noreferrer" href="https://github.com/dvai/rime_resources">dvai&#x2F;rime_resources</a>，除基本的wiki词库之外，我还加了一些日常交流的词库。</p>
 <p>下载的词库均需要在总词库中注册，重新部署后即可使用：</p>
-<blockquote>
 <p>例：</p>
-<p>name: myDict<br>version: “2022.10.3”<br>sort: by_weight<br>use_preset_vocabulary: true</p>
-<p>import_tables:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">name: myDict</span><br><span class="line">version: &quot;2022.10.3&quot;</span><br><span class="line">sort: by_weight</span><br><span class="line">use_preset_vocabulary: true</span><br><span class="line"></span><br><span class="line">import_tables:</span><br><span class="line">  - aurora_pinyin</span><br><span class="line">  - c_dailychat</span><br><span class="line">  - c_dailychat2</span><br><span class="line">  - c_dailychat3</span><br><span class="line">  - c_zhwiki</span><br><span class="line">  - c_zhwiki2</span><br><span class="line">  - c_zhwiki3</span><br><span class="line">  - c_zhwiki4</span><br><span class="line">  - c_zhwiki5</span><br><span class="line">  - c_zhwiki6</span><br><span class="line">  - c_zhwiki7</span><br><span class="line">  - c_zhwiki8</span><br><span class="line">  - c_zhwiki9</span><br></pre></td></tr></table></figure>
+<blockquote>
 <ul>
-<li>aurora_pinyin </li>
-<li>c_dailychat</li>
-<li>c_dailychat2</li>
-<li>c_dailychat3</li>
-<li>c_zhwiki</li>
-<li>c_zhwiki2</li>
-<li>c_zhwiki3</li>
-<li>c_zhwiki4</li>
-<li>c_zhwiki5</li>
-<li>c_zhwiki6</li>
-<li>c_zhwiki7</li>
-<li>c_zhwiki8</li>
 <li>c_zhwiki9</li>
 </ul>
 </blockquote>
