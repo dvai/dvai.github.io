@@ -444,13 +444,6 @@
   </url>
   
   <url>
-    <loc>https://www.ankia.top/tags/excel/</loc>
-    <lastmod>2023-01-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
     <loc>https://www.ankia.top/tags/linux/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>weekly</changefreq>
@@ -458,7 +451,28 @@
   </url>
   
   <url>
+    <loc>https://www.ankia.top/tags/excel/</loc>
+    <lastmod>2023-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://www.ankia.top/tags/%E8%AF%AD%E6%B3%95/</loc>
+    <lastmod>2023-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ankia.top/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2023-01-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.ankia.top/tags/%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -522,20 +536,6 @@
   
   <url>
     <loc>https://www.ankia.top/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA/</loc>
-    <lastmod>2023-01-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.ankia.top/tags/%E7%AC%94%E8%AE%B0%E8%BD%AF%E4%BB%B6/</loc>
-    <lastmod>2023-01-17</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.ankia.top/tags/%E5%BC%80%E6%BA%90%E5%B7%A5%E5%85%B7/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
@@ -649,14 +649,14 @@
   </url>
   
   <url>
-    <loc>https://www.ankia.top/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/</loc>
+    <loc>https://www.ankia.top/categories/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://www.ankia.top/categories/%E5%A5%BD%E8%BD%AF%E6%8E%A8%E8%8D%90/</loc>
+    <loc>https://www.ankia.top/categories/%E7%94%9F%E6%B4%BB%E9%9A%8F%E7%AC%94/</loc>
     <lastmod>2023-01-17</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
